@@ -18,6 +18,8 @@ class CreateRecipesTable extends Migration
             $table->unsignedBiginteger('user_id');
             $table->unsignedBiginteger('content_id');
             $table->unsignedBiginteger('foodstuff_id');
+            $table->unsignedBiginteger('favorite_id');
+            $table->unsignedBiginteger('like_id');
             $table->string('title', 100);
             $table->string('product_image')->nullable();
             $table->string('cooking_time');
