@@ -18,6 +18,8 @@ class AddToRecipes extends Migration
              $table->foreign('user_id')->references('id')->on('users');
              $table->foreign('foodstuff_id')->references('id')->on('foodstuffs');
              $table->foreign('content_id')->references('id')->on('contents');
+             $table->foreign('favorite_id')->references('id')->on('favorites');
+             $table->foreign('like_id')->references('id')->on('likes');
         });
     }
 
