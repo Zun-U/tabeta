@@ -11,5 +11,16 @@
 |
 */
 
+
+Route::group(['middleware' => 'auth'], function () {
+
+    // レシピ一覧画面
+    Route::get('/', 'RecipeController@getArticleAll')->name('articles');
+
+    // レシピ作成画面
+    Route::get('/recipes/create', 'RecipeController@showCreateForm')->name('recipes.create');
+
+});
+
 // ユーザー認証機能
 Auth::routes();
