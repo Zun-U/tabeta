@@ -58,6 +58,7 @@
         });
     </script>
     @endif
+    <script src="{{ asset('../js/pull_down.js') }}"></script>
 </body>
 
 </html>

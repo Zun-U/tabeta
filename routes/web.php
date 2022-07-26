@@ -19,7 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // レシピ作成画面
     Route::get('/recipes/create', 'RecipeController@showCreateForm')->name('recipes.create');
-
+    // Route::post('/recipes/create', 'RecipeController@createRecipe')
 });
 
 // ユーザー認証機能
