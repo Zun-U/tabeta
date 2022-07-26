@@ -31,11 +31,11 @@ class RecipeController extends Controller
     }
 
     // レシピの登録
-    public function createRecipe()
+    public function createRecipe(Request $request)
     {
         $recipe = new Recipe();
 
-
-
+        // 現在ログインしているユーザーとrecipeテーブル
+        Auth::user()->recipes()->save($recipe);
     }
 }
