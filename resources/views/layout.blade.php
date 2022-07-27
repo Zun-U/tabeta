@@ -59,6 +59,7 @@
     </script>
     @endif
     <script src="{{ asset('../js/pull_down.js') }}"></script>
+    <script src="{{ asset('../js/edit_food.js') }}"></script>
 </body>
 
 </html>
