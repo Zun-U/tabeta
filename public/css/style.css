@@ -9,9 +9,14 @@ body {
     margin: 2rem 0 2.5rem 0;
   }
 
+  /* ヘッダー画像の表示（実験中） */
+  /* header .my-navbar {
+    background-image: url(\images\child-3853_1920.jpg);
+  } */
+
   .my-navbar {
     align-items: center;
-    background: rgb(255, 255, 255);
+    background-image: rgb(255, 255, 255);
     display: flex;
     height: 6rem;
     justify-content: space-between;
@@ -31,7 +36,7 @@ body {
 
   .my-navbar-brand:hover,
   a.my-navbar-item:hover {
-    color: #ffffff;
+    color: #5688e6;
   }
 
   .table td:nth-child(2),

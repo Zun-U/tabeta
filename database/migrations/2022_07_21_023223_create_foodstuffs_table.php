@@ -18,7 +18,7 @@ class CreateFoodstuffsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('recipe_id');
             $table->text('food');
-            $table->string('amount');
+            $table->string('amount')->nullable();
             $table->softDeletes(); //論理削除
             $table->timestamps();
         });
