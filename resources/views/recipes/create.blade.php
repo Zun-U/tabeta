@@ -46,11 +46,12 @@
                     <div class="col-sm">
                         <input type="text" class="form-control" name="amount">
                     </div>
-                    <!-- 削除アイコンは非表示 -->
+                    <!-- フォーム欄1段目は削除アイコン非表示 -->
                     <div class="col-sm">
-                        <button type="button" id="btn-remove" class="btn btn-outline-primary invisible"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
+                        <button type="button" onclick="removeForm(this)" id="btn-remove" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
                     </div>
                 </div>
+
 
 
                 <!-- JavaScriptでフォーム入力欄追加 -->
