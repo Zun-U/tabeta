@@ -15,7 +15,6 @@ class AddToFoodstuffs extends Migration
     {
         Schema::table('foodstuffs', function (Blueprint $table) {
             // 外部キーの設定
-            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('recipe_id')->references('id')->on('recipes');
         });
     }

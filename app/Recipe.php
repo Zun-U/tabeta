@@ -26,4 +26,10 @@ class Recipe extends Model
     {
         return $this->hasMany('App\Like');
     }
+
+    // 多対1のリレーション
+    public function users()
+    {
+        return $this->belongsTo('App/User');
+    }
 }
