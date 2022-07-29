@@ -2,7 +2,7 @@
 
 
 let count = 1;
-
+let countProcedure = 1;
 
 
 // 追加ボタンを押したときにイベント発生
@@ -14,7 +14,7 @@ document.querySelector('#btn-add').addEventListener('click', function () {
   // コピー
   let cloneElements = inputArea.cloneNode(true);
 
-  // 複製した要素のid編集
+  // 複製した要素のid編集（IDの重複防止）
   cloneElements.id = "clone-area" + count;
 
   // カスタムデータ属性の付与。DBに値を挿入するときに使う予定。
@@ -53,9 +53,9 @@ document.querySelector('#btn-add').addEventListener('click', function () {
 
 
 
-// 選択した要素の祖先要素を丸ごと削除。
+// 「onclick="removeForm(this)"」の取得。
 function removeForm(button) {
-  // 祖先要素を取得
+  // 「closest」　祖先要素を取得
   let ancestor = button.closest(".row");
   ancestor.remove();
 }
@@ -67,3 +67,46 @@ function removeForm(button) {
 
 // 2.UX／UIを整える。
 // ⇒直感的で、美しいデザイン。
+
+
+
+
+
+document.querySelector('#add-procedure').addEventListener('click', function () {
+
+
+  let procedureArea = document.getElementById('procedure-area');
+  let cloneForm = procedureArea.cloneNode(true);
+
+  cloneForm.id = "clone-procedure" + countProcedure;
+
+  cloneForm.dataset.insertDB = countProcedure;
+
+  let procedureContent = cloneForm.querySelectorAll('input');
+  procedureContent.forEach((text) => {
+    text.value = "";
+  });
+
+  let cloneProcedure = document.getElementById('clone-procedure')
+  cloneProcedure.appendChild(cloneForm);
+
+  let removeButton = cloneForm.querySelector('button');
+  removeButton.className = "btn btn-outline-primary"
+
+  removeButton.id = "btn-remove" + countProcedure;
+
+  countProcedure++;
+});
+
+
+function removeProcedure(button) {
+  let ancestor = button.closest(".row");
+  ancestor.remove();
+}
+
+
+
+document.querySelector('#main-image').addEventListener('click', function () {
+
+
+});

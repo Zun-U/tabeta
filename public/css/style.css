@@ -60,3 +60,13 @@ body {
   /* .btn-outline-primary {
     margin-top: 22px;
   } */
+
+
+  /* 作り方のフォームの連番 */
+  input [name="contents"]{
+    counter-increment: form;
+  }
+
+  input [name="contents"]::before{
+    content:  counter( form );
+  }

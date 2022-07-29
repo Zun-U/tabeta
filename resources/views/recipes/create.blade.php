@@ -4,23 +4,27 @@
 <div class="container">
     <div class="row">
         <div class="col col-md-offset-3 col-md-6">
-            <form action="{{ route('recipes.create') }}" method="POST">
+            <form action="{{ route('recipes.create') }}" method="POST" id="createrecipe" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
-                    <label for="title">レシピ名</label>
+                <div>
+                    <input type="file" name="product_image" class="form-control">
+                </div>
+
+                <div>
+                    <label for="title" class="form-label">レシピ名</label>
                     <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" />
                 </div>
-                <label for="howmany">何人分</label>
-                <input type="text" class="form-control" name="howmany" id="howmany" value="{{ old('howmany') }}" />
                 <div>
-
+                    <label for="howmany" class="form-label">何人分</label>
+                    <input type="text" class="form-control" name="howmany" id="howmany" value="{{ old('howmany') }}" />
                 </div>
+
                 <div>
-                    <label for="cooking_time">調理時間</label>
+                    <label for="cooking_time" class="form-label">調理時間</label>
                     <select class="form-select" aria-label="cooking_time" name="cooking_time" id="cooking_time"></select>
                 </div>
                 <div>
-                    <label for="ages">対象年齢</label>
+                    <label for="ages" class="form-label">対象年齢</label>
                     <div class="form-check-inline">
                         <input type="radio" class="form-check-label" value="全年齢" name="ages" id="ages">指定なし
                         <input type="radio" class="form-check-label" value="5、6ヶ月" name="ages" id="ages">5、6ヶ月
@@ -35,7 +39,6 @@
                     <div class="col-sm">材料・調味料</div>
                     <div class="col-sm">分量</div>
                     <div class="col-sm"></div>
-
                 </div>
 
                 <!-- 食材入力部分 -->
@@ -57,12 +60,35 @@
                 <!-- JavaScriptでフォーム入力欄追加 -->
                 <div id="clone-area"></div>
 
+                <div>
+                    <button type="button" id="btn-add" class="btn btn-outline-primary">追加{!! file_get_contents(public_path('images/addicon.svg')) !!}</button>
+                </div>
+
 
                 <div>
-                    <button type="button" id="btn-add" class="btn btn-outline-primary">{!! file_get_contents(public_path('images/addicon.svg')) !!}追加</button>
+                    <label for="content" class="form-label">作り方</label>
                 </div>
+                <div class="row" id="procedure-area">
+                    <div class="col-sm">
+                        <input type="text" class="form-control" name="contents" id="contents" value="{{ old('contents') }}" />
+                    </div>
+                    <div class="col-sm">
+                        <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
+                    </div>
+                    <div>
+                        <input type="file" name="recipe_image" class="form-control">
+                    </div>
+                </div>
+
+                <!-- 手順入力欄をJSで複製、以下にdivタグに追加 -->
+                <div id="clone-procedure"></div>
+
+                <div>
+                    <button type="button" id="add-procedure" class="btn btn-outline-primary">追加{!! file_get_contents(public_path('images/addicon.svg')) !!}</button>
+                </div>
+
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary">送信</button>
+                    <button type="submit" class="btn btn-primary">プレビューを見る</button>
                 </div>
             </form>
         </div>
