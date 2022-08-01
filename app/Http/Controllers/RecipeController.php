@@ -15,15 +15,15 @@ use Illuminate\Http\Request;
 class RecipeController extends Controller
 {
     // 全レシピの取得
-    // public function getArticleAll()
-    // {
-    //     $recipes = Recipe::all();
+    public function getArticleAll()
+    {
+        $recipes = Recipe::all();
 
-    //     return view(
-    //         'recipes/articles',
-    //         ['recipe' => $recipes]
-    //     );
-    // }
+        return view(
+            'recipes/articles',
+            ['recipe' => $recipes]
+        );
+    }
 
     // レシピ作成画面へ遷移
     public function showCreateForm()
@@ -33,14 +33,11 @@ class RecipeController extends Controller
 
 
     // レシピの登録
-    public function createRecipe(Request $request)
+    public function createRecipe(Recipe $recipe, Request $request)
     {
         $recipe = new Recipe();
-        $content = new Content();
-        $foodstuff = new Foodstuff();
+        // $foodstuff = new Foodstuff();
 
-        // 現在ログインしているユーザーをrecipesテーブルに登録
-        Auth::user()->recipes()->save($recipe);
 
         // recipesテーブルに各値を登録
         $recipe->title = $request->title;
@@ -49,18 +46,41 @@ class RecipeController extends Controller
         $recipe->cooking_time = $request->cooking_time;
         $recipe->ages = $request->ages;
 
-        $recipe->save();
+        // 現在ログインしているユーザーをrecipesテーブルに登録
+        Auth::user()->recipes()->save($recipe);
+
 
 
         // foodstuffsテーブルに登録
+        $foods = $request->input('foodstuff.*');
+        $amounts = $request->input('amount.*');
 
-        $food = $request->foodstuff;
+        foreach ($foods as $food) {
+            $foodstuff = new Foodstuff();
+            $foodstuff->food = $food;
+        }
+
+        foreach ($amounts as $amount) {
+            $foodstuff = new Foodstuff();
+            $foodstuff->amount = $amount;
+        }
+
+
+        $recipe->foodstuffs()->save($foodstuff);
 
 
 
+
+        // // contentsテーブルに登録
+        // $explanations = $request->all();
+        // foreach ($explanations as $explanation) {
+        //     $content = new Content();
+        //     $content->content = $explanation->content;
+        //     $content->recipe_image = $explanation->recipe_image;
+        //     $recipe->contents()->save($content);
+        // }
+
+
+        return view('recipes/preview');
     }
-
-
-
-
 }
