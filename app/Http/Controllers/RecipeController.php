@@ -35,6 +35,66 @@ class RecipeController extends Controller
     // レシピの登録
     public function createRecipe(Recipe $recipe, Request $request)
     {
+
+
+
+
+        // テスト------------------------------
+
+        // 2つの異なるname属性に入力されたフォームの値それぞれを全取得
+        $req = $request->input('foodstuff');
+
+        // dump($req);
+        // dump($req['amount']);
+
+        // foreachで回す
+        foreach ($req as $key => $value) {
+
+            dump($value);
+            // foreach($value as $key2 => $value2){
+            //     dump($value2);
+            } 
+
+        //     foreach($value as $vas){
+        //         dump($vas[$key]);
+
+
+
+        // }
+
+        // -------------------------------------
+
+
+
+
+
+        //
+        // dd($request->only('foodstuff.*','amount.*'));
+        // $req = $request->only('foodstuff.*','amount.*');
+        // $foods = $request->input('foodstuff.*');
+        // $amounts = $request->input('amount.*');
+
+
+
+        // foreach ($foods as $food) {
+
+        //     dump($food);
+        // }
+
+
+        // foreach ($amounts as $amount) {
+
+        //     dump($amount);
+        // }
+
+
+
+
+
+        exit;
+
+
+
         $recipe = new Recipe();
         // $foodstuff = new Foodstuff();
 
@@ -58,20 +118,26 @@ class RecipeController extends Controller
         foreach ($foods as $food) {
             $foodstuff = new Foodstuff();
             $foodstuff->food = $food;
+            // foreach ($amounts as $amount) {
+            //     $foodstuff = new Foodstuff();
+            // $foodstuff->amount = $amounts;
+
+            // }
+            $recipe->foodstuffs()->save($foodstuff);
         }
 
-        foreach ($amounts as $amount) {
-            $foodstuff = new Foodstuff();
-            $foodstuff->amount = $amount;
-        }
+        // foreach ($amounts as $amount) {
+        //     $foodstuff = new Foodstuff();
+        //     $foodstuff->amount = $amount;
+        // }
 
 
-        $recipe->foodstuffs()->save($foodstuff);
+        // $recipe->foodstuffs()->save($foodstuff);
 
 
 
 
-        // // contentsテーブルに登録
+        // contentsテーブルに登録
         // $explanations = $request->all();
         // foreach ($explanations as $explanation) {
         //     $content = new Content();
