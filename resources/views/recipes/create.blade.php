@@ -45,10 +45,10 @@
                 <div class="row" id="input-area">
                     <div class="col-sm">
                         <!-- name属性に[]を入れて、配列として値を渡す。 -->
-                        <input type="text" class="form-control" name="foodstuff[]">
+                        <input type="text" class="form-control" name="foodstuff[][food]">
                     </div>
                     <div class="col-sm">
-                        <input type="text" class="form-control" name="amount[]">
+                        <input type="text" class="form-control" name="foodstuff[][amount]">
                     </div>
                     <!-- フォーム欄1段目は削除アイコン非表示 -->
                     <div class="col-sm">
@@ -71,10 +71,10 @@
                 </div>
                 <div class="row" id="procedure-area">
                     <div class="col-sm">
-                        <input type="text" class="form-control" name="content[]" id="contents" value="{{ old('contents') }}" />
+                        <input type="text" class="form-control" name="content[][text]" id="contents" value="{{ old('contents') }}" />
                     </div>
                     <div class="col-sm">
-                        <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
+                        <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary invisible" name="content[][image]"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
                     </div>
                     <div>
                         <input type="file" name="recipe_image" class="form-control">
