@@ -14,6 +14,13 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
+
+
+
+
+
+
+
     // 全レシピの取得
     public function getArticleAll()
     {
@@ -35,68 +42,23 @@ class RecipeController extends Controller
     // レシピの登録
     public function createRecipe(Recipe $recipe, Request $request)
     {
-
-
-
-
-        // テスト------------------------------
-
-        // 2つの異なるname属性に入力されたフォームの値それぞれを全取得
-        $req = $request->input('foodstuff');
-
-        // dump($req);
-        // dump($req['amount']);
-
-        // foreachで回す
-        foreach ($req as $key => $value) {
-
-            dump($value);
-            // foreach($value as $key2 => $value2){
-            //     dump($value2);
-            } 
-
-        //     foreach($value as $vas){
-        //         dump($vas[$key]);
-
-
-
-        // }
-
-        // -------------------------------------
-
-
-
-
-
-        //
-        // dd($request->only('foodstuff.*','amount.*'));
-        // $req = $request->only('foodstuff.*','amount.*');
-        // $foods = $request->input('foodstuff.*');
-        // $amounts = $request->input('amount.*');
-
-
-
-        // foreach ($foods as $food) {
-
-        //     dump($food);
-        // }
-
-
-        // foreach ($amounts as $amount) {
-
-        //     dump($amount);
-        // }
-
-
-
-
-
-        exit;
-
-
-
         $recipe = new Recipe();
-        // $foodstuff = new Foodstuff();
+
+
+
+        // test
+        // ------------------------------
+        $explanations = $request->input('content');
+
+        dump($explanations);
+
+        foreach ($explanations['text'] as $key => $value) {
+
+            dump($explanations['text'][$key]);
+            dump($explanations['image'][$key]);
+        }
+        exit;
+        // ------------------------------
 
 
         // recipesテーブルに各値を登録
@@ -110,41 +72,32 @@ class RecipeController extends Controller
         Auth::user()->recipes()->save($recipe);
 
 
-
         // foodstuffsテーブルに登録
-        $foods = $request->input('foodstuff.*');
-        $amounts = $request->input('amount.*');
+        // 2つの異なるname属性に入力されたフォームの値それぞれを全取得
+        $ingredients = $request->input('foodstuff');
 
-        foreach ($foods as $food) {
+
+        foreach ($ingredients['food'] as $key => $value) {
             $foodstuff = new Foodstuff();
-            $foodstuff->food = $food;
-            // foreach ($amounts as $amount) {
-            //     $foodstuff = new Foodstuff();
-            // $foodstuff->amount = $amounts;
-
-            // }
+            $foodstuff->food = $ingredients['food'][$key];
+            $foodstuff->amount = $ingredients['amount'][$key];
             $recipe->foodstuffs()->save($foodstuff);
         }
 
-        // foreach ($amounts as $amount) {
-        //     $foodstuff = new Foodstuff();
-        //     $foodstuff->amount = $amount;
-        // }
-
-
-        // $recipe->foodstuffs()->save($foodstuff);
 
 
 
 
         // contentsテーブルに登録
-        // $explanations = $request->all();
-        // foreach ($explanations as $explanation) {
-        //     $content = new Content();
-        //     $content->content = $explanation->content;
-        //     $content->recipe_image = $explanation->recipe_image;
-        //     $recipe->contents()->save($content);
-        // }
+        $explanations = $request->input('content');
+
+
+        foreach ($explanations['text'] as $key => $value) {
+            $content = new Content();
+            $content->content = $explanations['text'][$key];
+            $content->recipe_image = $explanations['image'][$key];
+            $recipe->contents()->save($content);
+        }
 
 
         return view('recipes/preview');
