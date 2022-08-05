@@ -4,7 +4,7 @@
 let count = 1;
 let countProcedure = 1;
 
-
+// 食材・分量の追加・削除
 // 追加ボタンを押したときにイベント発生
 document.querySelector('#btn-add').addEventListener('click', function () {
 
@@ -68,10 +68,13 @@ function removeForm(button) {
 // 2.UX／UIを整える。
 // ⇒直感的で、美しいデザイン。
 
+// ※2022/8/5
+// function 〇〇(button)の挙動の理解
 
 
 
 
+// 作り方、写真投稿欄の追加
 document.querySelector('#add-procedure').addEventListener('click', function () {
 
 
@@ -99,6 +102,7 @@ document.querySelector('#add-procedure').addEventListener('click', function () {
 });
 
 
+// 削除ボタン
 function removeProcedure(button) {
   let ancestor = button.closest(".row");
   ancestor.remove();
@@ -106,7 +110,11 @@ function removeProcedure(button) {
 
 
 
-document.querySelector('#main-image').addEventListener('click', function () {
 
+// 未入力欄チェック
+document.getElementById('submit').addEventListener("submit",function(event){
+if(){
 
+}
 });
+

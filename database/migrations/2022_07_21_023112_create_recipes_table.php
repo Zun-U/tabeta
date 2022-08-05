@@ -17,6 +17,7 @@ class CreateRecipesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBiginteger('user_id');
             $table->string('title', 100);
+            $table->string('subtitle')->nullable();
             $table->string('product_image')->nullable();
             $table->string('howmany');
             $table->string('cooking_time');

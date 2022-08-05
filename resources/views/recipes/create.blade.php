@@ -15,6 +15,10 @@
                     <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" />
                 </div>
                 <div>
+                    <label for="subtitle" class="form-label">サブタイトル</label>
+                    <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ old('subtitle') }}" />
+                </div>
+                <div>
                     <label for="howmany" class="form-label">何人分</label>
                     <input type="text" class="form-control" name="howmany" id="howmany" value="{{ old('howmany') }}" />
                 </div>
@@ -77,7 +81,7 @@
                         <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
                     </div>
                     <div>
-                        <input type="file" name="content[upload_image]" class="form-control">
+                        <input type="file" name="upload_image[cooking_image][]" class="form-control">
                     </div>
                 </div>
 
@@ -89,7 +93,7 @@
                 </div>
 
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary">プレビューを見る</button>
+                    <button type="submit" id="submit" class="btn btn-primary">プレビューを見る</button>
                 </div>
             </form>
         </div>
