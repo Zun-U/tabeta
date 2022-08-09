@@ -4,10 +4,10 @@
 <div class="container">
     <div class="row">
         <div class="col col-md-offset-3 col-md-6">
-            <form action="{{ route('recipes.create') }}" method="POST" id="createrecipe" enctype="multipart/form-data">
+            <form action="{{ route('recipes.create', $recipe->id) }}" method="POST" id="createrecipe" enctype="multipart/form-data">
                 @csrf
                 <div>
-                    <input type="file" name="product_image" class="form-control">
+                    <input type="file" name="product_image" class="form-control" value="{{ old('product_image') }}">
                 </div>
 
                 <div>
@@ -25,7 +25,7 @@
 
                 <div>
                     <label for="cooking_time" class="form-label">調理時間</label>
-                    <select class="form-select" aria-label="cooking_time" name="cooking_time" id="cooking_time"></select>
+                    <select class="form-select" aria-label="cooking_time" name="cooking_time" id="cooking_time" value="{{ old('cooking_time') }}"></select>
                 </div>
                 <div>
                     <label for="ages" class="form-label">対象年齢</label>
@@ -40,19 +40,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm">材料・調味料</div>
-                    <div class="col-sm">分量</div>
-                    <div class="col-sm"></div>
+                    <div class="col-sm">材料</div>
                 </div>
 
                 <!-- 食材入力部分 -->
                 <div class="row" id="input-area">
                     <div class="col-sm">
                         <!-- name属性に[]を入れて、配列として値を渡す。 -->
-                        <input type="text" class="form-control" name="foodstuff[food][]">
+                        <input type="text" class="form-control" name="foodstuff[food][]" placeholder="材料・調味料" value="{{ old('foodstuff[food][]') }}">
                     </div>
                     <div class="col-sm">
-                        <input type="text" class="form-control" name="foodstuff[amount][]">
+                        <input type="text" class="form-control" name="foodstuff[amount][]" placeholder="分量" value="{{ old('foodstuff[amount][]') }}">
                     </div>
                     <!-- フォーム欄1段目は削除アイコン非表示 -->
                     <div class="col-sm">
@@ -75,13 +73,13 @@
                 </div>
                 <div class="row" id="procedure-area">
                     <div class="col-sm">
-                        <input type="text" class="form-control" name="content[text][]" id="contents" value="{{ old('contents') }}" />
+                        <input type="text" class="form-control" name="content[text][]" id="contents" value="{{ old('content[text][]') }}" >
                     </div>
                     <div class="col-sm">
                         <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
                     </div>
                     <div>
-                        <input type="file" name="upload_image[cooking_image][]" class="form-control">
+                        <input type="file" name="upload_image[cooking_image][]" class="form-control" value="{{ old('upload_image[cooking_image][]') }}">
                     </div>
                 </div>
 
