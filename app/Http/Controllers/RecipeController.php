@@ -43,22 +43,6 @@ class RecipeController extends Controller
         $recipe = new Recipe();
 
 
-
-        // test
-        // ------------------------------
-        // $explanations = $request->input('content');
-
-        // dump($explanations);
-
-        // foreach ($explanations['text'] as $key => $value) {
-
-        //     dump($explanations['text'][$key]);
-        //     dump($explanations['image'][$key]);
-        // }
-        // exit;
-        // ------------------------------
-
-
         // TOPレシピ画像ファイルの取得
         $recipe_image = $request->file('product_image');
 
@@ -129,6 +113,32 @@ class RecipeController extends Controller
         }
 
 
-        return view('recipes/preview');
+        return redirect()->route('recipe.preview', [
+            // 直前で作成したレシピ記事id
+            'id' => $recipe->id,
+        ]);
+    }
+
+
+
+    // 直前に作成したレシピの表示
+    public function showRecipe(Recipe $recipe){
+
+        $recipes = Auth::user()->recipe()->get();
+
+        $foodstuffs = $recipe->foodstuff()->get();
+
+        $contents = $recipe->content()->get();
+
+
+        return view('recipes/preview', [
+            'title' => $recipes,
+            'current_recipe_id' => $recipe->id,
+            'foodstuff' => $foodstuffs,
+            'amount' => $foodstuffs,
+            'content' => $contents,
+            'recipe_image' =>  $contents,
+        ]);
+
     }
 }

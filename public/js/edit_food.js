@@ -112,9 +112,9 @@ function removeProcedure(button) {
 
 
 // 未入力欄チェック
-document.getElementById('submit').addEventListener("submit",function(event){
-if(){
+// document.getElementById('submit').addEventListener("submit",function(event){
+// if(){
 
-}
-});
+// }
+// });
 
