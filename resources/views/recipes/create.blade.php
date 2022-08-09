@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col col-md-offset-3 col-md-6">
-            <form action="{{ route('recipes.create', $recipe->id) }}" method="POST" id="createrecipe" enctype="multipart/form-data">
+            <form action="{{ route('recipes.create')}}" method="POST" id="createrecipe" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <input type="file" name="product_image" class="form-control" value="{{ old('product_image') }}">
@@ -62,6 +62,7 @@
 
                 <!-- JavaScriptでフォーム入力欄追加 -->
                 <div id="clone-area"></div>
+
 
                 <div>
                     <button type="button" id="btn-add" class="btn btn-outline-primary">追加{!! file_get_contents(public_path('images/addicon.svg')) !!}</button>
