@@ -68,6 +68,8 @@ class RecipeController extends Controller
         Auth::user()->recipes()->save($recipe);
 
 
+
+
         // foodstuffsテーブルに登録
         // 2つの異なるname属性に入力されたフォームの値それぞれを全取得
         $ingredients = $request->input('foodstuff');
@@ -113,32 +115,35 @@ class RecipeController extends Controller
         }
 
 
+
+
+
         return redirect()->route('recipe.preview', [
-            // 直前で作成したレシピ記事id
+            // 直前で作成したレシピ記事id、ユーザーid
             'id' => $recipe->id,
+            'user_id' => $recipe->user_id,
         ]);
     }
 
 
 
     // 直前に作成したレシピの表示
-    public function showRecipe(Recipe $recipe){
+    public function showPreview(Recipe $recipe)
+    {
 
-        $recipes = Auth::user()->recipe()->get();
-
-        $foodstuffs = $recipe->foodstuff()->get();
-
-        $contents = $recipe->content()->get();
+        $recipe = new Recipe();
+        $foodstuff = new Foodstuff();
+        $content = new Content();
 
 
-        return view('recipes/preview', [
-            'title' => $recipes,
-            'current_recipe_id' => $recipe->id,
-            'foodstuff' => $foodstuffs,
-            'amount' => $foodstuffs,
-            'content' => $contents,
-            'recipe_image' =>  $contents,
-        ]);
+        dump($recipe->id);
+        dump($recipe->user_id);
 
+
+
+
+        return view('recipes/preview'
+    );
+    exit;
     }
 }

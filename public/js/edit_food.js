@@ -111,10 +111,14 @@ function removeProcedure(button) {
 
 
 
-// 未入力欄チェック
-// document.getElementById('submit').addEventListener("submit",function(event){
-// if(){
-
-// }
-// });
+// 未入力欄なら要素削除
+document.getElementById('submit').addEventListener("submit", function () {
+  document.getElementById('').find("input").each(function (index, element) {
+    if (index !== 0) {
+      if (element == "") {
+        element.closest(".row").remove();
+      }
+    }
+  });
+});
 
