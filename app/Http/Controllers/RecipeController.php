@@ -38,7 +38,7 @@ class RecipeController extends Controller
 
 
     // レシピの登録
-    public function createRecipe(Recipe $recipe, Request $request)
+    public function createRecipe(Request $request)
     {
         $recipe = new Recipe();
 
@@ -74,7 +74,7 @@ class RecipeController extends Controller
         // 2つの異なるname属性に入力されたフォームの値それぞれを全取得
         $ingredients = $request->input('foodstuff');
 
-
+        // name属性に指定した配列のkeyのみを取得
         foreach ($ingredients['food'] as $key => $value) {
             $foodstuff = new Foodstuff();
             $foodstuff->food = $ingredients['food'][$key];
@@ -87,6 +87,7 @@ class RecipeController extends Controller
 
 
         // contentsテーブルに登録
+        // テキスト入力と画像投稿欄を別々に取得
         $explanations = $request->input('content');
         $upload_image = $request->file('upload_image');
 
@@ -103,7 +104,7 @@ class RecipeController extends Controller
                 $uploadPath = "/storage/" . $uploard_path;
                 $content->recipe_image = $uploadPath;
             } else {
-                // ファイルがなければNULLを返す。
+                // ファイルがなければNULLを返す
                 $uploard_path = NULL;
             }
 
@@ -115,35 +116,19 @@ class RecipeController extends Controller
         }
 
 
+        // 直前に登録したテーブル情報の取得(複数小テーブル含む)
+        $recipes = Recipe::with(['foodstuffs','contents'])->find($recipe->id);
+
+        // foreach($recipes->contents as $content){
+        //     dd($content->id);
+        //     exit;
+        // }
 
 
+        return view('recipes/preview', compact('recipes'));
 
-        return redirect()->route('recipe.preview', [
-            // 直前で作成したレシピ記事id、ユーザーid
-            'id' => $recipe->id,
-            'user_id' => $recipe->user_id,
-        ]);
     }
 
 
 
-    // 直前に作成したレシピの表示
-    public function showPreview(Recipe $recipe)
-    {
-
-        $recipe = new Recipe();
-        $foodstuff = new Foodstuff();
-        $content = new Content();
-
-
-        dump($recipe->id);
-        dump($recipe->user_id);
-
-
-
-
-        return view('recipes/preview'
-    );
-    exit;
-    }
 }

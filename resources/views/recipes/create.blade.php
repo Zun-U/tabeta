@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="text-right">
-                    <button type="submit" id="submit" class="btn btn-primary">プレビューを見る</button>
+                    <button type="submit" id="create-recipe" class="btn btn-primary">レシピの投稿</button>
                 </div>
             </form>
         </div>
