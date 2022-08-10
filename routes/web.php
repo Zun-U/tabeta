@@ -11,7 +11,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/recipes/create', 'RecipeController@createRecipe');
 
 
-    Route::get('/recipes/preview', 'RecipeController@showPreview')->name('recipe.preview');
 
 
 });

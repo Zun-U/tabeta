@@ -111,8 +111,8 @@ function removeProcedure(button) {
 
 
 
-// 未入力欄なら要素削除
-document.getElementById('submit').addEventListener("submit", function () {
+未入力欄なら要素削除
+document.getElementById('create-recipe').addEventListener("submit", function (event) {
   document.getElementById('').find("input").each(function (index, element) {
     if (index !== 0) {
       if (element == "") {
