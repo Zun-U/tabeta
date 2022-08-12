@@ -16,7 +16,7 @@ class CreateFoodstuffsTable extends Migration
         Schema::create('foodstuffs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('recipe_id');
-            $table->text('food');
+            $table->text('food')->nullable();
             $table->string('amount')->nullable();
         });
     }

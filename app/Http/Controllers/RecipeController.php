@@ -117,7 +117,7 @@ class RecipeController extends Controller
 
 
         // 直前に登録したテーブル情報の取得(複数小テーブル含む)
-        $recipes = Recipe::with(['foodstuffs','contents'])->find($recipe->id);
+        $recipes = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
 
         // foreach($recipes->contents as $content){
         //     dd($content->id);
@@ -126,9 +126,5 @@ class RecipeController extends Controller
 
 
         return view('recipes/preview', compact('recipes'));
-
     }
-
-
-
 }
