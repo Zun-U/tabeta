@@ -7,7 +7,9 @@
 
 <div>
 <div class="col">
-  {{ $recipes->title }}
+  {{ $recipes->title }}:
+  {{ $recipes->product_image }}
+  <img src="{{ $recipes->product_image }}" >
 </div>
 <div class="col">
   {{ $recipes->subtitle }}
@@ -31,6 +33,7 @@
 @foreach($recipes->contents as $content)
 <div class="col">
 作り方：{{ $content->content }}:{{ $content->recipe_image }}
+<img src="{{ asset($content->recipe_image) }}">
 </div>
 @endforeach
 </div>

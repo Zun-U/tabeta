@@ -47,10 +47,10 @@
                 <div class="row" id="input-area">
                     <div class="col-sm">
                         <!-- name属性に[]を入れて、配列として値を渡す。 -->
-                        <input type="text" class="form-control" name="foodstuff[food][]" placeholder="材料・調味料" value="{{ old('foodstuff[food][]') }}">
+                        <input type="text" class="form-control check-food" name="foodstuff[food][]" placeholder="材料・調味料" value="{{ old('foodstuff[food][]') }}">
                     </div>
                     <div class="col-sm">
-                        <input type="text" class="form-control" name="foodstuff[amount][]" placeholder="分量" value="{{ old('foodstuff[amount][]') }}">
+                        <input type="text" class="form-control check-amount" name="foodstuff[amount][]" placeholder="分量" value="{{ old('foodstuff[amount][]') }}">
                     </div>
                     <!-- フォーム欄1段目は削除アイコン非表示 -->
                     <div class="col-sm">
@@ -74,7 +74,7 @@
                 </div>
                 <div class="row" id="procedure-area">
                     <div class="col-sm">
-                        <input type="text" class="form-control" name="content[text][]" id="contents" value="{{ old('content[text][]') }}" >
+                        <input type="text" class="form-control check_text" name="content[text][]" id="contents" value="{{ old('content[text][]') }}" >
                     </div>
                     <div class="col-sm">
                         <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>

@@ -17,8 +17,6 @@ document.querySelector('#btn-add').addEventListener('click', function () {
   // 複製した要素のid編集（IDの重複防止）
   cloneElements.id = "clone-area" + count;
 
-  // カスタムデータ属性の付与。DBに値を挿入するときに使う予定。
-  cloneElements.dataset.insertDB = count;
 
 
   // 入力欄を空白にする。※querySelectorAllには複数のノードがしまわれる。
@@ -41,8 +39,6 @@ document.querySelector('#btn-add').addEventListener('click', function () {
   // 削除アイコンのidの編集
   removeButton.id = "btn-remove" + count;
 
-  // 不必要となった。※選択したボタンに連携して削除しようと試みたが、方法が見つからなかった。
-  // removeButton.dataset.removeid = count;
 
   // IDの重複対策
   count++;
@@ -111,14 +107,70 @@ function removeProcedure(button) {
 
 
 
-未入力欄なら要素削除
-document.getElementById('create-recipe').addEventListener("submit", function (event) {
-  document.getElementById('').find("input").each(function (index, element) {
-    if (index !== 0) {
-      if (element == "") {
-        element.closest(".row").remove();
+// 未入力欄なら要素削除(UX向上) ⇒　両方nullableにして、両方未入力なら投稿禁止にする。
+document.getElementById('create-recipe').addEventListener("click", function (event) {
+
+
+  // 追加フォーム欄の「材料・分量」入力欄の取得
+  let inputCheckAll = document.getElementById('clone-area').querySelectorAll('.row');
+
+
+  // 追加フォーム欄の「材料」入力部分の取得
+  // let inputFood = document.getElementById('clone-area').querySelectorAll('.check-food');
+
+  // // 追加フォーム欄の「分量」入力部分の取得
+  // let inputAmount = document.getElementById('clone-area').querySelectorAll('.check-amount');
+
+
+  // inputCheckAll.forEach((e)=> {console.log(e);})
+
+  inputCheckAll.forEach(function (parent) {
+    var flg = 0;
+    parent.querySelectorAll('.col-sm input').forEach(function (element) {
+      if (element.classList.contains('check-food')) {
+        if (element.value == '') {
+          flg = flg + 1;
+        };
+      } else if (element.classList.contains('check-amount')) {
+        if (element.value == '') {
+          flg = flg + 1;
+        };
       }
-    }
+      if (flg == 2) {
+        parent.remove();
+      }
+    });
   });
+
+
+
+
+
+  //   // --------------------------------------------------------
+
+  // inputFood.forEach(function (inputFoods) {
+
+  //   if (inputFoods.value == "") {
+  //     let ancestor = inputFoods.closest(".row");
+  //     ancestor.remove();
+
+  //   }
+  // });
+
+
+  //   // --------------------------------------------------------
+
+  //   // check.forEach((text) => {console.log(text.value)})
+
+
+  //   // inputCheckAll.forEach(function(check){
+  //   //   console.log(Object.keys(check.value));
+  //   // })
+
+
+  //   // querySelectorAll('input[name="foodstuff[food][]"]'
+
+
+  // event.preventDefault();
 });
 
