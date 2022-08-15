@@ -111,18 +111,10 @@ function removeProcedure(button) {
 document.getElementById('create-recipe').addEventListener("click", function (event) {
 
 
-  // 追加フォーム欄の「材料・分量」入力欄の取得
+  // 追加フォーム欄の「材料・分量」入力欄の取得(一個下の祖先要素を指定)
   let inputCheckAll = document.getElementById('clone-area').querySelectorAll('.row');
 
 
-  // 追加フォーム欄の「材料」入力部分の取得
-  // let inputFood = document.getElementById('clone-area').querySelectorAll('.check-food');
-
-  // // 追加フォーム欄の「分量」入力部分の取得
-  // let inputAmount = document.getElementById('clone-area').querySelectorAll('.check-amount');
-
-
-  // inputCheckAll.forEach((e)=> {console.log(e);})
 
   inputCheckAll.forEach(function (parent) {
     var flg = 0;
@@ -142,33 +134,6 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
     });
   });
 
-
-
-
-
-  //   // --------------------------------------------------------
-
-  // inputFood.forEach(function (inputFoods) {
-
-  //   if (inputFoods.value == "") {
-  //     let ancestor = inputFoods.closest(".row");
-  //     ancestor.remove();
-
-  //   }
-  // });
-
-
-  //   // --------------------------------------------------------
-
-  //   // check.forEach((text) => {console.log(text.value)})
-
-
-  //   // inputCheckAll.forEach(function(check){
-  //   //   console.log(Object.keys(check.value));
-  //   // })
-
-
-  //   // querySelectorAll('input[name="foodstuff[food][]"]'
 
 
   // event.preventDefault();

@@ -100,7 +100,7 @@ class RecipeController extends Controller
 
             // 画像ファイルの有無判定（keyに紐づいた入力値を判定）
             if (isset($upload_image['cooking_image'][$key])) {
-                $uploard_path = Storage::disk("public")->putFile('profile', $upload_image['cooking_image'][$key]);
+                $uploard_path = Storage::disk("public")->putFile('public', $upload_image['cooking_image'][$key]);
                 $uploadPath = "/storage/" . $uploard_path;
                 $content->recipe_image = $uploadPath;
             } else {

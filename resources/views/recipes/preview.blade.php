@@ -9,7 +9,7 @@
 <div class="col">
   {{ $recipes->title }}:
   {{ $recipes->product_image }}
-  <img src="{{ $recipes->product_image }}" >
+  <img src="{{ asset($recipes->product_image) }} " >
 </div>
 <div class="col">
   {{ $recipes->subtitle }}
