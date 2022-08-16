@@ -19,17 +19,6 @@ class RecipeController extends Controller
 {
 
 
-    // 全レシピの取得
-    public function getArticleAll()
-    {
-        $recipes = Recipe::all();
-
-        return view(
-            'recipes/articles',
-            ['recipe' => $recipes]
-        );
-    }
-
     // レシピ作成画面へ遷移
     public function showCreateForm()
     {
@@ -117,13 +106,32 @@ class RecipeController extends Controller
 
 
         // 直前に登録したテーブル情報の取得(複数小テーブル含む)
-        $recipes = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
+        // $recipes = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
 
         // foreach($recipes->contents as $content){
         //     dd($content->id);
         //     exit;
         // }
 
+
+        return redirect()->route(
+            'recipe.preview',
+            [
+                'recipe' => $recipe
+            ]
+        );
+    }
+
+
+    public function showPreview(Recipe $recipe)
+    {
+
+
+
+        $recipes = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
+
+        // dd($recipes);
+        // exit;
 
         return view('recipes/preview', compact('recipes'));
     }

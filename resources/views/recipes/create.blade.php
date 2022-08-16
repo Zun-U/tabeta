@@ -74,7 +74,7 @@
                 </div>
                 <div class="row" id="procedure-area">
                     <div class="col-sm">
-                        <input type="text" class="form-control check_text" name="content[text][]" id="contents" value="{{ old('content[text][]') }}" >
+                        <input type="text" class="form-control check_text" name="content[text][]" id="contents" value="{{ old('content[text][]') }}">
                     </div>
                     <div class="col-sm">
                         <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
@@ -100,3 +100,4 @@
 </div>
 
 @endsection
+
