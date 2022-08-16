@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>tabeta!</title>
 
-
-
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -25,6 +25,7 @@
             <div class="my-navbar-control">
 
                 @if(Auth::check())
+                <a class="my-navbar-item" href="{{ route('mypage.show') }}">マイページ</a>
                 <a class="my-navbar-item" href="{{ route('recipes.create') }}">レシピ作成</a>
                 <span class="my-navbar-item">{{ Auth::user()->name }}さん</span>
                 ｜
