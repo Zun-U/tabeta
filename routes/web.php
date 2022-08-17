@@ -21,8 +21,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/user/mypage', 'MypageController@editImage');
 
-
-
+    // いいね（Ajax）
+    Route::post('/like', 'LikeController@like')->name('recipe.like');
 
 });
 
