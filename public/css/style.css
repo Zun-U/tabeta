@@ -2,7 +2,7 @@
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
 
 body {
-    background-color: #fcebeb;
+    background-color: #ffffff;
   }
 
   .navbar {
@@ -69,4 +69,14 @@ body {
 
   input [name="contents"]::before{
     content:  counter( form );
+  }
+
+
+  /* 「いいね」ボタンクリック後、色変化 */
+  .liked {
+    color: rgb(255, 215, 129);
+  }
+
+  .bookmark-toggle .liked {
+    color: rgb(40, 41, 41);
   }

@@ -17,7 +17,10 @@
 <div>
   <form action="" method="POST" id="edit_image" enctype="multipart/form-data">
     <div>
-      <input type="file" name="profile_image" class="edit-image" value="">
+      <spam class="btn btn-outline-secondary">
+        編集
+      <input type="file" name="profile_image" class="edit-image" value="" style="display:none" accept="image/*">
+      </spam>
     </div>
   </form>
 </div>

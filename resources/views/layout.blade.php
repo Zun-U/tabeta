@@ -12,7 +12,12 @@
 
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Font awesome CDN -->
+    <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <!-- CSS -->
     <link rel="stylesheet" href="/css/style.css">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -61,6 +66,7 @@
     @endif
     <script src="{{ asset('../js/pull_down.js') }}"></script>
     <script src="{{ asset('../js/edit_food.js') }}"></script>
+    <script src="{{ asset('../js/like.js') }}"></script>
 </body>
 
 </html>

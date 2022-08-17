@@ -2,8 +2,8 @@
 
 @section('content')
 
-<p>こどもの「たべない！」を「たべた！」に変える、お料理の工夫を共有するWEBアプリケーションです。</p>
-  <div class="container">
+<p>こどもの「たべない！」を「たべた！」に変える、お料理の工夫を共有するレシピ投稿サイトです。</p>
+  <div class="container ">
     <div class="row">
       <div class="col col-md-offset-3 col-md-6">
         <nav class="panel panel-default">
