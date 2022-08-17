@@ -67,6 +67,7 @@
     <script src="{{ asset('../js/pull_down.js') }}"></script>
     <script src="{{ asset('../js/edit_food.js') }}"></script>
     <script src="{{ asset('../js/like.js') }}"></script>
+    <script src="{{ asset('../js/bookmark.js') }}"></script>
 </body>
 
 </html>

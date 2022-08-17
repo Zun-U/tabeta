@@ -31,7 +31,7 @@ class ArticlesController extends Controller
     public function getArticleDetail(Recipe $recipe)
     {
 
-        $recipe_detail = Recipe::withCount('likes')->with(['foodstuffs', 'contents'])->find($recipe->id);
+        $recipe_detail = Recipe::withCount('likes', 'favorites')->with(['foodstuffs', 'contents'])->find($recipe->id);
 
         return view(
             'recipes/recipe',

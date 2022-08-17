@@ -9,6 +9,11 @@ class Favorite extends Model
     // 多対1のリレーション
     public function users()
     {
+        return $this->belongsTo('App/User');
+    }
+
+    public function recipe()
+    {
         return $this->belongsTo('App/Recipe');
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Recipe;
 use App\Like;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +24,6 @@ class LikeController extends Controller
         // いいねしてなかったら
         if (!$already_liked) {
 
-
             $like = new Like;
 
             $like->recipe_id = $recipe_id;
@@ -42,6 +40,7 @@ class LikeController extends Controller
 
         // この投稿の最新の総いいね数を取得。withCountにモデルのlikesメソッドを引数として渡している。
         $recipe_likes_count = Recipe::withCount('likes')->findOrFail($recipe_id)->likes_count;
+
         $param = [
             'recipe_likes_count' => $recipe_likes_count,
         ];

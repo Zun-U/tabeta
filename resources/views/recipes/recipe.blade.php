@@ -45,7 +45,7 @@
         <!-- カスタムデータ属性を設定 -->
         <i class="fa-solid fa-carrot like-toggle" data-recipe-id="{{ $recipe_detail->id }}">たべた！</i>
         <!-- いいねカウンター表示 -->
-        <span class="like-counter">{{ ($recipe_detail->likes_count == 0) ? "" : $$recipe_detail->likes_count }}</span>
+        <span class="like-counter">{{ ($recipe_detail->likes_count == 0) ? "" : $recipe_detail->likes_count }}</span>
       </span>
     </div>
 
@@ -61,18 +61,18 @@
 
 
     <!-- ブックマーク機能 -->
-    @if (!$recipe_detail->isLikedBy(Auth::user()))
+    @if (!$recipe_detail->isMarkedBy(Auth::user()))
     <div>
-      <span class="likes">
-        <i class="fa-solid fa-bookmark bookmark-toggle" data-recipe-id="{{ $recipe_detail->id }}"></i>
-        <span class="like-counter">{{ ($recipe_detail->bookmark_count == 0) ? "" : $$recipe_detail->bookmark_count }}</span>
+      <span class="bookmarks">
+        <i class="fa-solid fa-bookmark bookmark-toggle" data-recipeDetail-id="{{ $recipe_detail->id }}"></i>
+        <span class="bookmark-counter">{{ ($recipe_detail->bookmarks_count == 0) ? "" : $recipe_detail->bookmarks_count }}</span>
       </span>
     </div>
     @else
     <div>
-      <span class="likes">
-        <i class="fa-solid fa-bookmark bookmark-toggle liked" data-recipe-id="{{ $recipe_detail }}"></i>
-        <span class="like-counter">{{ ($recipe_detail->bookmark_count == 0) ? "" : $recipe_detail->bookmark_count }}</span>
+      <span class="bookmarks">
+        <i class="fa-solid fa-bookmark bookmark-toggle marked" data-recipeDetail-id="{{ $recipe_detail }}"></i>
+        <span class="bookmark-counter">{{ ($recipe_detail->bookmarks_count == 0) ? "" : $recipe_detail->bookmarks_count }}</span>
       </span>
     </div>
     @endif

@@ -77,6 +77,6 @@ body {
     color: rgb(255, 215, 129);
   }
 
-  .bookmark-toggle .liked {
-    color: rgb(40, 41, 41);
+  .marked {
+    color: rgb(65, 145, 145);
   }
