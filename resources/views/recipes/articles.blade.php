@@ -9,17 +9,48 @@
   </div>
 </div>
 
-@foreach($recipes as $recipe)
-<div class="container">
-  <div class="col-2">
-    <a href="{{ route('article.detail',$recipe) }}">{{ $recipe->title }}</a>
-    <div class="col-2">{{ $recipe->created_at }}</div>
-    <div class="col-2"><img src="{{ $recipe->product_image }}" width="50px" height="50px"></div>
-    <div class="col-2">{{ $recipe->howmany }}</div>
-    <div class="col-2">{{ $recipe->cooking_time }}</div>
-    <div class="col-2">{{ $recipe->ages }}</div>
+@foreach($recipes->sortByDesc('created_at') as $recipe)
+<div class="card" style="width: 18rem;">
+
+  <div class="card-img-top"><img src="{{ $recipe->product_image }}" width="50px" height="50px"></div>
+  <div class="card-body">
+    <a href="{{ route('article.detail',$recipe) }}" class="card-title">{{ $recipe->title }}</a>
+    <div class="card-text">{{ $recipe->created_at }}</div>
+
+    <div class="card-text">{{ $recipe->howmany }}人分</div>
+    <div class="card-text">調理時間：{{ $recipe->cooking_time }}分</div>
+    <div class="card-text">{{ $recipe->ages }}</div>
+
+
+
+
+    <!-- いいね数表示 -->
+    @if (!$recipe->isLikedBy(Auth::user()))
+    <div>
+      <span class="likes">
+        <i class="fa-solid fa-carrot">たべた！</i>
+        <span class="like-counter">{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
+      </span>
+    </div>
+    @else
+    <div>
+      <span class="likes">
+        <i class="fa-solid fa-carrot liked">たべた！</i>
+        <span class="like-counter">{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
+      </span>
+    </div>
+    @endif
   </div>
+
+
 </div>
+
 @endforeach
+
+
+
+
+
+{{ $recipes->links() }}
 
 @endsection
