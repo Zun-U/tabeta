@@ -44,6 +44,7 @@ class Recipe extends Model
         return Like::where('user_id', $user->id)->where('recipe_id', $this->id)->first() !== null;
     }
 
+
         //ブックーマーク存在判定
         public function isMarkedBy($user): bool
         {

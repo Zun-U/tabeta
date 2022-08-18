@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col col-md-offset-3 col-md-6">
-            <nav class="panel panel-default">
-                <div class="panel-heading">会員登録</div>
-                <div class="panel-body">
+            <nav class="card">
+                <div class="card-header">会員登録</div>
+                <div class="card-body">
                     @if($errors->any())
                     <div class="alert alert-danger">
                         @foreach($errors->all() as $message)

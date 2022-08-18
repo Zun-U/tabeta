@@ -21,11 +21,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/user/mypage', 'MypageController@editImage');
 
-    // いいね（Ajax）
+    // いいね機能（Ajax）
     Route::post('/like', 'LikeController@like')->name('recipe.like');
 
     // ブックマ－ク（Ajax）
     Route::post('/bookmark', 'BookmarkController@bookmark')->name('recipe.bookmark');
+
 });
 
 // ユーザー認証機能

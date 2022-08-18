@@ -2,10 +2,14 @@
 
 @section('content')
 
-<div class="search-box row">
-  <div class="input-group">
-    <input type="text" class="form-control search-input" placeholder="記事のタイトルを入力">
-    <button class="btn btn-secondary">検索</button>
+<div class="container">
+  <div class="search-box row justify-content-center">
+    <div class="col-6">
+      <div class="input-group">
+        <input type="text" class="form-control search-input" placeholder="記事のタイトルを入力">
+        <button class="btn btn-secondary">検索</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -27,17 +31,17 @@
 
 
 
-    <div class="row">
+    <div class="d-flex justify-content-end">
       <!-- いいね数表示 -->
       @if (!$recipe->isLikedBy(Auth::user()))
-      <div style="margin: left;">
+      <div class="me-3">
         <span>
           <i class="fa-solid fa-carrot"></i>
-          <span class="like-counter text-end">{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
+          <span class="like-counter">{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
         </span>
       </div>
       @else
-      <div style="margin: left;">
+      <div class="me-3">
         <span>
           <i class="fa-solid fa-carrot liked">たべた！</i>
           <span class="like-counter">{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
@@ -49,14 +53,14 @@
 
       <!-- ブックマーク数表示 -->
       @if (!$recipe->isMarkedBy(Auth::user()))
-      <div class="">
+      <div>
         <span>
           <i class="fa-solid fa-bookmark"></i>
           <span class="bookmark-counter">{{ ($recipe->favorites_count == 0) ? "" : $recipe->favorites_count }}</span>
         </span>
       </div>
       @else
-      <div class="">
+      <div>
         <span>
           <i class="fa-solid fa-bookmark marked"></i>
           <span class="bookmark-counter">{{ ($recipe->favorites_count == 0) ? "" : $recipe->favorites_count }}</span>
@@ -75,7 +79,7 @@
 
 
 
-<div class="page">
+<div class="d-flex justify-content-center">
   {{ $recipes->links() }}
 </div>
 @endsection

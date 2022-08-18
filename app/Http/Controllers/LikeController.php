@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Recipe;
 use App\Like;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +24,6 @@ class LikeController extends Controller
 
         // いいねしてなかったら
         if (!$already_liked) {
-
 
             $like = new Like;
 

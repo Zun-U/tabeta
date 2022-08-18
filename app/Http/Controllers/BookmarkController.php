@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class BookmarkController extends Controller
 {
+
     public function bookmark(Request $request)
     {
         // ログインしているユーザー
@@ -24,7 +25,6 @@ class BookmarkController extends Controller
         // いいねしてなかったら
         if (!$already_marked) {
 
-
             $favorite = new Favorite;
 
             $favorite->recipe_id = $recipe_id;
@@ -33,10 +33,10 @@ class BookmarkController extends Controller
 
             $favorite->save();
 
-            //もしこのユーザーがこの投稿に既にいいねしてたらdelete
         } else {
             Favorite::where('recipe_id', $recipe_id)->where('user_id', $user_id)->delete();
         }
+
 
 
         // この投稿の最新の総いいね数を取得。withCountにモデルのlikesメソッドを引数として渡している。
@@ -51,4 +51,5 @@ class BookmarkController extends Controller
         // JSONデータをjQueryに返す
         return response()->json($param);
     }
+
 }

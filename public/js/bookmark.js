@@ -25,16 +25,20 @@ $(function () {
 
       data: {
 
+
         'recipe_id': markRecipeId
+
       },
 
     })
 
+
       .done(function (data) {
-        console.log(data);
+        // console.log(data);
         $this.toggleClass('marked');
         $this.next('.mark-counter').html(data.recipe_markes_count);
       })
+
       .fail(function () {
         console.log('fail');
       });
