@@ -3,10 +3,12 @@
 @section('content')
 
 <div class="container">
-  <div class="search-box row">
-    <div class="input-group">
-      <input type="text" class="form-control search-input" placeholder="記事のタイトルを入力">
-      <button class="btn btn-secondary">検索</button>
+  <div class="search-box row justify-content-center">
+    <div class="col-6">
+      <div class="input-group">
+        <input type="text" class="form-control search-input" placeholder="記事のタイトルを入力">
+        <button class="btn btn-secondary">検索</button>
+      </div>
     </div>
   </div>
 </div>

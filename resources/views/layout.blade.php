@@ -25,28 +25,41 @@
 
     <!-- ヘッダーの出し分け -->
     <header>
-        <nav class="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light pb-4">
             <div class="container">
                 <a class="navbar-brand" href="/"><img src="{{ asset('images/tabeta!.png')}}" class="titlelogo"></a>
                 <div class="navbar-control">
 
-                    @if(Auth::check())
-                    <a class="navbar-item" href="{{ route('mypage.show') }}">マイページ</a>
-                    <a class="navbar-item" href="{{ route('recipes.create') }}">レシピ作成</a>
-                    <span class="my-navbar-item">{{ Auth::user()->name }}さん</span>
-                    ｜
-                    <a href="#" id="logout" class="my-navbar-item">ログアウト</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <ul class="navbar-nav ms-auto">
+                        @if(Auth::check())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('mypage.show') }}">マイページ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('recipes.create') }}">レシピ作成</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" id="logout" class="nav-link">ログアウト</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link active ms-2">{{ Auth::user()->name }}さん</span>
+                        </li>
+                        <li class="nav-item">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
 
-                        @csrf
-                    </form>
-
-                    <!-- 「ログインしていなければ」の処理 -->
-                    @else
-                    <a class="navbar-item" href="{{ route('login') }}">ログイン</a>
-                    ｜
-                    <a class="navbar-item" href="{{ route('register') }}">会員登録</a>
-                    @endif
+                        <!-- 「ログインしていなければ」の処理 -->
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">会員登録</a>
+                        </li>
+                        @endif
+                    </ul>
                 </div>
             </div>
         </nav>
