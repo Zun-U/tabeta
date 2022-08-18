@@ -4,13 +4,13 @@ $(function () {
 
   let bookmark = $('.bookmark-toggle');
 
-  let bookmarkRecipeId;
-
   bookmark.on('click', function () {
-  
+
     let $this = $(this);
 
-    bookmarkRecipeId = $this.data('recipeDetail-id');
+    console.log($this);
+
+    let markRecipeId = $this.data('recipes-id');
 
 
     $.ajax({
@@ -24,15 +24,19 @@ $(function () {
       url: '/bookmark',
 
       data: {
-        'recipeDetail-id': bookmarkRecipeId
+
+
+        'recipe_id': markRecipeId
+
       },
 
     })
 
 
       .done(function (data) {
-        $this.toggleClass('marked'); 
-        $this.next('.bookmark-counter').html(data.recipe_bookmark_count);
+        // console.log(data);
+        $this.toggleClass('marked');
+        $this.next('.mark-counter').html(data.recipe_markes_count);
       })
 
       .fail(function () {

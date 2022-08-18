@@ -2,13 +2,13 @@
 
 @section('content')
 
-<p>こどもの「たべない！」を「たべた！」に変える、お料理の工夫を共有するレシピ投稿サイトです。</p>
-  <div class="container ">
+  <div class="container">
     <div class="row">
+      <p>こどもの「たべない！」を「たべた！」に変える、お料理の工夫を共有するレシピ投稿サイトです。</p>
       <div class="col col-md-offset-3 col-md-6">
-        <nav class="panel panel-default">
-          <div class="panel-heading">ログイン</div>
-          <div class="panel-body">
+        <nav class="card">
+          <div class="card-header">ログイン</div>
+          <div class="card-body">
             @if($errors->any())
               <div class="alert alert-danger">
                 @foreach($errors->all() as $message)

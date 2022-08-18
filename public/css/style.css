@@ -2,64 +2,58 @@
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
 
 body {
-    background-color: #ffffff;
-  }
+  background-color: #ffffff;
+}
 
-  .navbar {
-    margin: 2rem 0 2.5rem 0;
-  }
+/* .navbar {
+  margin: 2rem 0 2.5rem 0;
+}
 
-  /* ヘッダー画像の表示（実験中） */
-  /* header .my-navbar {
-    background-image: url(\images\child-3853_1920.jpg);
-  } */
+.my-navbar {
+  align-items: center;
+  background-image: rgb(255, 255, 255);
+  display: flex;
+  height: 6rem;
+  justify-content: space-between;
+  padding: 0 2%;
+  margin-bottom: 3rem;
+  backdrop-filter: brightness(1.5);
+}
 
-  .my-navbar {
-    align-items: center;
-    background-image: rgb(255, 255, 255);
-    display: flex;
-    height: 6rem;
-    justify-content: space-between;
-    padding: 0 2%;
-    margin-bottom: 3rem;
-    backdrop-filter: brightness(1.5);
-  }
+.my-navbar-brand {
+  font-size: 18px;
+}
 
-  .my-navbar-brand {
-    font-size: 18px;
-  }
+.my-navbar-brand,
+.my-navbar-item {
+  color: #85d2e9;
+}
 
-  .my-navbar-brand,
-  .my-navbar-item {
-    color: #85d2e9;
-  }
+.my-navbar-brand:hover,
+a.my-navbar-item:hover {
+  color: #5688e6;
+}
 
-  .my-navbar-brand:hover,
-  a.my-navbar-item:hover {
-    color: #5688e6;
-  }
+.table td:nth-child(2),
+.table td:nth-child(3),
+.table td:nth-child(4) {
+  white-space: nowrap;
+  width: 1px;
+}
 
-  .table td:nth-child(2),
-  .table td:nth-child(3),
-  .table td:nth-child(4) {
-    white-space: nowrap;
-    width: 1px;
-  }
-
-  .form-control[disabled],
-  .form-control[readonly] {
-    background-color: #fff;
-  }
+.form-control[disabled],
+.form-control[readonly] {
+  background-color: #fff;
+} */
 
 
-  .titlelogo {
-    width: 30%;
-    height: auto;
-  }
+.titlelogo {
+  width: 30%;
+  height: auto;
+}
 
-  /* .btn-outline-primary {
-    margin-top: 22px;
-  } */
+
+
 
 
   /* 作り方のフォームの連番 */
@@ -80,3 +74,56 @@ body {
   .marked {
     color: rgb(65, 145, 145);
   }
+
+/* 作り方のフォームの連番 */
+input [name="contents"] {
+  counter-increment: form;
+}
+
+input [name="contents"]::before {
+  content: counter(form);
+}
+
+
+
+/* いいねボタン色変化 */
+.liked {
+  color: rgb(255, 215, 129);
+}
+
+/* ブックマークボタン色変化 */
+.marked {
+  color: rgb(110, 219, 219);
+}
+
+/* 記事一覧　中央寄せ */
+.article-main {
+  margin: auto;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* 検索ボックス */
+.search-box {
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+/* ページネーション */
+.page {
+  margin-top: 20px;
+  padding-left: 40%;
+}
+
+/* ホバーアニメーション */
+.article-main {
+  transition: all 0.3s ease 0s;
+}
+
+.article-main:hover{
+  transition: .3s;
+  box-shadow: 0px 12px 24px rgba(20, 146, 175, 0.38);
+  opacity: .9;
+  transform: translateY(-4px);
+}
+

@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div>
+<div class="container">
   <div class="col">
     {{ $recipe_detail->title }}:
     <img src="{{ $recipe_detail->product_image }}" width="200px" height="200px">
@@ -40,42 +40,43 @@
   <!-- いいね機能 -->
   <!-- ログインユーザーでいいねの押されていない投稿 -->
   @if (!$recipe_detail->isLikedBy(Auth::user()))
-    <div>
-      <span class="likes">
-        <!-- カスタムデータ属性を設定 -->
-        <i class="fa-solid fa-carrot like-toggle" data-recipe-id="{{ $recipe_detail->id }}">たべた！</i>
-        <!-- いいねカウンター表示 -->
-        <span class="like-counter">{{ ($recipe_detail->likes_count == 0) ? "" : $recipe_detail->likes_count }}</span>
-      </span>
-    </div>
+  <div>
+    <span class="likes">
+      <!-- カスタムデータ属性を設定 -->
+      <i class="fa-solid fa-carrot like-toggle" data-recipe-id="{{ $recipe_detail->id }}">たべた！</i>
+      <!-- いいねカウンター表示 -->
+      <span class="like-counter">{{ ($recipe_detail->likes_count == 0) ? "" : $recipe_detail->likes_count }}</span>
+    </span>
+  </div>
 
-    <!-- いいねの既に押された投稿 -->
-    @else
-    <div>
-      <span class="likes">
-        <i class="fa-solid fa-carrot like-toggle liked" data-recipe-id="{{ $recipe_detail }}">たべた！</i>
-        <span class="like-counter">{{ ($recipe_detail->likes_count == 0) ? "" : $recipe_detail->likes_count }}</span>
-      </span>
-    </div>
-    @endif
+  <!-- いいねの既に押された投稿 -->
+  @else
+  <div>
+    <span class="likes">
+      <i class="fa-solid fa-carrot like-toggle liked" data-recipe-id="{{ $recipe_detail->id }}">たべた！</i>
+      <span class="like-counter">{{ ($recipe_detail->likes_count == 0) ? "" : $recipe_detail->likes_count }}</span>
+    </span>
+  </div>
+  @endif
 
 
-    <!-- ブックマーク機能 -->
-    @if (!$recipe_detail->isMarkedBy(Auth::user()))
-    <div>
-      <span class="bookmarks">
-        <i class="fa-solid fa-bookmark bookmark-toggle" data-recipeDetail-id="{{ $recipe_detail->id }}"></i>
-        <span class="bookmark-counter">{{ ($recipe_detail->bookmarks_count == 0) ? "" : $recipe_detail->bookmarks_count }}</span>
-      </span>
-    </div>
-    @else
-    <div>
-      <span class="bookmarks">
-        <i class="fa-solid fa-bookmark bookmark-toggle marked" data-recipeDetail-id="{{ $recipe_detail }}"></i>
-        <span class="bookmark-counter">{{ ($recipe_detail->bookmarks_count == 0) ? "" : $recipe_detail->bookmarks_count }}</span>
-      </span>
-    </div>
-    @endif
+  <!-- ブックマーク機能 -->
+  @if (!$recipe_detail->isMarkedBy(Auth::user()))
+  <div>
+    <span class="markes">
+      <i class="fa-solid fa-bookmark bookmark-toggle" data-recipes-id="{{ $recipe_detail->id }}"></i>
+      <span class="mark-counter">{{ ($recipe_detail->favorites_count == 0) ? "" : $recipe_detail->favorites_count }}</span>
+    </span>
+  </div>
+  @else
+  <div>
+    <span class="markes">
+      <i class="fa-solid fa-bookmark bookmark-toggle marked" data-recipes-id="{{ $recipe_detail->id }}"></i>
+      <span class="mark-counter">{{ ($recipe_detail->favorites_count == 0) ? "" : $recipe_detail->favorites_count }}</span>
+    </span>
+  </div>
+  @endif
+
 
 </div>
 
