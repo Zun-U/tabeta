@@ -29,14 +29,14 @@
     <div>
       <span>
         <i class="fa-solid fa-carrot">たべた！</i>
-        <span class="like-counter">{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
+        <span>{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
       </span>
     </div>
     @else
     <div>
       <span>
         <i class="fa-solid fa-carrot liked">たべた！</i>
-        <span class="like-counter">{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
+        <span>{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
       </span>
     </div>
     @endif
@@ -45,16 +45,16 @@
     <!-- ブックマーク数表示 -->
     @if (!$recipe->isMarkedBy(Auth::user()))
     <div>
-      <span class="bookmarks">
+      <span >
         <i class="fa-solid fa-bookmark"></i>
-        <span class="bookmark-counter">{{ ($recipe->bookmarks_count == 0) ? "" : $recipe->bookmarks_count }}</span>
+        <span class=>{{ ($recipe->bookmarks_count == 0) ? "" : $recipe->bookmarks_count }}</span>
       </span>
     </div>
     @else
     <div>
-      <span class="bookmarks">
+      <span>
         <i class="fa-solid fa-bookmark marked"></i>
-        <span class="bookmark-counter">{{ ($recipe->bookmarks_count == 0) ? "" : $recipe->bookmarks_count }}</span>
+        <span>{{ ($recipe->bookmarks_count == 0) ? "" : $recipe->bookmarks_count }}</span>
       </span>
     </div>
     @endif
