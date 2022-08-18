@@ -22,6 +22,7 @@ class LikeController extends Controller
         // いいねの存在検証
         $already_liked = Like::where('user_id', $user_id)->where('recipe_id', $recipe_id)->first();
 
+
         // いいねしてなかったら
         if (!$already_liked) {
 
@@ -40,8 +41,9 @@ class LikeController extends Controller
         }
 
 
-        // この投稿の最新の総いいね数を取得。withCountにモデルのlikesメソッドを引数として渡している。
+        // この投稿の最新の総いいね数を取得。withCountにリレーションしているモデルを引数として渡している。
         $recipe_likes_count = Recipe::withCount('likes')->findOrFail($recipe_id)->likes_count;
+
         $param = [
             'recipe_likes_count' => $recipe_likes_count,
         ];

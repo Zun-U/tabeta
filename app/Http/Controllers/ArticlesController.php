@@ -19,11 +19,16 @@ class ArticlesController extends Controller
     {
 
         // 作成日順で10件数ごとに取得
-        $recipes = Recipe::withCount('likes')->orderBy("id","desc")->paginate(10);
+        $recipes = Recipe::withCount('likes')->withCount('favorites')->orderBy("id", "desc")->paginate(5);
+        // dd(Recipe::withCount('likes')->withCount('favorites'));
+        // exit;
+
+        // dd($recipes);
+        // exit;
 
         return view(
             'recipes/articles',
-            ['recipes' => $recipes]
+            compact('recipes')
         );
     }
 
@@ -31,7 +36,7 @@ class ArticlesController extends Controller
     public function getArticleDetail(Recipe $recipe)
     {
 
-        $recipe_detail = Recipe::withCount('likes')->with(['foodstuffs', 'contents'])->find($recipe->id);
+        $recipe_detail = Recipe::withCount('likes')->withCount('favorites')->with(['foodstuffs', 'contents'])->find($recipe->id);
 
         return view(
             'recipes/recipe',
