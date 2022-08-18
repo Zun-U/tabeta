@@ -25,7 +25,7 @@
 
     <!-- ヘッダーの出し分け -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light pb-4">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light pb-2">
             <div class="container">
                 <a class="navbar-brand" href="/"><img src="{{ asset('images/tabeta!.png')}}" class="titlelogo"></a>
                 <div class="navbar-control">

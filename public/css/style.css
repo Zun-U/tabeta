@@ -100,3 +100,14 @@ input [name="contents"]::before {
   opacity: .9;
   transform: translateY(-4px);
 }
+
+.serial-number{
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-radius: 6px;
+  background-color: blanchedalmond;
+}
