@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class="container">
+  <div class="container login-menu">
     <div class="row">
       <p>こどもの「たべない！」を「たべた！」に変える、お料理の工夫を共有するレシピ投稿サイトです。</p>
       <div class="col col-md-offset-3 col-md-6">

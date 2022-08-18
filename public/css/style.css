@@ -54,6 +54,10 @@ a.my-navbar-item:hover {
 
 
 
+/* ログインメニュー */
+.login-menu {
+  margin: auto;
+}
 
 
   /* 作り方のフォームの連番 */
