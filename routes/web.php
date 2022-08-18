@@ -24,6 +24,8 @@ Route::group(['middleware' => 'auth'], function () {
     // いいね（Ajax）
     Route::post('/like', 'LikeController@like')->name('recipe.like');
 
+    // ブックマ－ク（Ajax）
+    Route::post('/bookmark', 'BookmarkController@bookmark')->name('recipe.bookmark');
 });
 
 // ユーザー認証機能
