@@ -3,12 +3,12 @@
 @section('content')
 
 
-<div class="container">
+<div class="container mt-5">
   <div class="row gx-5">
-    <div class="col mt-5">
-      <img src="{{ $recipe_detail->product_image }}" class="img-fluid px-2">
+    <div class="col">
+      <img src="{{ $recipe_detail->product_image }}" class="img-fluid px-2" height="250">
     </div>
-    <div class="col pt-5 text-area">
+    <div class="col text-area">
       <div>
         <h2 class="py-1">{{ $recipe_detail->title }}</h2>
       </div>

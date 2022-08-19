@@ -7,7 +7,7 @@
 body {
   background-color: #ffffff;
   font-family: 'M PLUS Rounded 1c', sans-serif;
-
+  padding-top: 8rem;
 }
 
 a {
@@ -19,10 +19,23 @@ a {
   height: auto;
 }
 
+/* .navbar {
+  background: transparent;
+} */
+
 /* ナビゲーションバー */
+
+.navbar {
+  background-color: rgba(233, 232, 223, 0.5);
+}
+
 .navbar .nav-link {
   font-size: 16px;
   font-weight: 900;
+}
+
+.navbar-brand {
+  margin-right: -26rem;
 }
 
 /* ログインメニュー */
@@ -101,7 +114,8 @@ input [name="contents"]::before {
   transform: translateY(-4px);
 }
 
-.serial-number{
+/* 作り方　連番 */
+.serial-number {
   width: 30px;
   height: 30px;
   display: flex;
@@ -110,4 +124,65 @@ input [name="contents"]::before {
   font-size: 18px;
   border-radius: 6px;
   background-color: blanchedalmond;
+}
+
+/* レシピ画像ホバーアニメーション */
+
+.image-hover {
+  transition: all .3s ease;
+  /* position: relative; */
+}
+
+/* .image-item {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 75px;
+  transition: all 0.4s ease;
+} */
+
+/* .image-item:hover {
+  opacity: 1;
+} */
+
+
+.image-hover:hover {
+  box-shadow: 0px 12px 24px rgba(13, 94, 112, 0.38);
+  opacity: .8;
+  transform: translateY(-0.7px);
+}
+
+
+/*  */
+.add-camera {
+  font-size: 40px;
+}
+
+.photo-explanation{
+  font-size: 18px;
+}
+
+/* 要素追加ボタン */
+/* .add-section {
+  font-size: 40px;
+} */
+
+/* .recipe-input {
+
+} */
+
+/* レシピ作成画面の材料・作り方記入欄の中央揃え */
+.center-section{
+  margin: auto;
 }
