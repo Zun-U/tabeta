@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col col-md-offset-3 col-md-6">
             <nav class="card">

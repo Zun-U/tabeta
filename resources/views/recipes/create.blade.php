@@ -1,35 +1,52 @@
 @extends('layout')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col col-md-offset-3 col-md-6">
-            <form action="{{ route('recipes.create')}}" method="POST" id="createrecipe" enctype="multipart/form-data">
-                @csrf
-                <div>
-                    <input type="file" name="product_image" class="form-control" value="{{ old('product_image') }}">
-                </div>
 
-                <div>
+
+
+<form action="{{ route('recipes.create')}}" method="POST" id="createrecipe" enctype="multipart/form-data">
+    @csrf
+    <div class="container">
+        <div class="row">
+
+            <div class="col-6 mt-4 imagearea">
+                <label>
+                    <div class="d-flex">
+                        <i class="fa-solid fa-camera add-camera pb-1 px-3"></i>
+                        <div class="pt-2 photo-explanation">
+                            <span>写真</span>
+                        </div>
+                    </div>
+                    <div class="image-hover imagefile">
+                        <img id="img_preview" class="img-fluid" src="{{ asset('/images/Noimage.png') }}">
+                    </div>
+                    <input type="file" name="product_image" id="image-upload" class="invisible" value="{{ old('product_image') }}">
+                </label>
+            </div>
+            <div class="col-6 mt-5">
+                <div class="col mb-2">
                     <label for="title" class="form-label">レシピ名</label>
-                    <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" />
+                    <input type="text" class="form-control recipe-input" name="title" id="title" value="{{ old('title') }}" />
                 </div>
-                <div>
+                <div class="col mb-2">
                     <label for="subtitle" class="form-label">サブタイトル</label>
-                    <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ old('subtitle') }}" />
-                </div>
-                <div>
-                    <label for="howmany" class="form-label">何人分</label>
-                    <input type="text" class="form-control" name="howmany" id="howmany" value="{{ old('howmany') }}" />
+                    <input type="text" class="form-control recipe-input" name="subtitle" id="subtitle" value="{{ old('subtitle') }}" />
                 </div>
 
-                <div>
-                    <label for="cooking_time" class="form-label">調理時間</label>
-                    <select class="form-select" aria-label="cooking_time" name="cooking_time" id="cooking_time" value="{{ old('cooking_time') }}"></select>
+                <div class="row">
+                    <div class="col mb-2">
+                        <label for="cooking_time" class="form-label">調理時間</label>
+                        <select class="form-select" aria-label="cooking_time" name="cooking_time" id="cooking_time" value="{{ old('cooking_time') }}"></select>
+                    </div>
+                    <div class="col mb-2">
+                        <label for="howmany" class="form-label">何人分</label>
+                        <input type="text" class="form-control" name="howmany" id="howmany" value="{{ old('howmany') }}" />
+                    </div>
                 </div>
-                <div>
+
+                <div class="pt-3">
                     <label for="ages" class="form-label">対象年齢</label>
-                    <div class="form-check-inline">
+                    <div class="form-check-inline me-5">
                         <input type="radio" class="form-check-label" value="全年齢" name="ages" id="ages">指定なし
                         <input type="radio" class="form-check-label" value="5、6ヶ月" name="ages" id="ages">5、6ヶ月
                         <input type="radio" class="form-check-label" value="7、8ヶ月" name="ages" id="ages">7、8ヶ月
@@ -39,65 +56,75 @@
                         <input type="radio" class="form-check-label" value="2歳" name="ages" id="ages">2歳
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm">材料</div>
-                </div>
-
-                <!-- 食材入力部分 -->
-                <div class="row" id="input-area">
-                    <div class="col-sm">
-                        <!-- name属性に[]を入れて、配列として値を渡す。 -->
-                        <input type="text" class="form-control check-food" name="foodstuff[food][]" placeholder="材料・調味料" value="{{ old('foodstuff[food][]') }}">
-                    </div>
-                    <div class="col-sm">
-                        <input type="text" class="form-control check-amount" name="foodstuff[amount][]" placeholder="分量" value="{{ old('foodstuff[amount][]') }}">
-                    </div>
-                    <!-- フォーム欄1段目は削除アイコン非表示 -->
-                    <div class="col-sm">
-                        <button type="button" onclick="removeForm(this)" id="btn-remove" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
-                    </div>
-                </div>
-
-
-
-                <!-- JavaScriptでフォーム入力欄追加 -->
-                <div id="clone-area"></div>
-
-
-                <div>
-                    <button type="button" id="btn-add" class="btn btn-outline-primary">追加{!! file_get_contents(public_path('images/addicon.svg')) !!}</button>
-                </div>
-
-
-                <div>
-                    <label for="content" class="form-label">作り方</label>
-                </div>
-                <div class="row" id="procedure-area">
-                    <div class="col-sm">
-                        <input type="text" class="form-control check_text" name="content[text][]" id="contents" value="{{ old('content[text][]') }}">
-                    </div>
-                    <div class="col-sm">
-                        <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
-                    </div>
-                    <div>
-                        <input type="file" name="upload_image[cooking_image][]" class="form-control" value="{{ old('upload_image[cooking_image][]') }}">
-                    </div>
-                </div>
-
-                <!-- 手順入力欄をJSで複製、以下にdivタグに追加 -->
-                <div id="clone-procedure"></div>
-
-                <div>
-                    <button type="button" id="add-procedure" class="btn btn-outline-primary">追加{!! file_get_contents(public_path('images/addicon.svg')) !!}</button>
-                </div>
-
-                <div class="text-right">
-                    <button type="submit" id="create-recipe" class="btn btn-primary">レシピの投稿</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="container">
+        <div class="center-section">
+            <div class="row">
+                <div class="col-sm mt-4">
+                    <h5>材料</h5>
+                </div>
+            </div>
+
+            <!-- 食材入力部分 -->
+            <div class="row mt-2" id="input-area">
+                <div class="col-3">
+                    <!-- name属性に[]を入れて、配列として値を渡す。 -->
+                    <input type="text" class="form-control check-food" name="foodstuff[food][]" placeholder="材料・調味料" value="{{ old('foodstuff[food][]') }}">
+                </div>
+                <div class="col-3">
+                    <input type="text" class="form-control check-amount" name="foodstuff[amount][]" placeholder="分量" value="{{ old('foodstuff[amount][]') }}">
+                </div>
+                <!-- フォーム欄1段目は削除アイコン非表示 -->
+                <div class="col-1">
+                    <button type="button" onclick="removeForm(this)" id="btn-remove" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
+                </div>
+            </div>
+
+
+
+            <!-- JavaScriptでフォーム入力欄追加 -->
+            <div id="clone-area"></div>
+
+
+            <div class="mt-3 pe-5 add-btn">
+                <button type="button" id="btn-add" class="btn btn-primary rounded-3">材料の追加</button>
+            </div>
+
+
+            <div class="col-sm mt-5 mb-2">
+                <h5>作り方</h5>
+            </div>
+            <div class="row mt-2" id="procedure-area">
+                <div class="col-sm">
+                    <input type="text" class="form-control check_text" name="content[text][]" id="contents" value="{{ old('content[text][]') }}">
+                </div>
+                <div class="col-sm">
+                    <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
+                </div>
+                <div>
+                    <input type="file" name="upload_image[cooking_image][]" class="form-control" value="{{ old('upload_image[cooking_image][]') }}">
+                </div>
+            </div>
+
+            <!-- 手順入力欄をJSで複製、以下にdivタグに追加 -->
+            <div id="clone-procedure"></div>
+
+            <div class="mt-3 pe-5">
+                <button type="button" id="add-procedure" class="btn btn-primary">作り方の追加</button>
+            </div>
+
+            <div class="text-right mt-5">
+                <button type="submit" id="create-recipe" class="btn btn-primary">レシピの投稿</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
 
 @endsection
-

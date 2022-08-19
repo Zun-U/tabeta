@@ -25,7 +25,7 @@
 
     <!-- ヘッダーの出し分け -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light pb-2">
+        <nav class="navbar navbar-expand-lg navbar-light pb-1 mb-1 shadow-sm  fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="/"><img src="{{ asset('images/tabeta!.png')}}" class="titlelogo"></a>
                 <div class="navbar-control">
@@ -83,6 +83,7 @@
     <script src="{{ asset('../js/edit_food.js') }}"></script>
     <script src="{{ asset('../js/like.js') }}"></script>
     <script src="{{ asset('../js/bookmark.js') }}"></script>
+    <script src="{{ asset('../js/recipe_image.js') }}"></script>
 </body>
 
 </html>
