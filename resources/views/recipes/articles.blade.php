@@ -5,12 +5,14 @@
 <div class="container mt-4">
   <div class="search-box row justify-content-center">
     <div class="col-6">
-      <div class="input-group">
-        <input type="text" class="form-control search-input" placeholder="記事のタイトルを入力">
-        <button class="btn btn-secondary">検索</button>
-      </div>
+      <form>
+        <div class="input-group">
+          <input type="text" class="form-control search-input" placeholder="記事のタイトルを入力" value="{{request('search')}}">
+          <button class="btn btn-secondary">検索</button>
+      </form>
     </div>
   </div>
+</div>
 </div>
 
 @foreach($recipes->sortByDesc('created_at') as $recipe)

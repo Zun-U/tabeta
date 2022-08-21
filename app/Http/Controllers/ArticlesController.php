@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 // 各モデルのuse宣言
-use App\User;
 use App\Recipe;
-use App\Like;
+
 
 use Illuminate\Support\Facades\Auth;
 
@@ -19,12 +18,20 @@ class ArticlesController extends Controller
     {
 
         // 作成日順で10件数ごとに取得
-        $recipes = Recipe::withCount('likes')->withCount('favorites')->orderBy("id", "desc")->paginate(5);
-        // dd(Recipe::withCount('likes')->withCount('favorites'));
-        // exit;
+        $recipes = Recipe::withCount('likes')->withCount('favorites')->orderBy("id", "desc")->where(function ($query) {
 
-        // dd($recipes);
-        // exit;
+            // 検索機能
+            if ($search = request('search')) {
+                $query->where('title', 'like', "%{$search}%");
+            }
+        })->paginate(5);
+
+
+
+
+
+
+
 
         return view(
             'recipes/articles',

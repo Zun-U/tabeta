@@ -42,6 +42,7 @@ document.querySelector('#btn-add').addEventListener('click', function () {
 
   // IDの重複対策
   count++;
+
 });
 
 
@@ -56,16 +57,6 @@ function removeForm(button) {
   ancestor.remove();
 }
 
-// ※2022/7/28 課題
-// 1.追加・削除ボタンを押した時の挙動の違和感をなくしたい。
-// ⇒追加ボタンを押していくとページのレイアウトが微妙にずれる。
-// ⇒削除ボタンを押すと画面が不自然にスクロールする。
-
-// 2.UX／UIを整える。
-// ⇒直感的で、美しいデザイン。
-
-// ※2022/8/5
-// function 〇〇(button)の挙動の理解
 
 
 
@@ -79,12 +70,23 @@ document.querySelector('#add-procedure').addEventListener('click', function () {
 
   cloneForm.id = "clone-procedure" + countProcedure;
 
-  cloneForm.dataset.insertDB = countProcedure;
+  // cloneForm.dataset.insertDB = countProcedure;
 
   let procedureContent = cloneForm.querySelectorAll('input');
   procedureContent.forEach((text) => {
     text.value = "";
   });
+
+
+  // 追加したイメージ欄の画像を「noimage」に差し替え。
+  let procedureImage = cloneForm.querySelector('img');
+  console.log(procedureImage);
+  procedureImage.src = "/images/noimage.png";
+  procedureImage.classList.remove('w-75');
+  procedureImage.classList.add('w-50');
+
+
+
 
   let cloneProcedure = document.getElementById('clone-procedure')
   cloneProcedure.appendChild(cloneForm);
@@ -95,6 +97,10 @@ document.querySelector('#add-procedure').addEventListener('click', function () {
   removeButton.id = "btn-remove" + countProcedure;
 
   countProcedure++;
+
+
+  // 連番の振り分け
+  renumber();
 });
 
 
@@ -102,6 +108,9 @@ document.querySelector('#add-procedure').addEventListener('click', function () {
 function removeProcedure(button) {
   let ancestor = button.closest(".row");
   ancestor.remove();
+
+  // 連番の振り直し
+  renumber();
 }
 
 
@@ -110,15 +119,12 @@ function removeProcedure(button) {
 // 未入力欄なら要素削除(UX向上) ⇒　両方nullableにして、両方未入力なら投稿禁止にする。
 document.getElementById('create-recipe').addEventListener("click", function (event) {
 
-
   // 追加フォーム欄の「材料・分量」入力欄の取得(一個下の祖先要素を指定)
   let inputCheckAll = document.getElementById('clone-area').querySelectorAll('.row');
 
-
-
   inputCheckAll.forEach(function (parent) {
     var flg = 0;
-    parent.querySelectorAll('.col-sm input').forEach(function (element) {
+    parent.querySelectorAll('.col-3 input').forEach(function (element) {
       if (element.classList.contains('check-food')) {
         if (element.value == '') {
           flg = flg + 1;
@@ -133,9 +139,22 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
       }
     });
   });
-
-
-
-  // event.preventDefault();
 });
 
+
+
+// 連番振り分け
+function renumber() {
+  $('.num-increment').each(function () {
+
+    // インデックス番号を取得
+    var idx = $('.num-increment').index(this);
+
+    // 取得したインデックス番号「+1」でテキストを書き換える。
+    $(this).text(idx + 1);
+
+    // インデックス番号を「+1」する。
+    $(this).next('input').attr('name', 'howto-number[' + (idx + 1) + ']');
+  });
+
+}
