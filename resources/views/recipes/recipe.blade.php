@@ -105,7 +105,7 @@
             {{ $key+1 }}
           </div>
           <div class="card-img-top mt-3 border rounded-3">
-            <img src="{{ asset($content->recipe_image) }}" width="100%">
+            <img src="{{ $content->recipe_image }}" width="100%">
           </div>
           <div class="card-body">
             <div class="card-text">
