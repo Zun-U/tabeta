@@ -98,8 +98,6 @@ class RecipeController extends Controller
             }
 
 
-
-
             $content->content = $explanations['text'][$key];
             $recipe->contents()->save($content);
         }
@@ -126,12 +124,7 @@ class RecipeController extends Controller
     public function showPreview(Recipe $recipe)
     {
 
-
-
         $recipes = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
-
-        // dd($recipes);
-        // exit;
 
         return view('recipes/preview', compact('recipes'));
     }

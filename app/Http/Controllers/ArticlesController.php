@@ -17,20 +17,16 @@ class ArticlesController extends Controller
     public function getArticleAll()
     {
 
-        // 作成日順で10件数ごとに取得
+        // 作成日順で
         $recipes = Recipe::withCount('likes')->withCount('favorites')->orderBy("id", "desc")->where(function ($query) {
 
             // 検索機能
             if ($search = request('search')) {
                 $query->where('title', 'like', "%{$search}%");
             }
+
+            // 5件数ごとにページネーション
         })->paginate(5);
-
-
-
-
-
-
 
 
         return view(
