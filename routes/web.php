@@ -17,9 +17,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/recipes/preview/{recipe}', 'RecipeController@showPreview')->name('recipe.preview');
 
     // マイページ
-    Route::get('/user/mypage', 'MypageController@showUser')->name('mypage.show');
+    Route::get('/user/mypage/{user}', 'MypageController@showUser')->name('mypage.show');
 
-    Route::post('/user/mypage', 'MypageController@editImage');
+    // Route::post('/user/mypage', 'MypageController@editImage');
 
     // いいね機能（Ajax）
     Route::post('/like', 'LikeController@like')->name('recipe.like');

@@ -179,3 +179,9 @@ input [name="contents"]::before {
 /* .howto-image{
   width: 200px;
 } */
+
+
+.myarticle-group{
+  font-size: 20px;
+  font-weight: 700;
+}
