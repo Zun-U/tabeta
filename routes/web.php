@@ -22,6 +22,9 @@ Route::group(['middleware' => 'auth'], function () {
     // プロフィール画像
     // Route::post('/myprofile', 'MypageController@editImage')->name('myprofile.edit');
 
+    // Route::post('/user/mypage', 'MypageController@editImage');
+
+
     // いいね機能（Ajax）
     Route::post('/like', 'LikeController@like')->name('recipe.like');
 

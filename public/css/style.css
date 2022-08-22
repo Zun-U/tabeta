@@ -184,6 +184,7 @@ input [name="contents"]::before {
 .myarticle-group{
   font-size: 20px;
   font-weight: 700;
+
 }
 
 
@@ -211,4 +212,5 @@ input [name="contents"]::before {
 .card-move:hover {
   opacity: .8;
   transform: translateY(-1px);
+
 }

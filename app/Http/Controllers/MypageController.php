@@ -18,6 +18,7 @@ class MypageController extends Controller
         //ログインしているユーザーに紐づくrecipeテーブル、favoriteテーブルを取得
         $mypages = User::with(['recipes', 'favorites'])->withCount('likes')->withCount('favorites')->find(Auth::user()->id);
 
+
         // $paginations = Auth::user()->favorites->sortBy('created_at');
 
         // dd($paginations);
@@ -26,12 +27,17 @@ class MypageController extends Controller
         return view('user/mypage', compact('mypages'));
 
         // return view('user/mypage')->with(compact("mypages", "paginations"));
+
+
+        return view('user/mypage', compact('mypages'));
+
     }
 
 
     // プロフィール画像編集
     public function editImage(Request $request)
     {
+
 
         // プロフ画像ファイルの取得
         $profileImage = $request->file('file');
@@ -53,6 +59,8 @@ class MypageController extends Controller
         Auth::user()->save();
 
         return response()->json();
+
+
 
     }
 }

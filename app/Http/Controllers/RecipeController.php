@@ -128,4 +128,9 @@ class RecipeController extends Controller
 
         return view('recipes/preview', compact('recipes'));
     }
+
 }
+
+
+
+
