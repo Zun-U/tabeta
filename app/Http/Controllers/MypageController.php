@@ -17,8 +17,8 @@ class MypageController extends Controller
 
         $mypages = User::with(['recipes', 'favorites'])->withCount('likes')->withCount('favorites')->find(Auth::user()->id);
 
-        dd($mypages);
-        exit;
+        // dd($mypages);
+        // exit;
 
         return view('user/mypage', compact('mypages'));
     }
