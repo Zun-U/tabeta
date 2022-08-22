@@ -13,12 +13,9 @@ class MypageController extends Controller
     public function showUser()
     {
 
-        // $id = Auth::user()->id;
-
+        //ログインしているユーザーに紐づくrecipeテーブル、favoriteテーブルを取得
         $mypages = User::with(['recipes', 'favorites'])->withCount('likes')->withCount('favorites')->find(Auth::user()->id);
 
-        // dd($mypages);
-        // exit;
 
         return view('user/mypage', compact('mypages'));
     }
