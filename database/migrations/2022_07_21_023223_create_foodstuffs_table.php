@@ -15,11 +15,9 @@ class CreateFoodstuffsTable extends Migration
     {
         Schema::create('foodstuffs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('recipe_id');
-            $table->text('food');
-            $table->softDeletes(); //論理削除
-            $table->timestamps();
+            $table->text('food')->nullable();
+            $table->string('amount')->nullable();
         });
     }
 

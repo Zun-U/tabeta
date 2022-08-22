@@ -16,10 +16,10 @@ class CreateRecipesTable extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBiginteger('user_id');
-            $table->unsignedBiginteger('content_id');
-            $table->unsignedBiginteger('foodstuff_id');
             $table->string('title', 100);
+            $table->string('subtitle')->nullable();
             $table->string('product_image')->nullable();
+            $table->string('howmany');
             $table->string('cooking_time');
             $table->string('ages')->default('指定なし');
             $table->softDeletes(); //論理削除
