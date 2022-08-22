@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 // 各モデルのuse宣言
-use App\User;
 use App\Recipe;
-use App\Like;
+
 
 use Illuminate\Support\Facades\Auth;
 
@@ -18,12 +17,21 @@ class ArticlesController extends Controller
     public function getArticleAll()
     {
 
-        // 作成日順で10件数ごとに取得
-        $recipes = Recipe::withCount('likes')->orderBy("id","desc")->paginate(10);
+        // 作成日順で
+        $recipes = Recipe::withCount('likes')->withCount('favorites')->orderBy("id", "desc")->where(function ($query) {
+
+            // 検索機能
+            if ($search = request('search')) {
+                $query->where('title', 'like', "%{$search}%");
+            }
+
+            // 5件数ごとにページネーション
+        })->paginate(5);
+
 
         return view(
             'recipes/articles',
-            ['recipes' => $recipes]
+            compact('recipes')
         );
     }
 
@@ -31,7 +39,7 @@ class ArticlesController extends Controller
     public function getArticleDetail(Recipe $recipe)
     {
 
-        $recipe_detail = Recipe::withCount('likes')->with(['foodstuffs', 'contents'])->find($recipe->id);
+        $recipe_detail = Recipe::withCount('likes')->withCount('favorites')->with(['foodstuffs', 'contents'])->find($recipe->id);
 
         return view(
             'recipes/recipe',

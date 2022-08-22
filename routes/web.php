@@ -17,12 +17,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/recipes/preview/{recipe}', 'RecipeController@showPreview')->name('recipe.preview');
 
     // マイページ
-    Route::get('/user/mypage', 'MypageController@showUser')->name('mypage.show');
+    Route::get('/user/mypage/{user}', 'MypageController@showUser')->name('mypage.show');
 
-    Route::post('/user/mypage', 'MypageController@editImage');
+    // プロフィール画像
+    // Route::post('/myprofile', 'MypageController@editImage')->name('myprofile.edit');
 
-    // いいね（Ajax）
+    // いいね機能（Ajax）
     Route::post('/like', 'LikeController@like')->name('recipe.like');
+
+    // ブックマ－ク（Ajax）
+    Route::post('/bookmark', 'BookmarkController@bookmark')->name('recipe.bookmark');
+
 
 });
 

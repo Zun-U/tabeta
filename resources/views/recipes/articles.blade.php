@@ -2,44 +2,75 @@
 
 @section('content')
 
-<div class="position-absolute top-10 start-50 translate-middle">
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="記事のタイトルを入力">
-    <button class="btn btn-secondary">検索</button>
+<div class="container mt-4">
+  <div class="search-box row justify-content-center">
+    <div class="col-6">
+      <form>
+        <div class="input-group">
+          <input type="text" class="form-control search-input" placeholder="記事のタイトルを入力" value="{{request('search')}}">
+          <button class="btn btn-secondary">検索</button>
+      </form>
+    </div>
   </div>
+</div>
 </div>
 
 @foreach($recipes->sortByDesc('created_at') as $recipe)
-<div class="card" style="width: 18rem;">
+<div class="card shadow rounded-3 article-main" style="width: 30rem;">
 
-  <div class="card-img-top"><img src="{{ $recipe->product_image }}" width="50px" height="50px"></div>
+  <div class="card-img-top"><img src="{{ $recipe->product_image }}" width="100%"></div>
   <div class="card-body">
-    <a href="{{ route('article.detail',$recipe) }}" class="card-title">{{ $recipe->title }}</a>
+    <div>
+      <a href="{{ route('article.detail',$recipe) }}" class="card-link stretched-link"></a>
+    </div>
     <div class="card-text">{{ $recipe->created_at }}</div>
-
+    <div>
+      <h5 class="card-title">{{ $recipe->title }}</h2>
+    </div>
     <div class="card-text">{{ $recipe->howmany }}人分</div>
     <div class="card-text">調理時間：{{ $recipe->cooking_time }}分</div>
-    <div class="card-text">{{ $recipe->ages }}</div>
+    <div class="card-text">対象年齢：{{ $recipe->ages }}</div>
 
 
 
+    <div class="d-flex justify-content-end">
+      <!-- いいね数表示 -->
+      @if (!$recipe->isLikedBy(Auth::user()))
+      <div class="me-3">
+        <span>
+          <i class="fa-solid fa-carrot"></i>
+          <span class="like-counter">{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
+        </span>
+      </div>
+      @else
+      <div class="me-3">
+        <span>
+          <i class="fa-solid fa-carrot liked">たべた！</i>
+          <span class="like-counter">{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
+        </span>
+      </div>
+      @endif
 
-    <!-- いいね数表示 -->
-    @if (!$recipe->isLikedBy(Auth::user()))
-    <div>
-      <span class="likes">
-        <i class="fa-solid fa-carrot">たべた！</i>
-        <span class="like-counter">{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
-      </span>
+
+
+      <!-- ブックマーク数表示 -->
+      @if (!$recipe->isMarkedBy(Auth::user()))
+      <div>
+        <span>
+          <i class="fa-solid fa-bookmark"></i>
+          <span class="bookmark-counter">{{ ($recipe->favorites_count == 0) ? "" : $recipe->favorites_count }}</span>
+        </span>
+      </div>
+      @else
+      <div>
+        <span>
+          <i class="fa-solid fa-bookmark marked"></i>
+          <span class="bookmark-counter">{{ ($recipe->favorites_count == 0) ? "" : $recipe->favorites_count }}</span>
+        </span>
+      </div>
+      @endif
     </div>
-    @else
-    <div>
-      <span class="likes">
-        <i class="fa-solid fa-carrot liked">たべた！</i>
-        <span class="like-counter">{{ ($recipe->likes_count == 0) ? "" : $recipe->likes_count }}</span>
-      </span>
-    </div>
-    @endif
+
   </div>
 
 
@@ -50,7 +81,7 @@
 
 
 
-
-{{ $recipes->links() }}
-
+<div class="d-flex justify-content-center">
+  {{ $recipes->links() }}
+</div>
 @endsection

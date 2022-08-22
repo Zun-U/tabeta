@@ -4,19 +4,13 @@ $(function () {
 
   let like = $('.like-toggle');
 
-  let likeRecipeId;
-
   like.on('click', function () {
-
-    // プロトコルやポートを含めたURLを取得
-    // var origin = location.origin;
 
     // イベントの引き金になっているもの
     let $this = $(this);
 
     // カスタムデータ属性の値を取得
-    likeRecipeId = $this.data('recipe-id');
-
+    let likeRecipeId = $this.data('recipe-id');
 
     //ajax処理スタート
     $.ajax({
