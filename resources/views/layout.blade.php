@@ -33,7 +33,7 @@
                     <ul class="navbar-nav ms-auto">
                         @if(Auth::check())
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('mypage.show') }}">マイページ</a>
+                            <a class="nav-link" href="{{ route('mypage.show', Auth::user()->id) }}">マイページ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('recipes.create') }}">レシピ作成</a>
@@ -84,6 +84,7 @@
     <script src="{{ asset('../js/like.js') }}"></script>
     <script src="{{ asset('../js/bookmark.js') }}"></script>
     <script src="{{ asset('../js/recipe_image.js') }}"></script>
+    <script src="{{ asset('../js/edit_profile.js') }}"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@
 <div class="container mt-5">
   <div class="row gx-5">
     <div class="col">
-      <img src="{{ $recipe_detail->product_image }}" class="img-fluid px-2" height="250">
+      <img src="{{ $recipe_detail->product_image }}" class="img-fluid px-2 rounded-3" height="250">
     </div>
     <div class="col text-area">
       <div>
@@ -94,7 +94,6 @@
 
 
     <div class="container">
-      
       <div class="row pt-4 my-4">
         <div class="pb-3">
           <h4>作り方</h4>
