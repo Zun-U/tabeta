@@ -24,7 +24,7 @@
         <div class="me-3">
           <span class="likes">
             <!-- カスタムデータ属性を設定 -->
-            <i class="fa-solid fa-carrot like-toggle" data-recipe-id="{{ $recipe_detail->id }}">たべた！</i>
+            <i class="fa-solid fa-carrot like-toggle icon-hover" data-recipe-id="{{ $recipe_detail->id }}">たべた！</i>
             <!-- いいねカウンター表示 -->
             <span class="like-counter">{{ ($recipe_detail->likes_count == 0) ? "" : $recipe_detail->likes_count }}</span>
           </span>
@@ -34,7 +34,7 @@
         @else
         <div class="me-3">
           <span class="likes">
-            <i class="fa-solid fa-carrot like-toggle liked" data-recipe-id="{{ $recipe_detail->id }}">たべた！</i>
+            <i class="fa-solid fa-carrot like-toggle icon-hover liked" data-recipe-id="{{ $recipe_detail->id }}">たべた！</i>
             <span class="like-counter">{{ ($recipe_detail->likes_count == 0) ? "" : $recipe_detail->likes_count }}</span>
           </span>
         </div>
@@ -45,14 +45,14 @@
         @if (!$recipe_detail->isMarkedBy(Auth::user()))
         <div>
           <span class="markes">
-            <i class="fa-solid fa-bookmark bookmark-toggle" data-recipes-id="{{ $recipe_detail->id }}"></i>
+            <i class="fa-solid fa-bookmark bookmark-toggle icon-hover" data-recipes-id="{{ $recipe_detail->id }}"></i>
             <span class="mark-counter">{{ ($recipe_detail->favorites_count == 0) ? "" : $recipe_detail->favorites_count }}</span>
           </span>
         </div>
         @else
         <div>
           <span class="markes">
-            <i class="fa-solid fa-bookmark bookmark-toggle marked" data-recipes-id="{{ $recipe_detail->id }}"></i>
+            <i class="fa-solid fa-bookmark bookmark-toggle icon-hover marked" data-recipes-id="{{ $recipe_detail->id }}"></i>
             <span class="mark-counter">{{ ($recipe_detail->favorites_count == 0) ? "" : $recipe_detail->favorites_count }}</span>
           </span>
         </div>
