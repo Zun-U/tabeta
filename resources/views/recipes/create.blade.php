@@ -107,7 +107,7 @@
                 <h5>作り方</h5>
             </div>
             <div class="row mt-4 align-items-center d-flex" id="procedure-area">
-                <div class="col-6 me-3">
+                <div class="col-6 me-3 howto">
                     <div class="align-self-start">
                         <span class="howto-number[0] num-increment">1</span>
                     </div>
@@ -115,8 +115,8 @@
                     <div class="border-bottom border-secondary pt-1">
                     </div>
                 </div>
-                <div class="col-1 mb-4 pb-5">
-                    <label class="">
+                <div class="col-1 mb-4 pb-5" >
+                    <label class="howto">
                         <div class="howto-put">
                             <img id="img_preview" class="img-fluid rounded-3 shadow w-50" src="{{ '/images/noimage.png' }}">
                         </div>

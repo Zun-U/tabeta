@@ -65,7 +65,7 @@ $(function () {
   //   let fileData = document.getElementById('#edit-profile').files[0];
 
   //   console.log(fileData);
-    
+
 
 
   //   // フォームデータの作成
