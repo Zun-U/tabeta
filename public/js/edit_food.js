@@ -151,15 +151,15 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
     });
   });
 
-  // 作り方欄の空欄チェック
+  // 作り方欄の空白空欄チェック
   inputHowtoAll.forEach(function (howto) {
     flag = 0;
 
     howto.querySelectorAll('.howto input').forEach(function (element) {
 
-      console.log(howto.querySelectorAll('.howto input'));
-      event.preventDefault();
-      return;
+      // console.log(howto.querySelectorAll('.howto input'));
+      // event.preventDefault();
+      // return;
 
       if (element.classList.contains('recipe-input')) {
         if (element.value == '') {

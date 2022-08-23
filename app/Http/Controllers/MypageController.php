@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Recipe;
+
 
 use Illuminate\Support\Facades\Storage;
 
@@ -15,22 +17,27 @@ class MypageController extends Controller
     public function showUser()
     {
 
-        //ログインしているユーザーに紐づくrecipeテーブル、favoriteテーブルを取得
-        $mypages = User::with(['recipes', 'favorites'])->withCount('likes')->withCount('favorites')->find(Auth::user()->id);
+        // ログインしているユーザーのお気に入り記事のみ取得
+        $bookmarks = Auth::user()->bookmark_articles;
 
-
-        // $paginations = Auth::user()->favorites->sortBy('created_at');
-
-        // dd($paginations);
+        // dd($bookmarks);
         // exit;
 
-        return view('user/mypage', compact('mypages'));
+        //ログインしているユーザーに紐づくrecipeテーブル、favoriteテーブルを取得
+        // $mypages = User::orderBy("created_at", "desc")->find(Auth::user()->id);
 
-        // return view('user/mypage')->with(compact("mypages", "paginations"));
+        // $mypages = User::with(['recipes', 'favorites'])->find(Auth::user()->id);
+
+        $mypages = User::with('recipes')->find(Auth::user()->id);
 
 
-        return view('user/mypage', compact('mypages'));
+        // dd($mypages);
+        // exit;
 
+
+        // return view('user/mypage', compact('mypages'));
+
+        return view('user/mypage')->with(compact('mypages', 'bookmarks'));
     }
 
 
@@ -59,8 +66,5 @@ class MypageController extends Controller
         Auth::user()->save();
 
         return response()->json();
-
-
-
     }
 }
