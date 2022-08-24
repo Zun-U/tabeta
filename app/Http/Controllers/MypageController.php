@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Recipe;
 
 
 use Illuminate\Support\Facades\Storage;
@@ -20,22 +19,7 @@ class MypageController extends Controller
         // ログインしているユーザーのお気に入り記事のみ取得
         $bookmarks = Auth::user()->bookmark_articles;
 
-        // dd($bookmarks);
-        // exit;
-
-        //ログインしているユーザーに紐づくrecipeテーブル、favoriteテーブルを取得
-        // $mypages = User::orderBy("created_at", "desc")->find(Auth::user()->id);
-
-        // $mypages = User::with(['recipes', 'favorites'])->find(Auth::user()->id);
-
         $mypages = User::with('recipes')->find(Auth::user()->id);
-
-
-        // dd($mypages);
-        // exit;
-
-
-        // return view('user/mypage', compact('mypages'));
 
         return view('user/mypage')->with(compact('mypages', 'bookmarks'));
     }
@@ -46,25 +30,70 @@ class MypageController extends Controller
     {
 
 
+        $user = Auth::user();
+
         // プロフ画像ファイルの取得
         $profileImage = $request->file('file');
 
-        dd($profileImage);
-        exit;
+
+        // dd($profileImage);
 
         // 画像ファイルがあれば
         if ($profileImage) {
             $image_path = Storage::disk("public")->putFile('profile', $profileImage);
             $imagePath = "/storage/" . $image_path;
-            Auth::user()->image = $imagePath;
+
+            dd($imagePath);
+
+            $user->image = $imagePath;
         }
         // 画像ファイルがなければ
         else {
             $image_path = null;
         }
 
-        Auth::user()->save();
+        // unset($request->all()['_token']);
+
+        // usersテーブルにしまう
+        $user->save();
 
         return response()->json();
+    }
+
+
+
+    // ユーザープロフィールの編集
+    public function editUser(Request $request)
+    {
+
+        $user = Auth::user();
+
+        $name = $request->name;
+        $email = $request->email;
+        $password = $request->password;
+
+        if ($name) {
+            $user->name = $name;
+        }
+
+        if ($email) {
+            $user->email = $email;
+        }
+
+        if ($password) {
+            $user->$password = bcrypt($password);
+        }
+
+        // unset($request->all()['_token']);
+
+
+        $user->save();
+
+
+        $bookmarks = Auth::user()->bookmark_articles;
+
+        $mypages = User::with('recipes')->find(Auth::user()->id);
+
+        return view('user/mypage')->with(compact('mypages', 'bookmarks'));
     }
 }

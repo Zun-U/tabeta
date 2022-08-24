@@ -20,9 +20,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/mypage/{user}', 'MypageController@showUser')->name('mypage.show');
 
     // プロフィール画像
-    // Route::post('/myprofile', 'MypageController@editImage')->name('myprofile.edit');
+    Route::post('/myprofile', 'MypageController@editImage')->name('myprofile.edit');
 
-    // Route::post('/user/mypage', 'MypageController@editImage');
+    // ユーザー情報更新
+    Route::post('/user/mypage/', 'MypageController@editUser')->name('user.edit');
 
 
     // いいね機能（Ajax）
@@ -30,8 +31,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     // ブックマ－ク（Ajax）
     Route::post('/bookmark', 'BookmarkController@bookmark')->name('recipe.bookmark');
-
-
 });
 
 // ユーザー認証機能
