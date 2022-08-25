@@ -11,7 +11,7 @@
       </div>
       <form method="POST" id="edit_image" enctype="multipart/form-data">
         @csrf
-        <label>
+        <label class="image-parent">
           <div class="edit-here">
             <!-- 三項演算子で画像が登録されていなければnoiconを乗せる。 -->
             <img src="{{ Auth::user()->image === null ? '/images/noimage.png' : Auth::user()->image }}" class="img-fluid circle rounded-3 prof-hover prof-image" width="200%">
@@ -143,7 +143,7 @@
     </div>
     <div class="card-body">
       <div>
-        <a href="{{ route('article.detail', $recipe) }}" class="card-link stretched-link"></a>
+        <a href="{{ route('article.detail', $bookmark) }}" class="card-link stretched-link"></a>
       </div>
       <div class="card-text">{{ $bookmark->created_at }}</div>
       <div>

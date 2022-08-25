@@ -17,21 +17,9 @@ class MypageController extends Controller
     public function showUser()
     {
 
-        // ログインしているユーザーのお気に入り記事のみ取得
-        // $bookmarks = DB::table('users')
-        // ->select('favorites.user_id as favorites_user_id', 'recipes.*')
-        // ->join('favorites', 'favorites.user_id', '=', 'users.id')
-        // ->join('recipes','recipes.id', '=', 'favorites.recipe_id')
-        // ->where('users.id', '=', Auth::user()->id)
-        // ->paginate(4);
-
-
-
         $bookmarks = Auth::user()->bookmark_articles()->orderBy('created_at', 'desc')->paginate(4);
 
         $mypages = Auth::user()->recipes()->orderBy('created_at', 'desc')->paginate(4);
-        // dd($mypages);
-        // exit;
 
         return view('user/mypage')->with(compact('mypages', 'bookmarks'));
     }
@@ -44,20 +32,23 @@ class MypageController extends Controller
 
         $user = Auth::user();
 
-        // プロフ画像ファイルの取得
+        // Storegaにある現在のプロフィール画像の削除
+        $deleteImagePath = $user->image;
+
+        // 必要なパスのみ取得
+        $path = substr($deleteImagePath, 9);
+
+        Storage::disk('public')->delete($path);
+
+
+        // JavaScriptから渡されてきたプロフィール画像ファイルの取得
         $profileImage = $request->file('file');
 
-
-        // dd($profileImage);
 
         // 画像ファイルがあれば
         if (isset($profileImage)) {
             $image_path = Storage::disk("public")->putFile('profile', $profileImage);
             $imagePath = "/storage/" . $image_path;
-
-            // dd($imagePath);
-            // exit;
-
             $user->image = $imagePath;
         }
         // 画像ファイルがなければ
@@ -68,7 +59,10 @@ class MypageController extends Controller
         // usersテーブルにしまう
         $user->save();
 
-        return response()->json();
+        $user_image = $user;
+
+        // 変更した現在のユーザーの最新プロフィール画像を返す。
+        return response()->json(['user_image' => $user_image]);
     }
 
 
@@ -98,9 +92,9 @@ class MypageController extends Controller
         $user->save();
 
 
-        $bookmarks = Auth::user()->bookmark_articles;
+        $bookmarks = Auth::user()->bookmark_articles()->orderBy('created_at', 'desc')->paginate(4);
 
-        $mypages = User::with('recipes')->find(Auth::user()->id);
+        $mypages = Auth::user()->recipes()->orderBy('created_at', 'desc')->paginate(4);
 
         return view('user/mypage')->with(compact('mypages', 'bookmarks'));
     }
