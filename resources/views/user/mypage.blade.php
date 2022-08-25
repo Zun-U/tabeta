@@ -14,7 +14,7 @@
         <label>
           <div class="edit-here">
             <!-- 三項演算子で画像が登録されていなければnoiconを乗せる。 -->
-            <img src="{{ Auth::user()->image === null ? '/images/noimage.png' : Auth::user()->image }}" class="img-fluid circle rounded-3 prof-hover" width="200%">
+            <img src="{{ Auth::user()->image === null ? '/images/noimage.png' : Auth::user()->image }}" class="img-fluid circle rounded-3 prof-hover prof-image" width="200%">
           </div>
           <div>
             <input type="file" name="profile_image" id="edit-profile" class="edit-image" value="" style="display:none" accept="image/*" />

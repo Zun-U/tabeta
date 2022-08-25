@@ -65,19 +65,10 @@ class MypageController extends Controller
             $image_path = null;
         }
 
-
-        // unset($request->all()['_token']);
-
         // usersテーブルにしまう
         $user->save();
 
-        $user_image_path = $user->image;
-
-        $user_image = [
-            'user_image_path' => $user_image_path,
-        ];
-
-        return response()->json($user_image);
+        return response()->json();
     }
 
 

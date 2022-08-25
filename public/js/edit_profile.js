@@ -64,15 +64,16 @@ $(function () {
 
     })
 
-      .done(function (data) {
+      .done(function () {
         console.log("Ajax successed");
-        console.log(data.user_image_path);
+        // console.log(data.user_image_path);
         // $this.toggleClass('liked'); //likedクラスのON/OFF切り替え。
         // $this.next('.like-counter').html(data.recipe_likes_count);
+        // $('<img>').attr('src', '{{ Auth::user->image }}');
       })
 
       .fail(function () {
         console.log('fail');
       });
   });
-})
+});
