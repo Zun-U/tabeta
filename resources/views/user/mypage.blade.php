@@ -5,23 +5,16 @@
 
 <div class="container">
   <div class="row">
-
-    <div>
-      <!-- <p> Auth::user()->name さんのマイページ</
-      p> -->
-    </div>
-
-
-    <div class="mt-5">
-      <p>プロフィール画像</p>
-    </div>
-
-    <div>
-      <form action="" method="POST" id="edit_image" enctype="multipart/form-data">
-        <label class="col-2">
+    <div class="col-2">
+      <div class="mt-5 font-weight">
+        <p>プロフィール画像</p>
+      </div>
+      <form method="POST" id="edit_image" enctype="multipart/form-data">
+        @csrf
+        <label>
           <div class="edit-here">
             <!-- 三項演算子で画像が登録されていなければnoiconを乗せる。 -->
-            <img src="{{ Auth::user()->image === null ? '/images/noimage.png' : Auth::user()->image }}" class="img-fluid circle rounded-3 prof-hover" data-profile-id="{{ $mypages->id }}">
+            <img src="{{ Auth::user()->image === null ? '/images/noimage.png' : Auth::user()->image }}" class="img-fluid circle rounded-3 prof-hover" width="200%" data-profile-id="{{ $mypages->id }}">
           </div>
           <div>
             <input type="file" name="profile_image" id="edit-profile" class="edit-image" value="" style="display:none" accept="image/*">
@@ -31,6 +24,33 @@
           <!-- <p> Auth::user()->name </p> -->
         </div>
       </form>
+    </div>
+
+
+
+    <!-- ユーザー情報編集 -->
+    <div class="card col-4 mt-5">
+      <div class="card-header">ユーザー情報変更</div>
+      <div class="card-body">
+        <form action="{{ route('user.edit')}}" method="POST">
+          @csrf
+          <div class="mt-2">
+            <label class="form-label font-weight" for="name">名前</label>
+            <input type="text"  name="name" class="form-control" id="edit-name" value="{{ Auth::user()->name }}">
+          </div>
+          <div class="mt-2">
+            <label class="form-label font-weight" for="email">メールアドレス</label>
+            <input type="text" name="email" class="form-control" id="edit-email" value="{{ Auth::user()->email }}">
+          </div>
+          <div class="mt-2">
+            <label class="form-label font-weight" for="password">パスワード</label>
+            <input type="text" name="password" class="form-control" id="edit-password">
+          </div>
+          <div class="font-weight mt-3 mb-3">
+            <button type="submit" class="btn btn-success">変更</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
