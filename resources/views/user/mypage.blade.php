@@ -134,7 +134,7 @@
 </div>
 
 <div class="container d-flex">
-  
+
   @foreach($bookmarks->sortByDesc('created_at') as $bookmark)
 
   <div class="card shadow rounded-3 me-3 card-move mb-5" style="width: 18rem;">

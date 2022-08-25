@@ -15,7 +15,7 @@
     <!-- Font awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{{ mix('/css/style.css') }}">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
