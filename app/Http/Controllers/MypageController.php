@@ -44,7 +44,8 @@ class MypageController extends Controller
             $imagePath = "/storage/" . $image_path;
 
             dd($imagePath);
-            // dd($user->image);
+            dd($user->image);
+            exit;
 
             $user->image = $imagePath;
         }
@@ -89,7 +90,7 @@ class MypageController extends Controller
         }
 
         if ($password) {
-            $user->$password = bcrypt($password);
+            $user->password = bcrypt($password);
         }
 
         $user->save();

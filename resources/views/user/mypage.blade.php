@@ -17,7 +17,7 @@
             <img src="{{ Auth::user()->image === null ? '/images/noimage.png' : Auth::user()->image }}" class="img-fluid circle rounded-3 prof-hover" width="200%" data-profile-id="{{ $mypages->id }}">
           </div>
           <div>
-            <input type="file" name="profile_image" id="edit-profile" class="edit-image" value="" style="display:none" accept="image/*">
+            <input type="file" name="profile_image" id="edit-profile" class="edit-image" value="" style="display:none" accept="image/*" />
           </div>
         </label>
         <div class="text-aline-center">
@@ -28,23 +28,27 @@
 
 
 
+    <!-- <i class="fa-solid fa-eye-slash"></i> -->
+    <!-- <i class="fa-regular fa-eye"></i> -->
+
     <!-- ユーザー情報編集 -->
     <div class="card col-4 mt-5">
       <div class="card-header">ユーザー情報変更</div>
       <div class="card-body">
-        <form action="{{ route('user.edit')}}" method="POST">
+        <form action="{{ route('user.edit')}}" method="POST" autocomplete="off">
           @csrf
           <div class="mt-2">
             <label class="form-label font-weight" for="name">名前</label>
-            <input type="text" name="name" class="form-control" id="edit-name" value="{{ Auth::user()->name }}">
+            <input type="text" name="name" class="form-control" id="edit-name" value="{{ Auth::user()->name }}" />
           </div>
           <div class="mt-2">
             <label class="form-label font-weight" for="email">メールアドレス</label>
-            <input type="text" name="email" class="form-control" id="edit-email" value="{{ Auth::user()->email }}">
+            <input type="text" name="email" class="form-control" id="edit-email" value="{{ Auth::user()->email }}" />
           </div>
           <div class="mt-2">
             <label class="form-label font-weight" for="password">パスワード</label>
-            <input type="text" name="password" class="form-control" id="edit-password">
+            <span class="input-group-addon"><i class="fa-regular fa-eye display-eye"></i></span>
+            <input type="password" readonly onfocus="this.removeAttribute('readonly');" name="password" class="form-control input-pass" id="edit-password" value="" />
           </div>
           <div class="font-weight mt-3 mb-3">
             <button type="submit" class="btn btn-success">変更</button>
@@ -53,9 +57,6 @@
       </div>
     </div>
   </div>
-</div>
-
-
 <div class="container">
   <div class="myarticle-group my-4 mt-5">
     投稿記事
