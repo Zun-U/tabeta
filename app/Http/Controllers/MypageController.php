@@ -39,11 +39,12 @@ class MypageController extends Controller
         // dd($profileImage);
 
         // 画像ファイルがあれば
-        if ($profileImage) {
+        if (isset($profileImage)) {
             $image_path = Storage::disk("public")->putFile('profile', $profileImage);
             $imagePath = "/storage/" . $image_path;
 
             dd($imagePath);
+            // dd($user->image);
 
             $user->image = $imagePath;
         }
@@ -52,12 +53,19 @@ class MypageController extends Controller
             $image_path = null;
         }
 
+
         // unset($request->all()['_token']);
 
         // usersテーブルにしまう
         $user->save();
 
-        return response()->json();
+        $user_image_path = $user->image;
+
+        $user_image = [
+            'user_image_path' => $user_image_path,
+        ];
+
+        return response()->json($user_image);
     }
 
 
@@ -83,9 +91,6 @@ class MypageController extends Controller
         if ($password) {
             $user->$password = bcrypt($password);
         }
-
-        // unset($request->all()['_token']);
-
 
         $user->save();
 

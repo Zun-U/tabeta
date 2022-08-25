@@ -64,8 +64,9 @@ $(function () {
 
     })
 
-      .done(function () {
+      .done(function (data) {
         console.log("Ajax successed");
+        console.log(data.user_image_path);
         // $this.toggleClass('liked'); //likedクラスのON/OFF切り替え。
         // $this.next('.like-counter').html(data.recipe_likes_count);
       })
