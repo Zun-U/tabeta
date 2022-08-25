@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 
 use Illuminate\Support\Facades\Storage;
@@ -17,9 +18,20 @@ class MypageController extends Controller
     {
 
         // ログインしているユーザーのお気に入り記事のみ取得
-        $bookmarks = Auth::user()->bookmark_articles;
+        // $bookmarks = DB::table('users')
+        // ->select('favorites.user_id as favorites_user_id', 'recipes.*')
+        // ->join('favorites', 'favorites.user_id', '=', 'users.id')
+        // ->join('recipes','recipes.id', '=', 'favorites.recipe_id')
+        // ->where('users.id', '=', Auth::user()->id)
+        // ->paginate(4);
 
-        $mypages = User::with('recipes')->find(Auth::user()->id);
+
+
+        $bookmarks = Auth::user()->bookmark_articles()->orderBy('created_at', 'desc')->paginate(4);
+
+        $mypages = Auth::user()->recipes()->orderBy('created_at', 'desc')->paginate(4);
+        // dd($mypages);
+        // exit;
 
         return view('user/mypage')->with(compact('mypages', 'bookmarks'));
     }

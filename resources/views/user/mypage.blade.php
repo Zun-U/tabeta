@@ -14,7 +14,7 @@
         <label>
           <div class="edit-here">
             <!-- 三項演算子で画像が登録されていなければnoiconを乗せる。 -->
-            <img src="{{ Auth::user()->image === null ? '/images/noimage.png' : Auth::user()->image }}" class="img-fluid circle rounded-3 prof-hover" width="200%" data-profile-id="{{ $mypages->id }}">
+            <img src="{{ Auth::user()->image === null ? '/images/noimage.png' : Auth::user()->image }}" class="img-fluid circle rounded-3 prof-hover" width="200%">
           </div>
           <div>
             <input type="file" name="profile_image" id="edit-profile" class="edit-image" value="" style="display:none" accept="image/*" />
@@ -65,7 +65,7 @@
 
 <div class="container d-flex">
 
-  @foreach($mypages->recipes->sortByDesc('created_at') as $recipe)
+  @foreach($mypages->sortByDesc('created_at') as $recipe)
 
 
 
@@ -134,6 +134,7 @@
 </div>
 
 <div class="container d-flex">
+  
   @foreach($bookmarks->sortByDesc('created_at') as $bookmark)
 
   <div class="card shadow rounded-3 me-3 card-move mb-5" style="width: 18rem;">

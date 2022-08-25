@@ -60,7 +60,8 @@ class User extends Authenticatable
     }
 
     // ブックマークの多対多の関係
-    public function bookmark_articles(){
+    public function bookmark_articles()
+    {
 
         return $this->belongsToMany('App\Recipe', 'favorites', 'user_id', 'recipe_id');
     }
@@ -74,5 +75,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Follower');
     }
-
 }
