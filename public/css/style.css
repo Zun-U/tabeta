@@ -218,3 +218,17 @@ input [name="contents"]::before {
 .font-weight{
   font-weight: 700;
 }
+
+
+/* パスワード入力欄 */
+/* .input-pass{
+  position: relative;
+}
+
+.display-eye {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 4px;
+  left: 5px;
+} */
