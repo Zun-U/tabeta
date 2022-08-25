@@ -2,30 +2,30 @@
 
 $(function () {
 
-//   $('#edit-profile').change(function () {
+  //   $('#edit-profile').change(function () {
 
-//     console.log("image is changed");
+  //     console.log("image is changed");
 
-//     const file = $(this).prop('files')[0];
+  //     const file = $(this).prop('files')[0];
 
-//     const reader = new FileReader();
+  //     const reader = new FileReader();
 
-//     reader.onload = function () {
+  //     reader.onload = function () {
 
-//       const img_src = $('<img>').attr('src', reader.result).addClass("img-fluid circle rounded-3 prof-hover");
+  //       const img_src = $('<img>').attr('src', reader.result).addClass("img-fluid circle rounded-3 prof-hover");
 
-//       $('.edit-here').html(img_src);
+  //       $('.edit-here').html(img_src);
 
-//     }
+  //     }
 
-//     reader.readAsDataURL(file);
+  //     reader.readAsDataURL(file);
 
-//   }
-//   );
+  //   }
+  //   );
 
 
 
-// Ajaxでプロフィール画像編集
+  // Ajaxでプロフィール画像編集
   let profile = $('#edit-profile');
 
   profile.on('change', function () {
@@ -64,12 +64,11 @@ $(function () {
 
     })
 
-      .done(function () {
-        console.log("Ajax successed");
-        // console.log(data.user_image_path);
-        // $this.toggleClass('liked'); //likedクラスのON/OFF切り替え。
-        // $this.next('.like-counter').html(data.recipe_likes_count);
-        // $('<img>').attr('src', '{{ Auth::user->image }}');
+      .done(function (data) {
+        console.log(data);
+        // 帰ってきた結果を適用する。
+        $('.prof-image').attr('src', data.user_image.image)
+
       })
 
       .fail(function () {
