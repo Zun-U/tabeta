@@ -43,9 +43,8 @@ class MypageController extends Controller
             $image_path = Storage::disk("public")->putFile('profile', $profileImage);
             $imagePath = "/storage/" . $image_path;
 
-            dd($imagePath);
-            dd($user->image);
-            exit;
+            // dd($imagePath);
+            // exit;
 
             $user->image = $imagePath;
         }
