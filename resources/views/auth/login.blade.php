@@ -18,16 +18,16 @@
           @endif
           <form action="{{ route('login') }}" method="POST">
             @csrf
-            <div class="form-group">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
               <label for="email">メールアドレス</label>
-              <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" />
             </div>
-            <div class="form-group">
+            <div class="form-floating mt-3">
+              <input type="password" class="form-control" id="password" name="password" placeholder="パスワード">
               <label for="password">パスワード</label>
-              <input type="password" class="form-control" id="password" name="password" />
             </div>
             <div class="text-right">
-              <button type="submit" class="btn btn-primary">送信</button>
+              <button type="submit" class="btn btn-primary mt-3">送信</button>
             </div>
           </form>
         </div>
