@@ -22,7 +22,7 @@
               <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
               <label for="email">メールアドレス</label>
             </div>
-            <div class="form-floating mt-3">              
+            <div class="form-floating mt-3">
               <input type="password" class="form-control" id="password" name="password" placeholder="パスワード">
               <label for="password">パスワード</label>
             </div>
