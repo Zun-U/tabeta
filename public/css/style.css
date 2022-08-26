@@ -35,7 +35,7 @@ a {
 }
 
 .navbar-brand {
-  margin-right: -26rem; 
+  margin-right: -26rem;
 }
 
 /* ログインメニュー */
@@ -146,18 +146,18 @@ input [name="contents"]::before {
   font-size: 40px;
 }
 
-.photo-explanation{
+.photo-explanation {
   font-size: 18px;
 }
 
 
 /* レシピ作成画面の材料・作り方記入欄の中央揃え */
-.center-section{
+.center-section {
   margin: auto;
 }
 
 /* フォーム枠線の発光削除 */
-.recipe-input:focus{
+.recipe-input:focus {
   border-color: inherit;
   box-shadow: none;
 }
@@ -181,7 +181,7 @@ input [name="contents"]::before {
 } */
 
 
-.myarticle-group{
+.myarticle-group {
   font-size: 20px;
   font-weight: 700;
 
@@ -194,18 +194,18 @@ input [name="contents"]::before {
 }
 
 /* プロフィール画像ホバーアニメーション */
-.prof-hover{
+.prof-hover {
   transition: all .3s ease
 }
 
-.prof-hover:hover{
+.prof-hover:hover {
   opacity: .7;
   transform: translateY(-0.7px);
 }
 
 
 /* カードホバーアニメーション */
-.card-move{
+.card-move {
   transition: all .5s ease;
 }
 
@@ -215,20 +215,23 @@ input [name="contents"]::before {
 
 }
 
-.font-weight{
+.font-weight {
   font-weight: 700;
 }
 
 
 /* パスワード入力欄 */
-/* .input-pass{
-  position: relative;
+.eyecon:hover{
+  cursor: pointer;
+  cursor: hand;
+  transition: all .3s ease;
 }
 
-.display-eye {
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  top: 4px;
-  left: 5px;
-} */
+/* いいね、ブックマークボタンのホバーアニメーション */
+.icon-hover:hover{
+  opacity: .8;
+  cursor: pointer;
+  cursor: hand;
+  transition: all .3s ease;
+  transform: translateY(-1px);
+}
