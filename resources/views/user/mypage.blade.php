@@ -47,8 +47,8 @@
           </div>
           <div class="mt-2">
             <label class="form-label font-weight" for="password">パスワード</label>
-            <span class="input-group-addon"><i class="fa-regular fa-eye display-eye"></i></span>
-            <input type="password" readonly onfocus="this.removeAttribute('readonly');" name="password" class="form-control input-pass" id="edit-password" value="" />
+            <span class="eyecon"><i class="fa-regular fa-eye display-eye" id='input-group-addon'></i></span>
+            <input type="password" name="password" class="form-control input-pass" id="edit-password" value="" readonly onfocus="this.removeAttribute('readonly');" />
           </div>
           <div class="font-weight mt-3 mb-3">
             <button type="submit" class="btn btn-success">変更</button>

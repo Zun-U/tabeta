@@ -2,29 +2,6 @@
 
 $(function () {
 
-  //   $('#edit-profile').change(function () {
-
-  //     console.log("image is changed");
-
-  //     const file = $(this).prop('files')[0];
-
-  //     const reader = new FileReader();
-
-  //     reader.onload = function () {
-
-  //       const img_src = $('<img>').attr('src', reader.result).addClass("img-fluid circle rounded-3 prof-hover");
-
-  //       $('.edit-here').html(img_src);
-
-  //     }
-
-  //     reader.readAsDataURL(file);
-
-  //   }
-  //   );
-
-
-
   // Ajaxでプロフィール画像編集
   let profile = $('#edit-profile');
 
@@ -75,4 +52,35 @@ $(function () {
         console.log('fail');
       });
   });
+
+
+
+
+
+
+  // パスワードの表示非表示
+
+  //目のアイコン情報を取得 
+  let eyeIcon = $('#input-group-addon');
+
+  console.log(eyeIcon);
+
+  // パスワードのinputタグを取得
+  let passInput = $('#edit-password');
+
+  eyeIcon.on('click', function () {
+
+    console.log('eye control success');
+
+    if (passInput.attr('type') === "text") {
+      passInput.attr('type', 'password');
+      eyeIcon.attr('class', 'fa-regular fa-eye');
+    }
+    else {
+      passInput.attr('type', 'text');
+      eyeIcon.attr('class', 'fa-solid fa-eye-slash');
+
+    }
+  });
+
 });
