@@ -17,6 +17,7 @@ class MypageController extends Controller
     public function showUser()
     {
 
+        // Userモデルに多対多の関係(bookmark_articles)を記述してある。
         $bookmarks = Auth::user()->bookmark_articles()->orderBy('created_at', 'desc')->paginate(4);
 
         $mypages = Auth::user()->recipes()->orderBy('created_at', 'desc')->paginate(4);

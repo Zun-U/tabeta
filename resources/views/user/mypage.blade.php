@@ -28,9 +28,6 @@
 
 
 
-    <!-- <i class="fa-solid fa-eye-slash"></i> -->
-    <!-- <i class="fa-regular fa-eye"></i> -->
-
     <!-- ユーザー情報編集 -->
     <div class="card col-4 mt-5">
       <div class="card-header">ユーザー情報変更</div>
@@ -47,7 +44,7 @@
           </div>
           <div class="mt-2">
             <label class="form-label font-weight" for="password">パスワード</label>
-            <span class="eyecon"><i class="fa-regular fa-eye display-eye" id='input-group-addon'></i></span>
+            <span class="eyecon"><i class="fa-solid fa-eye-slash display-eye" id='input-group-addon'></i></span>
             <input type="password" name="password" class="form-control input-pass" id="edit-password" value="" readonly onfocus="this.removeAttribute('readonly');" />
           </div>
           <div class="font-weight mt-3 mb-3">

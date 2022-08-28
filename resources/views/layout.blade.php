@@ -80,11 +80,12 @@
     </script>
     @endif
     <script src="{{ asset('../js/pull_down.js') }}"></script>
-    <script src="{{ asset('../js/edit_food.js') }}"></script>
+    <script src="{{ asset('../js/create_food.js') }}"></script>
     <script src="{{ asset('../js/like.js') }}"></script>
     <script src="{{ asset('../js/bookmark.js') }}"></script>
     <script src="{{ asset('../js/recipe_image.js') }}"></script>
     <script src="{{ asset('../js/edit_profile.js') }}"></script>
+    <script src="{{ asset('../js/edit_food.js') }}"></script>
 </body>
 
 </html>
