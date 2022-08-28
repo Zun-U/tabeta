@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // レシピ編集画面
     Route::get('/recipes/edit/{recipe}', 'EditController@showEditForm')->name('recipe.edit');
-    Route::patch('/recipes/edit', 'EditController@editRecipe')->name('recipe.update');
+    Route::post('/recipes/edit/{recipe}', 'EditController@editRecipe')->name('recipe.update');
 
 });
 

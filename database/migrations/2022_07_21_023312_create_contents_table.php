@@ -17,7 +17,7 @@ class CreateContentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('recipe_id');
             $table->text('content');
-            $table->string('recipe_image')->nullable();
+            $table->string('recipe_image');
 
             // 外部キー設定
             $table->foreign('recipe_id')->references('id')->on('recipes');

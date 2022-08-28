@@ -32,13 +32,20 @@ class EditController extends Controller
     public function editRecipe(Request $request, Recipe $recipe)
     {
 
-        // $ddd = $request->title;
+
+        // $idsf = Recipe::find($recipe->id);
+
 
         // $recipe_update = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
 
         // // $recipe = new Recipe();
 
-        // dd($recipe_update);
+        // $foodstuff = $recipe->foodstuffs;
+
+        // $content = $recipe->contents;
+
+
+        // dd($content);
         // exit;
 
 
@@ -53,9 +60,6 @@ class EditController extends Controller
             $image_path = Storage::disk("public")->putFile('profile', $recipe_image);
             $imagePath = "/storage/" . $image_path;
             $recipe->product_image = $imagePath;
-
-            
-
         }
         // 画像ファイルがなければ
         else {
@@ -81,7 +85,11 @@ class EditController extends Controller
         // name属性に指定した配列のkeyのみを取得
         foreach ($ingredients['food'] as $key => $value) {
             $foodstuff = new Foodstuff();
+
+            $foodstuff->food->delete();
             $foodstuff->food = $ingredients['food'][$key];
+
+            $foodstuff->amount->delete();
             $foodstuff->amount = $ingredients['amount'][$key];
             $recipe->foodstuffs()->save($foodstuff);
         }
@@ -116,6 +124,8 @@ class EditController extends Controller
             $content->content = $explanations['text'][$key];
             $recipe->contents()->save($content);
         }
+
+
 
 
         return redirect()->route(
