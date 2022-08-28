@@ -2,44 +2,60 @@
 
 namespace App\Http\Controllers;
 
-// 各モデルのuse宣言
 use App\User;
 use App\Recipe;
 use App\Content;
 use App\Foodstuff;
-
-// Storageクラスの使用（画像保存の為）
-use Illuminate\Support\Facades\Storage;
-
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 
-class RecipeController extends Controller
+class EditController extends Controller
 {
 
-
-    // レシピ作成画面へ遷移
-    public function showCreateForm()
+    // レシピ編集画面へ遷移
+    public function showEditForm(Recipe $recipe)
     {
-        return view('recipes/create');
+
+        $recipe_edit = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
+
+        // dd($recipe_edit);
+        // exit;
+
+        // 直前のページのレシピ情報を渡す
+        return view('recipes.edit', compact('recipe_edit'));
     }
 
 
-    // レシピの登録
-    public function createRecipe(Request $request)
+    // レシピの編集
+    public function editRecipe(Request $request, Recipe $recipe)
     {
-        $recipe = new Recipe();
+
+        // $ddd = $request->title;
+
+        // $recipe_update = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
+
+        // // $recipe = new Recipe();
+
+        // dd($recipe_update);
+        // exit;
 
 
         // TOPレシピ画像ファイルの取得
         $recipe_image = $request->file('product_image');
+
+        // dd($recipe_image);
+        // exit;
 
         // 画像ファイルがあれば
         if ($recipe_image) {
             $image_path = Storage::disk("public")->putFile('profile', $recipe_image);
             $imagePath = "/storage/" . $image_path;
             $recipe->product_image = $imagePath;
+
+            
+
         }
         // 画像ファイルがなければ
         else {
@@ -53,8 +69,7 @@ class RecipeController extends Controller
         $recipe->cooking_time = $request->cooking_time;
         $recipe->ages = $request->ages;
 
-        // 現在ログインしているユーザーをrecipesテーブルに登録
-        Auth::user()->recipes()->save($recipe);
+        $recipe->save();
 
 
 
@@ -119,9 +134,4 @@ class RecipeController extends Controller
 
         return view('recipes/preview', compact('recipes'));
     }
-
 }
-
-
-
-

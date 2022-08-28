@@ -3,6 +3,12 @@
 @section('content')
 
 
+@if(Auth::user()->id === $recipe_detail->user_id)
+<div>
+  <a href="{{ route('recipe.edit',$recipe_detail) }}">レシピの編集</a>
+</div>
+@endif
+
 <div class="container mt-5">
   <div class="row gx-5">
     <div class="col">

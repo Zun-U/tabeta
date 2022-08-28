@@ -221,17 +221,20 @@ input [name="contents"]::before {
 
 
 /* パスワード入力欄 */
-.eyecon:hover{
+.eyecon:hover {
   cursor: pointer;
   cursor: hand;
   transition: all .3s ease;
 }
 
 /* いいね、ブックマークボタンのホバーアニメーション */
-.icon-hover:hover{
+.icon-hover:hover {
   opacity: .8;
+}
+
+.icon-hover {
   cursor: pointer;
   cursor: hand;
-  transition: all .3s ease;
+  transition: all .5s ease;
   transform: translateY(-1px);
 }

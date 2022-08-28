@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/myprofile', 'MypageController@editImage')->name('myprofile.edit');
 
     // ユーザー情報更新
-    Route::post('/user/mypage/', 'MypageController@editUser')->name('user.edit');
+    Route::post('/user/mypage', 'MypageController@editUser')->name('user.edit');
 
 
     // いいね機能（Ajax）
@@ -31,6 +31,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     // ブックマ－ク（Ajax）
     Route::post('/bookmark', 'BookmarkController@bookmark')->name('recipe.bookmark');
+
+    // レシピ編集画面
+    Route::get('/recipes/edit/{recipe}', 'EditController@showEditForm')->name('recipe.edit');
+    Route::patch('/recipes/edit', 'EditController@editRecipe')->name('recipe.update');
+
 });
 
 // ユーザー認証機能

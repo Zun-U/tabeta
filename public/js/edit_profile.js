@@ -63,7 +63,7 @@ $(function () {
   //目のアイコン情報を取得 
   let eyeIcon = $('#input-group-addon');
 
-  console.log(eyeIcon);
+  // console.log(eyeIcon);
 
   // パスワードのinputタグを取得
   let passInput = $('#edit-password');
@@ -74,11 +74,11 @@ $(function () {
 
     if (passInput.attr('type') === "text") {
       passInput.attr('type', 'password');
-      eyeIcon.attr('class', 'fa-regular fa-eye');
+      eyeIcon.attr('class', 'fa-solid fa-eye-slash');
     }
     else {
       passInput.attr('type', 'text');
-      eyeIcon.attr('class', 'fa-solid fa-eye-slash');
+      eyeIcon.attr('class', 'fa-regular fa-eye');
 
     }
   });
