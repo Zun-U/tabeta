@@ -5,7 +5,6 @@
 
 
 <form action="{{ route('recipe.update', $recipe_edit)}}" method="POST" id="createrecipe" enctype="multipart/form-data">
-    @method('patch')
     @csrf
     <div class="container">
         <div class="row pt-5">
@@ -21,18 +20,18 @@
                     <div class="image-hover imagefile">
                         <img id="img_preview" class="img-fluid" src="{{ $recipe_edit->product_image }}">
                     </div>
-                    <input type="hidden" name="_method" id="image-upload" class="invisible" value="patch {{ $recipe_edit->product_image }}">
+                    <input type="file" name="product_image" id="image-upload" class="invisible" value="{{ $recipe_edit->product_image }}">
                 </label>
             </div>
             <div class="col-6 mt-5">
                 <div class="col mb-2">
                     <label for="title" class="form-label">レシピ名</label>
 
-                    <input type="hidden" class="form-control" name="_method" id="title" value="patch {{ $recipe_edit->title }}" />
+                    <input type="text" class="form-control" name="title" id="title" value="{{ $recipe_edit->title }}" />
                 </div>
                 <div class="col pt2">
                     <label for="subtitle" class="form-label pt-3">サブタイトル</label>
-                    <input type="hidden" class="form-control" name="_method" id="subtitle" value="patch {{ $recipe_edit->subtitle }}" />
+                    <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ $recipe_edit->subtitle }}" />
                 </div>
 
                 <div class="row pt-4">
@@ -42,7 +41,7 @@
                     </div>
                     <div class="col mb-2">
                         <label for="howmany" class="form-label pt-2">何人分</label>
-                        <input type="hidden" class="form-control" name="_method" id="howmany" value="patch {{ $recipe_edit->howmany }}" />
+                        <input type="text" class="form-control" name="howmany" id="howmany" value="{{ $recipe_edit->howmany }}" />
                     </div>
                 </div>
 
@@ -74,10 +73,10 @@
             @foreach($recipe_edit->foodstuffs as $foodstuff)
             <div class="row mt-2" id="input-area">
                 <div class="col-3">
-                    <input type="hidden" class="form-control check-food" name="_method foodstuff[food][]" placeholder="材料・調味料" value="patch {{ $foodstuff->food }}">
+                    <input type="text" class="form-control check-food" name="foodstuff[food][]" placeholder="材料・調味料" value="{{ $foodstuff->food }}">
                 </div>
                 <div class="col-3">
-                    <input type="hidden" class="form-control check-amount" name="_method foodstuff[amount][]" placeholder="分量" value="patch {{ $foodstuff->amount }}">
+                    <input type="text" class="form-control check-amount" name="foodstuff[amount][]" placeholder="分量" value="{{ $foodstuff->amount }}">
                 </div>
                 <!-- フォーム欄1段目は削除アイコン非表示 -->
                 <div class="col-1">
