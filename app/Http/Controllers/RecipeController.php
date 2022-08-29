@@ -117,11 +117,8 @@ class RecipeController extends Controller
 
         $recipes = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
 
+        session()->flash('success_message', 'レシピを投稿しました！');
+
         return view('recipes/preview', compact('recipes'));
     }
-
 }
-
-
-
-

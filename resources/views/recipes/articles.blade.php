@@ -7,7 +7,7 @@
     <div class="col-6">
       <form>
         <div class="input-group">
-          <input type="text" class="form-control search-input" placeholder="記事のタイトルを入力" value="{{request('search')}}">
+          <input type="text" class="form-control search-input" placeholder="記事のタイトルを入力" value="{{request('search')}}" name="keyword">
           <button class="btn btn-secondary">検索</button>
       </form>
     </div>
