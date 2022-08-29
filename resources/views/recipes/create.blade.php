@@ -137,9 +137,11 @@
                 <button type="button" id="add-procedure" class="btn btn-primary">作り方の追加</button>
             </div>
 
+            <!-- レシピ送信 -->
             <div class="text-right mt-5">
                 <button type="submit" id="create-recipe" class="btn btn-primary">レシピの投稿</button>
             </div>
+
         </div>
     </div>
 </form>

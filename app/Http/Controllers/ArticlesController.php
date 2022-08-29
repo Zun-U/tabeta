@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 // 各モデルのuse宣言
+// use App\User;
 use App\Recipe;
 
 
@@ -14,26 +15,41 @@ class ArticlesController extends Controller
 {
 
     // レシピの一覧表示
-    public function getArticleAll()
+    public function getArticleAll(Request $request)
     {
 
-        // 作成日順で
-        $recipes = Recipe::withCount('likes')->withCount('favorites')->orderBy("id", "desc")->where(function ($query) {
 
-            // 検索機能
-            if ($search = request('search')) {
-                $query->where('title', 'like', "%{$search}%");
+        // 検索結果の受け取り
+        $keyword = $request->input('keyword');
+
+        // 
+        $query = Recipe::query();
+
+
+        // 作成日順で５件取得
+        $recipes = Recipe::withCount('likes')->withCount('favorites')->orderBy("id", "desc")->paginate(5);
+
+
+
+            if($keyword){
+                $query->where('title', 'like', "%{$keyword}%");
+
+                $recipes = $query->paginate(5);
             }
 
-            // 5件数ごとにページネーション
-        })->paginate(5);
+
+
 
 
         return view(
             'recipes/articles',
-            compact('recipes')
+            compact('recipes','keyword')
         );
     }
+
+
+
+
 
     // レシピ詳細画面への遷移
     public function getArticleDetail(Recipe $recipe)

@@ -39,6 +39,12 @@ Route::group(['middleware' => 'auth'], function () {
     // レシピ削除
     Route::post('/destroy/{recipe}', 'EditController@destroyRecipe')->name('recipe.destroy');
 
+    // 投稿レシピ一覧
+    Route::get('/user/myrecipe/{user}', 'MypageController@showMyRecipe')->name('my.recipe');
+
+    // ブックマーク済みレシピ一覧
+    Route::get('/user/mybookmark/{user}', 'MypageController@showMyBookmark')->name('my.bookmark');
+
 });
 
 // ユーザー認証機能

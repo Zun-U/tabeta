@@ -97,6 +97,28 @@ class MypageController extends Controller
 
         $mypages = Auth::user()->recipes()->orderBy('created_at', 'desc')->paginate(4);
 
+        session()->flash('flash_message', '登録情報を変更しました');
+
         return view('user/mypage')->with(compact('mypages', 'bookmarks'));
+    }
+
+
+    // 投稿レシピ一覧
+    public function showMyRecipe()
+    {
+
+        $myrecipes = Auth::user()->recipes()->withCount('likes')->withCount('favorites')->orderBy('created_at', 'desc')->paginate(4);
+
+        return view('user/myrecipe')->with(compact('myrecipes'));
+    }
+
+
+    // 投稿レシピ一覧
+    public function showMyBookmark()
+    {
+
+        $mybookmarks = Auth::user()->bookmark_articles()->withCount('likes')->withCount('favorites')->orderBy('created_at', 'desc')->paginate(4);
+
+        return view('user/mybookmark')->with(compact('mybookmarks'));
     }
 }

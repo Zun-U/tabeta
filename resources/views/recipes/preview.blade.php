@@ -2,6 +2,12 @@
 
 @section('content')
 
+<!-- フラッシュメッセージ -->
+@if (session('success_message'))
+<div class="flash_message bg-success text-center py-3 my-0">
+  {{ session('success_message') }}
+</div>
+@endif
 
 
 

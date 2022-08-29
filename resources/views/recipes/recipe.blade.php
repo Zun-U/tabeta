@@ -9,7 +9,7 @@
 
 <!-- 編集ボタン -->
 @if(Auth::user()->id === $recipe_detail->user_id)
-<div class="btn btn-outline-success">
+<div class="btn btn-outline-success mb-5">
   <a href="{{ route('recipe.edit',$recipe_detail) }}">レシピの編集</a>
 </div>
 @endif

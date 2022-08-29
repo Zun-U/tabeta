@@ -2,13 +2,6 @@
 
 @section('content')
 
-<!-- 削除ボタン -->
-<form onsubmit="return confirm('このレシピを削除してもよろしいでしょうか？')" action="{{ route('recipe.destroy', $recipe_edit) }}" method="post">
-    @csrf
-    <button type="submit">削除</button>
-</form>
-
-
 <form action="{{ route('recipe.update', $recipe_edit)}}" method="POST" id="createrecipe" enctype="multipart/form-data">
     @csrf
     <div class="container">
@@ -136,11 +129,22 @@
             </div>
 
             <div class="text-right mt-5">
-                <button type="submit" id="create-recipe" class="btn btn-primary">レシピの投稿</button>
+                <button type="submit" id="create-recipe" class="btn btn-outline-success">レシピの投稿</button>
             </div>
         </div>
     </div>
 </form>
+
+
+<!-- 削除ボタン -->
+<div class="container">
+    <div class="mt-5">
+    <form onsubmit="return confirm('このレシピを削除してもよろしいでしょうか？')" action="{{ route('recipe.destroy', $recipe_edit) }}" method="post">
+        @csrf
+        <button type="submit" class="btn btn-outline-danger">レシピの削除</button>
+    </form>
+    </div>
+</div>
 
 
 
