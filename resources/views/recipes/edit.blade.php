@@ -2,6 +2,11 @@
 
 @section('content')
 
+<!-- 削除ボタン -->
+<form onsubmit="return confirm('このレシピを削除してもよろしいでしょうか？')" action="{{ route('recipe.destroy', $recipe_edit) }}" method="post">
+    @csrf
+    <button type="submit">削除</button>
+</form>
 
 
 <form action="{{ route('recipe.update', $recipe_edit)}}" method="POST" id="createrecipe" enctype="multipart/form-data">
@@ -48,7 +53,7 @@
                 <div class="pt-3">
                     <label for="ages" class="form-label">対象年齢</label>
                     <div class="form-check-inline me-5">
-                        <input type="radio" class="form-check-label" value="全年齢" name="ages" id="ages">指定なし
+                        <input type="radio" class="form-check-label" value="全年齢" name="ages" id="ages" checked>指定なし
                         <input type="radio" class="form-check-label" value="5、6ヶ月" name="ages" id="ages">5、6ヶ月
                         <input type="radio" class="form-check-label" value="7、8ヶ月" name="ages" id="ages">7、8ヶ月
                         <input type="radio" class="form-check-label" value="9～10ヶ月" name="ages" id="ages">9~10ヶ月

@@ -3,13 +3,17 @@
 @section('content')
 
 
+
+
+<div class="container mt-5">
+
+<!-- 編集ボタン -->
 @if(Auth::user()->id === $recipe_detail->user_id)
-<div>
+<div class="btn btn-outline-success">
   <a href="{{ route('recipe.edit',$recipe_detail) }}">レシピの編集</a>
 </div>
 @endif
 
-<div class="container mt-5">
   <div class="row gx-5">
     <div class="col">
       <img src="{{ $recipe_detail->product_image }}" class="img-fluid px-2 rounded-3" height="250">
