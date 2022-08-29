@@ -36,6 +36,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/recipes/edit/{recipe}', 'EditController@showEditForm')->name('recipe.edit');
     Route::post('/recipes/edit/{recipe}', 'EditController@editRecipe')->name('recipe.update');
 
+    // レシピ削除
+    Route::post('/destroy/{recipe}', 'EditController@destroyRecipe')->name('recipe.destroy');
+
 });
 
 // ユーザー認証機能

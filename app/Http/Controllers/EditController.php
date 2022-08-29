@@ -6,6 +6,8 @@ use App\User;
 use App\Recipe;
 use App\Content;
 use App\Foodstuff;
+use App\Favorite;
+use App\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,28 +34,8 @@ class EditController extends Controller
     public function editRecipe(Request $request, Recipe $recipe)
     {
 
-
-        // $idsf = Recipe::find($recipe->id);
-
-
-        // $recipe_update = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
-
-        // // $recipe = new Recipe();
-
-        // $foodstuff = $recipe->foodstuffs;
-
-        // $content = $recipe->contents;
-
-
-        // dd($content);
-        // exit;
-
-
         // TOPレシピ画像ファイルの取得
         $recipe_image = $request->file('product_image');
-
-        // dd($recipe_image);
-        // exit;
 
         // 画像ファイルがあれば
         if ($recipe_image) {
@@ -76,6 +58,9 @@ class EditController extends Controller
         $recipe->save();
 
 
+        // 一旦中身を全削除する
+        $foodstuff = new Foodstuff();
+        $foodstuff->where('recipe_id', $recipe->id)->delete();
 
 
         // foodstuffsテーブルに登録
@@ -86,23 +71,23 @@ class EditController extends Controller
         foreach ($ingredients['food'] as $key => $value) {
             $foodstuff = new Foodstuff();
 
-            $foodstuff->food->delete();
+            // $foodstuff->food->delete();
             $foodstuff->food = $ingredients['food'][$key];
 
-            $foodstuff->amount->delete();
+            // $foodstuff->amount->delete();
             $foodstuff->amount = $ingredients['amount'][$key];
             $recipe->foodstuffs()->save($foodstuff);
         }
 
 
-
-
+        // 一旦中身を全削除する
+        $content = new Content();
+        $content->where('recipe_id', $recipe->id)->delete();
 
         // contentsテーブルに登録
         // テキスト入力と画像投稿欄を別々に取得
         $explanations = $request->input('content');
         $upload_image = $request->file('upload_image');
-
 
 
         // 各入力欄の共通項である「key」を取得（連番を取得）
@@ -143,5 +128,33 @@ class EditController extends Controller
         $recipes = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
 
         return view('recipes/preview', compact('recipes'));
+    }
+
+
+
+    // レシピ削除
+    public function destroyRecipe(Recipe $recipe)
+    {
+      
+
+
+
+        $foodstuff = new Foodstuff();
+        $foodstuff->where('recipe_id', $recipe->id)->delete();
+
+        $content = new Content();
+        $content->where('recipe_id', $recipe->id)->delete();
+
+        $favorite = new Favorite();
+        $favorite->where('recipe_id', $recipe->id)->delete();
+
+        $like = new Like();
+        $like->where('recipe_id', $recipe->id)->delete();
+
+        $recipe->where('id', $recipe->id)->delete();
+
+
+
+        return redirect(route('articles.index'));
     }
 }
