@@ -19,12 +19,8 @@ a {
   height: auto;
 }
 
-/* .navbar {
-  background: transparent;
-} */
 
 /* ナビゲーションバー */
-
 .navbar {
   background-color: rgba(230, 229, 224, 0.5);
 }
@@ -32,11 +28,52 @@ a {
 .navbar .nav-link {
   font-size: 16px;
   font-weight: 700;
+  line-height: 4.5rem;
 }
 
 .navbar-brand {
   margin-right: -26rem;
 }
+
+
+/* ヘッダープロフィール画像 */
+.header-profile {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 10px -10px 10px 15px;
+
+  overflow: hidden;
+  position: relative;
+
+  object-fit: cover;
+  object-position: center right;
+}
+
+/* プロフ画像変更隠しメッセージ */
+/* .hide-message {
+  width: 60x;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+} */
+
+/* .hide-message {
+  opacity: 1;
+  transition: all 0.6s ease;
+  padding-bottom: 0;
+} */
+
 
 /* ログインメニュー */
 .login-menu {
@@ -189,12 +226,20 @@ input [name="contents"]::before {
 
 
 /* プロフィール画像 */
-.circle {
-  border-radius: 30px;
+.edit-here img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 20px;
+
+  object-fit: cover;
+  object-position: center right;
 }
 
 /* プロフィール画像ホバーアニメーション */
 .prof-hover {
+  cursor: pointer;
+  cursor: hand;
   transition: all .3s ease
 }
 

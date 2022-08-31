@@ -42,9 +42,9 @@ $(function () {
     })
 
       .done(function (data) {
-        console.log(data);
         // 帰ってきた結果を適用する。
         $('.prof-image').attr('src', data.user_image.image);
+        $('.header-profile').attr('src', data.user_image.image);
       })
 
       .fail(function () {
