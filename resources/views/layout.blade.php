@@ -42,7 +42,10 @@
                             <a href="#" id="logout" class="nav-link">ログアウト</a>
                         </li>
                         <li class="nav-item">
-                            <span class="nav-link active ms-2">{{ Auth::user()->name }}さん</span>
+                            <img src="{{ Auth::user()->image }}" class="header-profile">
+                        </li>
+                        <li class="nav-item">
+                        <span class="nav-link active ms-2">{{ Auth::user()->name }}さん</span>
                         </li>
                         <li class="nav-item">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
