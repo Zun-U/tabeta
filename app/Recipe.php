@@ -31,7 +31,7 @@ class Recipe extends Model
     // 多対1のリレーション
     public function users()
     {
-        return $this->belongsTo('App/User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
 
@@ -45,9 +45,9 @@ class Recipe extends Model
     }
 
 
-        //ブックーマーク存在判定
-        public function isMarkedBy($user): bool
-        {
-            return Favorite::where('user_id', $user->id)->where('recipe_id', $this->id)->first() !== null;
-        }
+    //ブックーマーク存在判定
+    public function isMarkedBy($user): bool
+    {
+        return Favorite::where('user_id', $user->id)->where('recipe_id', $this->id)->first() !== null;
+    }
 }

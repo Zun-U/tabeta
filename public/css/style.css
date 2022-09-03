@@ -283,3 +283,23 @@ input [name="contents"]::before {
   transition: all .5s ease;
   transform: translateY(-1px);
 }
+
+
+/* レシピ詳細画面の作成者プロフィール画像 */
+.recipe-user {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: -10px 10px 0 15px;
+
+  overflow: hidden;
+  position: relative;
+
+  object-fit: cover;
+  object-position: center right;
+}
+
+/* レシピ作成者名 */
+.user-name {
+  font-weight: 700;
+}

@@ -16,7 +16,7 @@
 </div>
 
 @foreach($recipes->sortByDesc('created_at') as $recipe)
-<div class="card shadow rounded-3 article-main" style="width: 30rem;">
+<div class="card shadow rounded-5 article-main" style="width: 30rem;">
 
   <div class="card-img-top"><img src="{{ $recipe->product_image }}" width="100%"></div>
   <div class="card-body">
@@ -30,6 +30,8 @@
     <div class="card-text">{{ $recipe->howmany }}人分</div>
     <div class="card-text">調理時間：{{ $recipe->cooking_time }}分</div>
     <div class="card-text">対象年齢：{{ $recipe->ages }}</div>
+
+    <div class="card-text">by{{ $recipe->users->name }}</div>
 
 
 

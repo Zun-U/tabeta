@@ -75,4 +75,20 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Follower');
     }
+
+
+
+
+    // //いいねされているかを判定（boolで真偽値を判定）
+    // public function isLikedBy($user): bool
+    // {
+    //     return Like::where('user_id', $user->id)->where('recipe_id', $this->id)->first() !== null;
+    // }
+
+
+    // //ブックーマーク存在判定
+    // public function isMarkedBy($user): bool
+    // {
+    //     return Favorite::where('user_id', $user->id)->where('recipe_id', $this->id)->first() !== null;
+    // }
 }

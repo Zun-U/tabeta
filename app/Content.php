@@ -11,8 +11,8 @@ class Content extends Model
     public $timestamps = false;
 
     // 多対1のリレーション
-    public function recipe()
+    public function recipes()
     {
-        return $this->belongsTo('App/recipe');
+        return $this->belongsTo('App\recipe');
     }
 }

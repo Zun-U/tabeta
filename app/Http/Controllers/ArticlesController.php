@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 // 各モデルのuse宣言
-// use App\User;
+use App\User;
 use App\Recipe;
 
 
@@ -22,28 +22,28 @@ class ArticlesController extends Controller
         // 検索結果の受け取り
         $keyword = $request->input('keyword');
 
-        // 
+
         $query = Recipe::query();
 
 
         // 作成日順で５件取得
-        $recipes = Recipe::withCount('likes')->withCount('favorites')->orderBy("id", "desc")->paginate(5);
+        $recipes = Recipe::with('users')->withCount('likes')->withCount('favorites')->orderBy("id", "desc")->paginate(5);
 
 
+        if ($keyword) {
+            $query->where('title', 'like', "%{$keyword}%");
 
-            if($keyword){
-                $query->where('title', 'like', "%{$keyword}%");
-
-                $recipes = $query->paginate(5);
-            }
-
+            $recipes = $query->paginate(5);
+        }
 
 
+        // $tt = Recipe::with('users')->get();
 
+        // dd($tt);
 
         return view(
             'recipes/articles',
-            compact('recipes','keyword')
+            compact('recipes', 'keyword')
         );
     }
 
@@ -56,10 +56,11 @@ class ArticlesController extends Controller
     {
 
         $recipe_detail = Recipe::withCount('likes')->withCount('favorites')->with(['foodstuffs', 'contents'])->find($recipe->id);
+        $user_recipe = User::find($recipe->user_id);
 
         return view(
             'recipes/recipe',
-            compact('recipe_detail')
+            compact('recipe_detail', 'user_recipe')
         );
     }
 }

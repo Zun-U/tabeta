@@ -11,14 +11,14 @@ class Like extends Model
     public $timestamps = false;
 
     // 多対1のリレーション
-    public function user()
+    public function users()
     {
-        return $this->belongsTo('App/User');
+        return $this->belongsTo('App\User');
     }
 
-    public function recipe()
+    public function recipes()
     {
-        return $this->belongsTo('App/Recipe');
+        return $this->belongsTo('App\Recipe');
     }
 
 }
