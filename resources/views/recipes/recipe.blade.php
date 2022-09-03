@@ -7,12 +7,12 @@
 
 <div class="container mt-5">
 
-<!-- 編集ボタン -->
-@if(Auth::user()->id === $recipe_detail->user_id)
-<div class="btn btn-outline-success mb-5">
-  <a href="{{ route('recipe.edit',$recipe_detail) }}">レシピの編集</a>
-</div>
-@endif
+  <!-- 編集ボタン -->
+  @if(Auth::user()->id === $recipe_detail->user_id)
+  <div class="btn btn-outline-success mb-5">
+    <a href="{{ route('recipe.edit',$recipe_detail) }}">レシピの編集</a>
+  </div>
+  @endif
 
   <div class="row gx-5">
     <div class="col">
@@ -24,6 +24,16 @@
       </div>
       <div>
         <h4 class="py-2">{{ $recipe_detail->subtitle }}</h4>
+      </div>
+
+
+
+      <!-- 投稿ユーザー -->
+      <div class="d-flex justify-content-end mb-4">
+        <div>
+          <img src="{{ $user_recipe->image }}" class="recipe-user">
+        </div>
+        <div class="user-name">{{ $user_recipe->name }}</div>
       </div>
 
 
@@ -113,8 +123,8 @@
           <div class="serial-number">
             {{ $key+1 }}
           </div>
-          <div class="card-img-top mt-3 border rounded-3">
-            <img src="{{ $content->recipe_image }}" width="100%">
+          <div class="card-img-top mt-3">
+            <img src="{{ $content->recipe_image }}" width="100%" class="rounded-3">
           </div>
           <div class="card-body">
             <div class="card-text">
