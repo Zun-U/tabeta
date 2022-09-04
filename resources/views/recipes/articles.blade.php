@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+
 <div class="container mt-4">
   <div class="search-box row justify-content-center">
     <div class="col-6">
@@ -12,7 +14,6 @@
       </form>
     </div>
   </div>
-</div>
 </div>
 
 @foreach($recipes->sortByDesc('created_at') as $recipe)
@@ -31,7 +32,7 @@
     <div class="card-text">調理時間：{{ $recipe->cooking_time }}分</div>
     <div class="card-text">対象年齢：{{ $recipe->ages }}</div>
 
-    <div class="card-text">by{{ $recipe->users->name }}</div>
+    <div class="card-text">by<b>{{ $recipe->users->name }}</b></div>
 
 
 

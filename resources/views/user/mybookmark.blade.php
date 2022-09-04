@@ -2,6 +2,7 @@
 
 @section('content')
 
+<div class="mt-5"></div>
 
 @foreach($mybookmarks->sortByDesc('created_at') as $mybookmark)
 <div class="card shadow rounded-3 article-main" style="width: 30rem;">
@@ -18,6 +19,8 @@
     <div class="card-text">{{ $mybookmark->howmany }}人分</div>
     <div class="card-text">調理時間：{{ $mybookmark->cooking_time }}分</div>
     <div class="card-text">対象年齢：{{ $mybookmark->ages }}</div>
+
+    <div class="card-text">by<b class="name-font">{{ $mybookmark->users->name }}</b></div>
 
 
 

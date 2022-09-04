@@ -303,3 +303,7 @@ input [name="contents"]::before {
 .user-name {
   font-weight: 700;
 }
+
+.name-font{
+  font-weight: 700;
+}

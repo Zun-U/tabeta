@@ -100,6 +100,8 @@
         <div class="card-text">調理時間：{{ $recipe->cooking_time }}分</div>
         <div class="card-text">対象年齢：{{ $recipe->ages }}</div>
 
+        <div class="card-text">by<b class="name-font">{{ $recipe->users->name }}</b></div>
+
 
         <div class="d-flex justify-content-end">
           <!-- いいね数表示 -->
@@ -176,6 +178,8 @@
         <div class="card-text">{{ $bookmark->howmany }}人分</div>
         <div class="card-text">調理時間：{{ $bookmark->cooking_time }}分</div>
         <div class="card-text">対象年齢：{{ $bookmark->ages }}</div>
+
+        <div class="card-text">by<b class="name-font">{{ $bookmark->users->name }}</b></div>
 
 
         <div class="d-flex justify-content-end">

@@ -107,6 +107,7 @@ class MypageController extends Controller
     public function showMyRecipe()
     {
 
+        // ユーザーが投稿したレシピを取得
         $myrecipes = Auth::user()->recipes()->withCount('likes')->withCount('favorites')->orderBy('created_at', 'desc')->paginate(4);
 
         return view('user/myrecipe')->with(compact('myrecipes'));
@@ -117,6 +118,7 @@ class MypageController extends Controller
     public function showMyBookmark()
     {
 
+        // ユーザーがブックマークしたレシピを取得
         $mybookmarks = Auth::user()->bookmark_articles()->withCount('likes')->withCount('favorites')->orderBy('created_at', 'desc')->paginate(4);
 
         return view('user/mybookmark')->with(compact('mybookmarks'));
