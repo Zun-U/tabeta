@@ -35,11 +35,7 @@ class ArticlesController extends Controller
 
             $recipes = $query->paginate(5);
         }
-
-
-        // $tt = Recipe::with('users')->get();
-
-        // dd($tt);
+        
 
         return view(
             'recipes/articles',

@@ -2,6 +2,7 @@
 
 @section('content')
 
+<div class="mt-5"></div>
 
 @foreach($myrecipes->sortByDesc('created_at') as $myrecipe)
 <div class="card shadow rounded-3 article-main" style="width: 30rem;">
@@ -18,6 +19,8 @@
     <div class="card-text">{{ $myrecipe->howmany }}人分</div>
     <div class="card-text">調理時間：{{ $myrecipe->cooking_time }}分</div>
     <div class="card-text">対象年齢：{{ $myrecipe->ages }}</div>
+
+    <div class="card-text">by<b class="name-font">{{ $myrecipe->users->name }}</b></div>
 
 
 
