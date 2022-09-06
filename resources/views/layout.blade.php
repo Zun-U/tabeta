@@ -33,6 +33,9 @@
                     <ul class="navbar-nav ms-auto">
                         @if(Auth::check())
                         <li class="nav-item">
+                            <a class="nav-link" href="/">レシピ一覧</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('mypage.show', Auth::user()->id) }}">マイページ</a>
                         </li>
                         <li class="nav-item">
