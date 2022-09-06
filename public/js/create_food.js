@@ -129,10 +129,6 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
   let inputHowtoAll = document.getElementById('clone-procedure').querySelectorAll('row');
 
 
-
-
-
-
   // 食材記入欄2つの空欄チェック
   inputCheckAll.forEach(function (parent) {
     var flg = 0;
@@ -152,6 +148,7 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
     });
   });
 
+  
   // 作り方欄の空白空欄チェック
   inputHowtoAll.forEach(function (howto) {
     flag = 0;
