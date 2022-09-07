@@ -13,14 +13,6 @@ $(function () {
     //アップロードファイルを取得
     const file = $(this).prop('files')[0];
 
-    // 画像以外は処理を停止
-    // if (!file.type.match('image.*')) {
-    //   // クリア
-    //   $(this).val('');
-    //   $('.imgfile').html('');
-    //   return;
-    // }
-
     // 画像の表示
     const reader = new FileReader();
 
@@ -48,26 +40,19 @@ $(function () {
 
     console.log("image is changed");
 
-
-
-
-
-
     const file = $(this).prop('files')[0];
 
     // 選択している要素の兄弟要素を指定(その要素だけを選択)
     const bro = $(this).prev();
 
     console.log(file);
-    // console.log(bro.children());
-    // return;
 
     const reader = new FileReader();
 
     reader.onload = function () {
 
 
-      const img_src = $('<img>').attr('src', reader.result).addClass("img-fluid rounded-3 shadow w-75");
+      const img_src = $('<img>').attr('src', reader.result).addClass("img-fluid rounded-3 shadow");
 
 
 

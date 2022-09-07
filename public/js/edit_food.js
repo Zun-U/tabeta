@@ -52,6 +52,26 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 
 
+  // フォームの空欄バリデーション
+  // inputCheckAll.forEach(function (parent) {
+  //   var flg = 0;
+  //   parent.querySelectorAll('.col-3 input').forEach(function (element) {
+  //     if (element.classList.contains('check-food')) {
+  //       if (element.value == '') {
+  //         flg = flg + 1;
+  //       };
+  //     } else if (element.classList.contains('check-amount')) {
+  //       if (element.value == '') {
+  //         flg = flg + 1;
+  //       };
+  //     }
+  //     if (flg == 2) {
+  //       parent.remove();
+  //     }
+  //   });
+  // });
+
+
 
 
 });

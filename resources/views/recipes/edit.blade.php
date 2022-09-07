@@ -105,15 +105,15 @@
                     </div>
                     <input type="text" class="form-control check_text" name="content[text][]" id="contents" value="{{ $content->content }}">
                 </div>
-                <div class="col-1 mb-4 pb-5">
+                <div class="col-2 mb-4 pb-5">
                     <label class="howto">
-                        <div class="howto-put">
-                            <img id="img_preview" class="img-fluid rounded-3 shadow w-50" src="{{ $content->recipe_image }}">
+                        <div class="howto-put image-hover">
+                            <img id="img_preview" class="img-fluid rounded-3 shadow" src="{{ $content->recipe_image }}">
                         </div>
                         <input type="file" name="upload_image[cooking_image][]" class="howto-image invisible" value="{{ $content->recipe_image }}">
                     </label>
                 </div>
-                <div class="col-1 offset-md-2">
+                <div class="col-1">
                     <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary count-content invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
                 </div>
             </div>
