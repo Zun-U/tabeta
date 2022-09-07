@@ -83,10 +83,6 @@ document.querySelector('#add-procedure').addEventListener('click', function () {
   let procedureImage = cloneForm.querySelector('img');
   console.log(procedureImage);
   procedureImage.src = "/images/noimage.png";
-  procedureImage.classList.remove('w-75');
-  procedureImage.classList.add('w-50');
-
-
 
 
   let cloneProcedure = document.getElementById('clone-procedure')

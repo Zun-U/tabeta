@@ -115,15 +115,15 @@
                     <div class="border-bottom border-secondary pt-1">
                     </div>
                 </div>
-                <div class="col-3 mb-4 pb-5" >
+                <div class="col-2 mb-4 pb-5">
                     <label class="howto">
                         <div class="howto-put image-hover">
-                            <img id="img_preview" class="img-fluid rounded-3 shadow w-50" src="{{ '/images/noimage.png' }}">
+                            <img id="img_preview" class="img-fluid rounded-3 shadow" src="{{ '/images/noimage.png' }}">
                         </div>
                         <input type="file" name="upload_image[cooking_image][]" class="howto-image" style="display:none" accept="image/*">
                     </label>
                 </div>
-                <div class="col-1 offset-md-2">
+                <div class="col-1">
                     <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
                 </div>
             </div>
