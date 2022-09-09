@@ -22,9 +22,6 @@ class EditController extends Controller
 
         $recipe_edit = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
 
-        // dd($recipe_edit);
-        // exit;
-
         // 直前のページのレシピ情報を渡す
         return view('recipes.edit', compact('recipe_edit'));
     }
@@ -37,6 +34,7 @@ class EditController extends Controller
         // TOPレシピ画像ファイルの取得
         $recipe_image = $request->file('product_image');
 
+
         // 画像ファイルがあれば
         if ($recipe_image) {
             $image_path = Storage::disk("public")->putFile('profile', $recipe_image);
@@ -47,6 +45,9 @@ class EditController extends Controller
         else {
             $image_path = null;
         }
+
+        // dd($imagePath);
+        // exit;
 
         // recipesテーブルに各値を登録
         $recipe->title = $request->title;
@@ -63,7 +64,7 @@ class EditController extends Controller
         $foodstuff->where('recipe_id', $recipe->id)->delete();
 
 
-        // foodstuffsテーブルに登録
+        // 新たに、foodstuffsテーブルに登録
         // 2つの異なるname属性に入力されたフォームの値それぞれを全取得
         $ingredients = $request->input('foodstuff');
 
@@ -71,12 +72,19 @@ class EditController extends Controller
         foreach ($ingredients['food'] as $key => $value) {
             $foodstuff = new Foodstuff();
 
-            // $foodstuff->food->delete();
             $foodstuff->food = $ingredients['food'][$key];
 
-            // $foodstuff->amount->delete();
             $foodstuff->amount = $ingredients['amount'][$key];
             $recipe->foodstuffs()->save($foodstuff);
+
+
+            // Foodstuff::updateOrCreate(
+            //     ['recipe_id' => $recipe->id],
+            //     [
+            //         'food' => $ingredients['food'][$key],
+            //         'amount' => $ingredients['amount'][$key]
+            //     ]
+            // );
         }
 
 
@@ -84,10 +92,14 @@ class EditController extends Controller
         $content = new Content();
         $content->where('recipe_id', $recipe->id)->delete();
 
-        // contentsテーブルに登録
+        // 新たに、contentsテーブルに登録
         // テキスト入力と画像投稿欄を別々に取得
         $explanations = $request->input('content');
         $upload_image = $request->file('upload_image');
+
+        $upload_image_path = $request->input('upload_image_path');
+        // dd($upload_image_path);
+        // exit;
 
 
         // 各入力欄の共通項である「key」を取得（連番を取得）
@@ -100,14 +112,25 @@ class EditController extends Controller
                 $uploard_path = Storage::disk("public")->putFile('profile', $upload_image['cooking_image'][$key]);
                 $uploadPath = "/storage/" . $uploard_path;
                 $content->recipe_image = $uploadPath;
-            } else {
-                // ファイルがなければNULLを返す
-                $uploard_path = NULL;
+            } 
+        else {
+                // ファイルがなければそのままの画像パスを返す
+                // dd($upload_image_path);
+                
+                $content->recipe_image = $upload_image_path['image_path'][$key];
+ 
             }
-
+            // exit;
 
             $content->content = $explanations['text'][$key];
             $recipe->contents()->save($content);
+            // Content::updateOrCreate(
+            //     ['recipe_id' => $recipe->id],
+            //     [
+            //         'content' => $explanations['text'][$key],
+            //         'recipe_image' => $uploadPath,
+            //     ]
+            // );
         }
 
 
@@ -135,7 +158,7 @@ class EditController extends Controller
     // レシピ削除
     public function destroyRecipe(Recipe $recipe)
     {
-      
+
 
 
 

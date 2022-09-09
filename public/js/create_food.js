@@ -84,7 +84,6 @@ document.querySelector('#add-procedure').addEventListener('click', function () {
   console.log(procedureImage);
   procedureImage.src = "/images/noimage.png";
 
-
   let cloneProcedure = document.getElementById('clone-procedure')
   cloneProcedure.appendChild(cloneForm);
 
@@ -160,7 +159,10 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
           flag = flag + 1;
         };
       } else if (element.classList.contains('howto-image')) {
-        if (element.value.length == 0) {
+
+        console.log(element.classList.contains('howto-image'));
+        return;
+        if (!File.element.value) {
           flag = flag + 1;
         }
       }

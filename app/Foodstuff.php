@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foodstuff extends Model
 {
+
+    /**
+     * 複数代入可能な属性
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'food',
+        'amount',
+    ];
+
     // タイムスタンプを無効にする。
     public $timestamps = false;
 

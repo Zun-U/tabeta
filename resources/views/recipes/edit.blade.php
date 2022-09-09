@@ -110,7 +110,9 @@
                         <div class="howto-put image-hover">
                             <img id="img_preview" class="img-fluid rounded-3 shadow" src="{{ $content->recipe_image }}">
                         </div>
-                        <input type="file" name="upload_image[cooking_image][]" class="howto-image invisible" value="{{ $content->recipe_image }}">
+                        <input type="file" name="upload_image[cooking_image][]" class="howto-image" value="{{ $content->recipe_image }}" style="display:none" accept="image/*,text/plain">
+                        <!-- 画像パス取得用inputタグ（画像に変更がない場合に使用） -->
+                        <input type="text" name="upload_image_path[image_path][]" class="howto-image" value="{{ $content->recipe_image }}" style="display:none">
                     </label>
                 </div>
                 <div class="col-1">
