@@ -92,10 +92,7 @@ class RecipeController extends Controller
                 $uploard_path = Storage::disk("public")->putFile('profile', $upload_image['cooking_image'][$key]);
                 $uploadPath = "/storage/" . $uploard_path;
                 $content->recipe_image = $uploadPath;
-            } else {
-                // ファイルがなければNULLを返す
-                $uploard_path = NULL;
-            }
+            } 
 
 
             $content->content = $explanations['text'][$key];
