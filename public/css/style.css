@@ -12,6 +12,8 @@ body {
 
 a {
   text-decoration: none;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .titlelogo {

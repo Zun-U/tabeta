@@ -9,9 +9,7 @@ window.addEventListener('DOMContentLoaded', function () {
   let foodCount = document.querySelectorAll('.count-foodstuff');
   let contentCount = document.querySelectorAll('.count-content');
 
-  console.log(foodCount);
-  console.log(contentCount);
-
+  // 最初の要素はカウントしない
   let flgFood = 0;
   let flgContent = 0;
 
@@ -25,7 +23,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     else {
       console.log(flgFood);
-      count.className = "btn btn-outline-primary count-content"
+      count.className = "btn btn-outline-primary count-content";
       flgFood = flgFood + 1;
     }
 
@@ -43,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     else {
       console.log(flgContent);
-      count.className = "btn btn-outline-primary count-content"
+      count.className = "btn btn-outline-primary count-content";
       flgContent = flgContent + 1;
     }
 
@@ -52,24 +50,68 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  // フォームの空欄バリデーション
-  // inputCheckAll.forEach(function (parent) {
-  //   var flg = 0;
-  //   parent.querySelectorAll('.col-3 input').forEach(function (element) {
-  //     if (element.classList.contains('check-food')) {
-  //       if (element.value == '') {
-  //         flg = flg + 1;
-  //       };
-  //     } else if (element.classList.contains('check-amount')) {
-  //       if (element.value == '') {
-  //         flg = flg + 1;
-  //       };
-  //     }
-  //     if (flg == 2) {
-  //       parent.remove();
-  //     }
-  //   });
-  // });
+
+
+  // 未入力欄なら要素削除
+  document.getElementById('create-recipe').addEventListener("click", function (event) {
+
+    // 現在のフォーム欄の「材料・分量」入力欄の取得(一個下の祖先要素を指定)
+    let inputCheckAll = document.getElementById('current-foodstuff').querySelectorAll('.row');
+
+    // 作り方記入欄の取得
+    let inputHowtoAll = document.getElementById('current-content').querySelectorAll('.row');
+
+
+
+    // 食材記入欄2つの空欄チェック
+    inputCheckAll.forEach(function (parent) {
+      var flg = 0;
+        parent.querySelectorAll('.col-3 input').forEach(function (element) {
+          if (element.classList.contains('check-food')) {
+            if (element.value == '') {
+              flg = flg + 1;
+            };
+          } else if (element.classList.contains('check-amount')) {
+            if (element.value == '') {
+              flg = flg + 1;
+            };
+          }
+          if (flg == 2) {
+            parent.remove();
+          }
+        });
+    });
+
+
+
+    // 作り方欄の空白空欄チェック
+    inputHowtoAll.forEach(function (howto) {
+
+      flag = 0;
+
+      howto.querySelectorAll('.howto input').forEach(function (element) {
+
+        if (element.classList.contains('recipe-input')) {
+          if (element.value == '') {
+            flag = flag + 1;
+          };
+        } else if (element.classList.contains('howto-image')) {
+          // console.log('値が取れていない');
+          if (element.files.length === 0) {
+            flag = flag + 1;
+          }
+        }
+        if (flag == 2) {
+          howto.remove();
+        }
+      });
+
+    });
+
+    // event.preventDefault();
+
+
+  });
 
 
 

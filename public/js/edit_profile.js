@@ -12,9 +12,6 @@ $(function () {
     // アップロードするデータの取得
     let fileData = $(this).prop('files')[0];
 
-    // console.log(fileData);
-    // return;
-
     // フォームデータの作成
     let editProfile = new FormData();
 
