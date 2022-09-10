@@ -115,7 +115,7 @@
                     <div class="border-bottom border-secondary pt-1">
                     </div>
                 </div>
-                <div class="col-2 mb-4 pb-5">
+                <div class="col-2 mb-4 pb-5 howto">
                     <label class="howto">
                         <div class="howto-put image-hover">
                             <img id="img_preview" class="img-fluid rounded-3 shadow" src="{{ '/images/noimage.png' }}">

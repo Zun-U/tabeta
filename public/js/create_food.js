@@ -71,8 +71,6 @@ document.querySelector('#add-procedure').addEventListener('click', function () {
 
   cloneForm.id = "clone-procedure" + countProcedure;
 
-  // cloneForm.dataset.insertDB = countProcedure;
-
   let procedureContent = cloneForm.querySelectorAll('input');
   procedureContent.forEach((text) => {
     text.value = "";
@@ -115,15 +113,14 @@ function removeProcedure(button) {
 // 未入力欄なら要素削除(UX向上) ⇒　両方nullableにして、両方未入力なら投稿禁止にする。
 document.getElementById('create-recipe').addEventListener("click", function (event) {
 
-
-
   // 追加フォーム欄の「材料・分量」入力欄の取得(一個下の祖先要素を指定)
   let inputCheckAll = document.getElementById('clone-area').querySelectorAll('.row');
 
   // 作り方記入欄の取得
-  let inputHowtoAll = document.getElementById('clone-procedure').querySelectorAll('row');
+  let inputHowtoAll = document.getElementById('clone-procedure').querySelectorAll('.row');
 
 
+  
   // 食材記入欄2つの空欄チェック
   inputCheckAll.forEach(function (parent) {
     var flg = 0;
@@ -143,26 +140,22 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
     });
   });
 
-  
+
+
   // 作り方欄の空白空欄チェック
   inputHowtoAll.forEach(function (howto) {
+    
     flag = 0;
 
     howto.querySelectorAll('.howto input').forEach(function (element) {
-
-      // console.log(howto.querySelectorAll('.howto input'));
-      // event.preventDefault();
-      // return;
 
       if (element.classList.contains('recipe-input')) {
         if (element.value == '') {
           flag = flag + 1;
         };
       } else if (element.classList.contains('howto-image')) {
-
-        console.log(element.classList.contains('howto-image'));
-        return;
-        if (!File.element.value) {
+        // console.log('値が取れていない');
+        if (element.files.length === 0) {
           flag = flag + 1;
         }
       }
@@ -173,6 +166,7 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
 
   });
 
+  // event.preventDefault();
 
 
 });

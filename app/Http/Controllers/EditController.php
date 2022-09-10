@@ -41,13 +41,10 @@ class EditController extends Controller
             $imagePath = "/storage/" . $image_path;
             $recipe->product_image = $imagePath;
         }
-        // 画像ファイルがなければ
-        else {
-            $image_path = null;
-        }
-
-        // dd($imagePath);
-        // exit;
+        // // 画像ファイルがなければ
+        // else {
+        //     $image_path = null;
+        // }
 
         // recipesテーブルに各値を登録
         $recipe->title = $request->title;
@@ -76,15 +73,6 @@ class EditController extends Controller
 
             $foodstuff->amount = $ingredients['amount'][$key];
             $recipe->foodstuffs()->save($foodstuff);
-
-
-            // Foodstuff::updateOrCreate(
-            //     ['recipe_id' => $recipe->id],
-            //     [
-            //         'food' => $ingredients['food'][$key],
-            //         'amount' => $ingredients['amount'][$key]
-            //     ]
-            // );
         }
 
 
@@ -97,9 +85,9 @@ class EditController extends Controller
         $explanations = $request->input('content');
         $upload_image = $request->file('upload_image');
 
+        // すでに登録済みの画像パスを取得
         $upload_image_path = $request->input('upload_image_path');
-        // dd($upload_image_path);
-        // exit;
+
 
 
         // 各入力欄の共通項である「key」を取得（連番を取得）
@@ -115,22 +103,12 @@ class EditController extends Controller
             } 
         else {
                 // ファイルがなければそのままの画像パスを返す
-                // dd($upload_image_path);
-                
                 $content->recipe_image = $upload_image_path['image_path'][$key];
  
             }
-            // exit;
 
             $content->content = $explanations['text'][$key];
             $recipe->contents()->save($content);
-            // Content::updateOrCreate(
-            //     ['recipe_id' => $recipe->id],
-            //     [
-            //         'content' => $explanations['text'][$key],
-            //         'recipe_image' => $uploadPath,
-            //     ]
-            // );
         }
 
 
@@ -145,22 +123,21 @@ class EditController extends Controller
     }
 
 
-    public function showPreview(Recipe $recipe)
-    {
+    // public function showPreview(Recipe $recipe)
+    // {
 
-        $recipes = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
+    //     $recipes = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
 
-        return view('recipes/preview', compact('recipes'));
-    }
+    //     session()->flash('success_message', 'レシピを編集しました！');
+
+    //     return view('recipes/preview', compact('recipes'));
+    // }
 
 
 
     // レシピ削除
     public function destroyRecipe(Recipe $recipe)
     {
-
-
-
 
         $foodstuff = new Foodstuff();
         $foodstuff->where('recipe_id', $recipe->id)->delete();
@@ -175,8 +152,6 @@ class EditController extends Controller
         $like->where('recipe_id', $recipe->id)->delete();
 
         $recipe->where('id', $recipe->id)->delete();
-
-
 
         return redirect(route('articles.index'));
     }
