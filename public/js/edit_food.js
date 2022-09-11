@@ -66,20 +66,20 @@ window.addEventListener('DOMContentLoaded', function () {
     // 食材記入欄2つの空欄チェック
     inputCheckAll.forEach(function (parent) {
       var flg = 0;
-        parent.querySelectorAll('.col-3 input').forEach(function (element) {
-          if (element.classList.contains('check-food')) {
-            if (element.value == '') {
-              flg = flg + 1;
-            };
-          } else if (element.classList.contains('check-amount')) {
-            if (element.value == '') {
-              flg = flg + 1;
-            };
-          }
-          if (flg == 2) {
-            parent.remove();
-          }
-        });
+      parent.querySelectorAll('.col-3 input').forEach(function (element) {
+        if (element.classList.contains('check-food')) {
+          if (element.value == '') {
+            flg = flg + 1;
+          };
+        } else if (element.classList.contains('check-amount')) {
+          if (element.value == '') {
+            flg = flg + 1;
+          };
+        }
+        if (flg == 2) {
+          parent.remove();
+        }
+      });
     });
 
 
@@ -100,15 +100,17 @@ window.addEventListener('DOMContentLoaded', function () {
           if (element.files.length === 0) {
             flag = flag + 1;
           }
-        }
-        if (flag == 2) {
+        } else if (element.classList.contains('howto-image-text')) {
+          if (element.value == '') {
+            flag = flag + 1;
+          }
+        } 
+        if (flag >= 2) {
           howto.remove();
         }
       });
 
     });
-
-    // event.preventDefault();
 
 
   });

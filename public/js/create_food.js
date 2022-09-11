@@ -76,11 +76,10 @@ document.querySelector('#add-procedure').addEventListener('click', function () {
     text.value = "";
   });
 
-
   // 追加したイメージ欄の画像を「noimage」に差し替え。
   let procedureImage = cloneForm.querySelector('img');
-  console.log(procedureImage);
   procedureImage.src = "/images/noimage.png";
+
 
   let cloneProcedure = document.getElementById('clone-procedure')
   cloneProcedure.appendChild(cloneForm);
@@ -150,11 +149,13 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
     howto.querySelectorAll('.howto input').forEach(function (element) {
 
       if (element.classList.contains('recipe-input')) {
+        console.log(element.value);
         if (element.value == '') {
           flag = flag + 1;
         };
       } else if (element.classList.contains('howto-image')) {
         // console.log('値が取れていない');
+        // console.log(element.files.length);
         if (element.files.length === 0) {
           flag = flag + 1;
         }
@@ -166,8 +167,7 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
 
   });
 
-  // event.preventDefault();
-
+// event.preventDefault();
 
 });
 
@@ -186,9 +186,5 @@ function renumber() {
     // インデックス番号を「+1」する。
     $(this).next('input').attr('name', 'howto-number[' + (idx + 1) + ']');
   });
-
-
-
-
 
 }
