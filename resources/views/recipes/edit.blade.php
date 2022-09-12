@@ -145,7 +145,7 @@
 
 <!-- 削除ボタン -->
 <div class="container">
-    <div class="mt-5">
+    <div class="row mt-5">
         <form onsubmit="return confirm('このレシピを削除してもよろしいでしょうか？')" action="{{ route('recipe.destroy', $recipe_edit) }}" method="post">
             @csrf
             <button type="submit" class="btn btn-outline-danger">レシピの削除</button>
