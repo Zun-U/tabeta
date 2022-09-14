@@ -11,13 +11,16 @@ use App\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+// バリデーション
+use App\Http\Requests\EditRecipe;
+
 use Illuminate\Http\Request;
 
 class EditController extends Controller
 {
 
     // レシピ編集画面へ遷移
-    public function showEditForm(Recipe $recipe)
+    public function showEditForm(EditRecipe $recipe)
     {
 
         $recipe_edit = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
