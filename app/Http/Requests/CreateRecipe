@@ -27,6 +27,28 @@ class CreateRecipe extends FormRequest
             'title' => 'required|max:225',
             'subtitle' => 'required|max:225',
             'howmany' => 'required|max:2|integer',
+            'foodstuff[food][]' => 'required|max:225',
+            'foodstuff[amount][]' => 'required|max:225',
+            'content[text][]' => 'required|max:225',
+
+            // 画像バリデーション
+            'product_image' => 'required|image|mimes:jpeg,png,jpg',
+            'upload_image[cooking_image][]' => 'required|image|mimes:jpeg,png,jpg',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'title' => 'レシピ名',
+            'subtitle' => 'サブタイトル',
+            'howmany' => '人数',
+            'foodstuff[food][]' => '食材',
+            'foodstuff[amount][]' => '量',
+            'content[text][]' => '作り方',
+
+            'product_image' => 'レシピ画像',
+            'upload_image[cooking_image][]' => '手順画像',
         ];
     }
 }

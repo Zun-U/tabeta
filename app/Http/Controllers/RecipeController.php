@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Auth;
 
+// バリデーション
+use App\Http\Requests\CreateRecipe;
+
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -27,7 +30,7 @@ class RecipeController extends Controller
 
 
     // レシピの登録
-    public function createRecipe(Request $request)
+    public function createRecipe(CreateRecipe $request)
     {
         $recipe = new Recipe();
 
