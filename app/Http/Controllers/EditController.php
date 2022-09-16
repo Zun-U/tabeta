@@ -20,7 +20,7 @@ class EditController extends Controller
 {
 
     // レシピ編集画面へ遷移
-    public function showEditForm(EditRecipe $recipe)
+    public function showEditForm(Recipe $recipe)
     {
 
         $recipe_edit = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
@@ -31,7 +31,7 @@ class EditController extends Controller
 
 
     // レシピの編集
-    public function editRecipe(Request $request, Recipe $recipe)
+    public function editRecipe(EditRecipe $request, Recipe $recipe)
     {
 
         // TOPレシピ画像ファイルの取得
