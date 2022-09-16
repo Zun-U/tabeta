@@ -13,7 +13,7 @@ class EditRecipe extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -36,7 +36,7 @@ class EditRecipe extends FormRequest
             'upload_image[cooking_image][]' => 'required|image|mimes:jpeg,png,jpg',
         ];
     }
-    
+
     public function attributes()
     {
         return [

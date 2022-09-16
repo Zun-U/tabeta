@@ -2,6 +2,16 @@
 
 @section('content')
 
+<!-- バリデーションエラーメッセージ -->
+@if($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach($errors->all() as $message)
+          <li>{{ $message }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
 
 
 <form action="{{ route('recipes.create')}}" method="POST" id="createrecipe" enctype="multipart/form-data">
@@ -111,7 +121,7 @@
                     <div class="align-self-start">
                         <span class="howto-number[0] num-increment">1</span>
                     </div>
-                    <input type="text" class="form-control recipe-input check_text border-0" name="content[text][]" id="contents" value="{{ old('content[text][]') }}">
+                    <input type="text" class="form-control recipe-input check_text border-0" name="content[text][]" placeholder="クリックして入力" id="contents" value="{{ old('content[text][]') }}">
                     <div class="border-bottom border-secondary pt-1">
                     </div>
                 </div>
@@ -139,7 +149,7 @@
 
             <!-- レシピ送信 -->
             <div class="text-right mt-5">
-                <button type="submit" id="create-recipe" class="btn btn-primary">レシピの投稿</button>
+                <button type="submit" id="create-recipe" class="btn btn-primary mb-5">レシピの投稿</button>
             </div>
 
         </div>
