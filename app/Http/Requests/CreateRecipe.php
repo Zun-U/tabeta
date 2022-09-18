@@ -27,13 +27,13 @@ class CreateRecipe extends FormRequest
             'title' => 'required|max:100',
             'subtitle' => 'required|max:100',
             'howmany' => 'required|max:2|integer',
-            'foodstuff[food][]' => 'required_without_all|max:100',
-            'foodstuff[amount][]' => 'required_without_all|max:100',
-            // 'content[text][0]' => 'required|max:100',
+            'foodstuff.food.*' => 'nullable|required_without_all:foodstuff.amount.*|max:100',
+            'foodstuff.amount.*' => 'nullable|required_without_all:foodstuff.food.*|max:100',
+            'content.text.*' => 'required_without_all|max:100',
 
             // 画像バリデーション
             'product_image' => 'required|image|mimes:jpeg,png,jpg',
-            // 'upload_image[cooking_image][0]' => 'required|image|mimes:jpeg,png,jpg',
+            'upload_image.cooking_image.*' => 'required|image|mimes:jpeg,png,jpg',
         ];
     }
 
@@ -43,12 +43,12 @@ class CreateRecipe extends FormRequest
             'title' => 'レシピ名',
             'subtitle' => 'サブタイトル',
             'howmany' => '人数',
-            // 'foodstuff[food][0]' => '材料・調味料',
-            // 'foodstuff[amount][0]' => '分量',
-            // 'content[text][0]' => '作り方',
+            'foodstuff.food.*' => '材料・調味料',
+            'foodstuff.amount.*' => '分量',
+            'content.text.*' => '作り方',
 
             'product_image' => 'レシピ画像',
-            // 'upload_image[cooking_image][0]' => '手順画像',
+            'upload_image.cooking_image.*' => '手順画像',
         ];
     }
 }

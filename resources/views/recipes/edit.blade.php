@@ -2,6 +2,17 @@
 
 @section('content')
 
+<!-- バリデーションエラーメッセージ -->
+@if($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach($errors->all() as $message)
+          <li>{{ $message }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+
 <form action="{{ route('recipe.update', $recipe_edit)}}" method="POST" id="createrecipe" enctype="multipart/form-data">
     @csrf
     <div class="container">
