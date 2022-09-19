@@ -6,7 +6,8 @@
 @if($errors->any())
     <div class="alert alert-danger">
       <ul>
-        @foreach($errors->all() as $message)
+        <!-- array_unique 重複メッセージを避ける -->
+        @foreach(array_unique($errors->all()) as $message)
           <li>{{ $message }}</li>
         @endforeach
       </ul>

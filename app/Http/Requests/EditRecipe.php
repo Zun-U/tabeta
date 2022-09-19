@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use Illuminate\Http\Request;
+
 class EditRecipe extends FormRequest
 {
     /**
@@ -21,21 +23,44 @@ class EditRecipe extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
+        // 食材・調味料フォーム欄バリデーション（最低一つ入力）
+        $validation_food = 'required';
+        $required_food = [];
+        foreach ($request->foodstuff['food'] as $key => $food) {
+            empty($food) ? $required_food[] = 'required' : $required_food[] = 'ok';
+        }
+        if (in_array("ok", $required_food)) {
+            $validation_food = 'nullable';
+        }
+
+
+        // 分量フォーム欄バリデーション（最低一つ入力）
+        $validation_amount = 'required';
+        $required_amount = [];
+        foreach ($request->foodstuff['amount'] as $key => $amount) {
+            empty($amount) ? $required_amount[] = 'required' : $required_amount[] = 'ok';
+        }
+        if (in_array("ok", $required_amount)) {
+            $validation_amount = 'nullable';
+        }
+
+
         return [
             'title' => 'required|max:100',
             'subtitle' => 'required|max:100',
             'howmany' => 'required|max:2|integer',
 
-            // 最低一つは入力必須
-            // 'foodstuff.food.*' => 'required_without_all|max:100',
-            // 'foodstuff.amount.*' => 'required_without_all|max:100',
-            // 'content.text.*' => 'required_without_all:content.text.*|max:100',
+            // 動的フォーム入力欄のバリデーション
+            'foodstuff.food.*' => $validation_food,
+            'foodstuff.amount.*' =>  $validation_amount,
+            'content.text.*' => 'required_without_all|max:100',
 
             // 画像バリデーション
             // 'product_image' => 'required|image|mimes:jpeg,png,jpg',
-            // 'upload_image.cooking_image.*' => 'required|image|mimes:jpeg,png,jpg',
+            'upload_image.cooking_image.*' => 'required|image|mimes:jpeg,png,jpg',
+            // 画像パスバリデーション
         ];
     }
 
