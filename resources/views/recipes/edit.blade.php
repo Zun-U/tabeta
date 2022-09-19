@@ -6,7 +6,7 @@
 @if($errors->any())
     <div class="alert alert-danger">
       <ul>
-        @foreach($errors->all() as $message)
+        @foreach(array_unique($errors->all()) as $message)
           <li>{{ $message }}</li>
         @endforeach
       </ul>
