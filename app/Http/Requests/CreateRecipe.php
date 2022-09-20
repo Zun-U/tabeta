@@ -30,6 +30,10 @@ class CreateRecipe extends FormRequest
     public function rules(Request $request)
     {
 
+        // dd($request->product_image);
+        // dd($request->upload_image);
+        // dd($request->foodstuff['food']);
+        // dd($request->file('upload_image'));
         // dd($request->upload_image['cooking_image']);
 
         // 食材・調味料フォーム欄バリデーション（最低一つ入力）
@@ -66,7 +70,10 @@ class CreateRecipe extends FormRequest
 
             // 画像バリデーション
             'product_image' => 'required|image|mimes:jpeg,png,jpg',
-            'upload_image.*' => 'required|image|mimes:jpeg,png,jpg',
+            // 'upload_image.*' => 'required|image|mimes:jpeg,png,jpg',
+
+            'upload_image' => 'nullable|array',
+            'upload_image.cooking_image.*' => 'required|image|mimes:jpeg,png,jpg',
         ];
     }
 
@@ -84,7 +91,7 @@ class CreateRecipe extends FormRequest
             'content.text.*' => '作り方',
 
             'product_image' => 'レシピ画像',
-            'upload_image.cooking_image.*' => '手順画像',
+            'upload_image' => '手順画像',
 
 
             'foodstuff.food.*.required' => "食材・調味料を一つ以上記入してください。",
