@@ -82,7 +82,7 @@ return [
         'string' => ':attribute は :max 文字以内で入力してください。',
         'array' => 'The :attribute may not have more than :max items.',
     ],
-    'mimes' => 'The :attribute の拡張子は :values を選択してください。',
+    'mimes' => ':attribute は指定されたファイル画像ではありません。 :values を選択してください。',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
         'numeric' => 'The :attribute must be at least :min.',
@@ -102,7 +102,7 @@ return [
     'required_with' => 'The :attribute field is required when :values is present.',
     'required_with_all' => 'The :attribute field is required when :values are present.',
     'required_without' => 'The :attribute field is required when :values is not present.',
-    'required_without_all' => ':attribute が正しくありません。',
+    'required_without_all' => ':attribute を入力してください。',
     'same' => 'The :attribute and :other must match.',
     'size' => [
         'numeric' => 'The :attribute must be :size.',
