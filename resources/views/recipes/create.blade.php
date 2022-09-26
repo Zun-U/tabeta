@@ -122,7 +122,7 @@
                     <div class="align-self-start">
                         <span class="howto-number[0] num-increment">1</span>
                     </div>
-                    <input type="text" class="form-control recipe-input check_text border-0" name="content[text][]" placeholder="クリックして入力" id="contents" value="{{ old('content[text][]') }}">
+                    <input type="text" class="form-control recipe-input check_text border-0" name="content[]" placeholder="クリックして入力" id="contents" value="{{ old('content[text][]') }}">
                     <div class="border-bottom border-secondary pt-1">
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                         <div class="howto-put image-hover">
                             <img id="img_preview" class="img-fluid rounded-3 shadow" src="{{ '/images/noimage.png' }}">
                         </div>
-                        <input type="file" name="upload_image[cooking_image][]" class="howto-image" style="display:none" accept="image/*">
+                        <input type="file" name="upload_image[]" class="howto-image" style="display:none" accept="image/*">
                     </label>
                 </div>
                 <div class="col-1">

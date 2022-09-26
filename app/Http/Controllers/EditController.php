@@ -94,23 +94,23 @@ class EditController extends Controller
 
 
         // 各入力欄の共通項である「key」を取得（連番を取得）
-        foreach ($explanations['text'] as $key => $value) {
+        foreach ($explanations as $key => $value) {
 
             $content = new Content();
 
             // 画像ファイルの有無判定（keyに紐づいた入力値を判定）
-            if (isset($upload_image['cooking_image'][$key])) {
-                $uploard_path = Storage::disk("public")->putFile('profile', $upload_image['cooking_image'][$key]);
+            if (isset($upload_image[$key])) {
+                $uploard_path = Storage::disk("public")->putFile('profile', $upload_image[$key]);
                 $uploadPath = "/storage/" . $uploard_path;
                 $content->recipe_image = $uploadPath;
             } 
         else {
                 // ファイルがなければそのままの画像パスを返す
-                $content->recipe_image = $upload_image_path['image_path'][$key];
+                $content->recipe_image = $upload_image_path[$key];
  
             }
 
-            $content->content = $explanations['text'][$key];
+            $content->content = $explanations[$key];
             $recipe->contents()->save($content);
         }
 

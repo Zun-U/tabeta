@@ -88,7 +88,9 @@ return [
         'numeric' => 'The :attribute must be at least :min.',
         'file' => 'The :attribute must be at least :min kilobytes.',
         'string' => ':attribute は:min文字以上で入力してください。',
-        'array' => 'The :attribute must have at least :min items.',
+        // 配列の中のアイテム数のエラーメッセージ
+        'array' => ':attributeを選択してください。',
+        // 'array' => 'The :attribute must have at least :min items.',
     ],
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute format is invalid.',

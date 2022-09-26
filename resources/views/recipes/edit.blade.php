@@ -118,16 +118,16 @@
                         <div class="align-self-start">
                             <span class="howto-number[0] num-increment">{{ $key+1 }}</span>
                         </div>
-                        <input type="text" class="form-control check_text recipe-input" name="content[text][]" id="contents" value="{{ $content->content }}">
+                        <input type="text" class="form-control check_text recipe-input" name="content[]" id="contents" value="{{ $content->content }}">
                     </div>
                     <div class="col-2 mb-4 pb-5">
                         <label class="howto">
                             <div class="howto-put image-hover">
                                 <img id="img_preview" class="img-fluid rounded-3 shadow" src="{{ $content->recipe_image }}">
                             </div>
-                            <input type="file" name="upload_image[cooking_image][]" class="howto-image" style="display:none" accept="image/*">
+                            <input type="file" name="upload_image[]" class="howto-image" style="display:none" accept="image/*">
                             <!-- 画像パス取得用inputタグ（画像に変更がない場合に使用） -->
-                            <input type="text" name="upload_image_path[image_path][]" class="howto-image-text" value="{{ $content->recipe_image }}" style="display:none">
+                            <input type="text" name="upload_image_path[]" class="howto-image-text" value="{{ $content->recipe_image }}" style="display:none">
                         </label>
                     </div>
                     <div class="col-1">
