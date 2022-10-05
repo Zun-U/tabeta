@@ -6,9 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 use Illuminate\Http\Request;
 
-// カスタムバリデーションのインスタンス化
-use App\Rules\DynamicFormsRule;
-// DynamicFormseRule
 
 class CreateRecipe extends FormRequest
 {

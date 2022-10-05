@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row pt-5">
 
-            <div class="col-6 mt-4 imagearea">
+            <div class="col-md-6 mt-4 imagearea">
                 <label for="image-upload">
                     <div class="d-flex">
                         <i class="fa-solid fa-camera add-camera pb-1 px-3"></i>
@@ -34,7 +34,7 @@
                     <input type="file" name="product_image" id="image-upload" class="invisible">
                 </label>
             </div>
-            <div class="col-6 mt-5">
+            <div class="col-md-6 mt-5">
                 <div class="col mb-2">
                     <label for="title" class="form-label">レシピ名</label>
 
@@ -86,13 +86,13 @@
 
             <!-- 食材入力部分 -->
             <div class="row mt-2" id="input-area">
-                <div class="col-3">
+                <div class="col-md-3">
                     <!-- name属性に[]を入れて、配列として値を渡す。 -->
                     <input type="text" class="form-control recipe-input border-0 check-food" name="foodstuff[food][]" placeholder="材料・調味料" value="{{ old('foodstuff[food][]') }}">
                     <div class="border-bottom border-secondary pt-1">
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                     <input type="text" class="form-control recipe-input border-0 check-amount" name="foodstuff[amount][]" placeholder="分量" value="{{ old('foodstuff[amount][]') }}">
                     <div class="border-bottom border-secondary pt-1">
                     </div>
@@ -118,7 +118,7 @@
                 <h5>作り方</h5>
             </div>
             <div class="row mt-4 align-items-center d-flex" id="procedure-area">
-                <div class="col-6 me-3 howto">
+                <div class="col-md-6 me-3 howto">
                     <div class="align-self-start">
                         <span class="howto-number[0] num-increment">1</span>
                     </div>
@@ -126,15 +126,15 @@
                     <div class="border-bottom border-secondary pt-1">
                     </div>
                 </div>
-                <div class="col-2 mb-4 pb-5 howto">
+                <div class="col-md-2 mb-md-4 pb-md-5 howto">
                     <label class="howto">
-                        <div class="howto-put image-hover">
+                        <div class="howto-put image-hover rounded-3">
                             <img id="img_preview" class="img-fluid rounded-3 shadow" src="{{ '/images/noimage.png' }}">
                         </div>
                         <input type="file" name="upload_image[]" class="howto-image" style="display:none" accept="image/*">
                     </label>
                 </div>
-                <div class="col-1">
+                <div class="col-md-1">
                     <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
                 </div>
             </div>

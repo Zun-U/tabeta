@@ -47,6 +47,7 @@ class EditRecipe extends FormRequest
         }
 
 
+
         return [
             'title' => 'required|max:100',
             'subtitle' => 'required|max:100',
@@ -58,8 +59,10 @@ class EditRecipe extends FormRequest
             'content.*' => 'required_without_all|max:100',
 
             // 画像バリデーション
-            'upload_image.*' => 'image|mimes:jpeg,png,jpg|min:1',
-            'upload_image' => ['required', 'array', 'min:'. count($this->input('content'))],
+            // 'upload_image.*' => 'image|mimes:jpeg,png,jpg|min:1',
+            // 'upload_image' => ['required', 'array', 'min:'. count($this->input('content'))],
+
+
         ];
     }
 
