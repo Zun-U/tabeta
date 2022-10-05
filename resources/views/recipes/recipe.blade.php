@@ -15,10 +15,10 @@
   @endif
 
   <div class="row gx-5">
-    <div class="col">
+    <div class="col-md">
       <img src="{{ $recipe_detail->product_image }}" class="img-fluid px-2 rounded-3" height="250">
     </div>
-    <div class="col text-area">
+    <div class="col-md text-area">
       <div>
         <h2 class="py-1">{{ $recipe_detail->title }}</h2>
       </div>

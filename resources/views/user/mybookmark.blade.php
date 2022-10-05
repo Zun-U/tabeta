@@ -5,9 +5,9 @@
 <div class="mt-5"></div>
 
 @foreach($mybookmarks->sortByDesc('created_at') as $mybookmark)
-<div class="card shadow rounded-3 article-main" style="width: 30rem;">
+<div class="card shadow rounded-5 article-main">
 
-  <div class="card-img-top"><img src="{{ $mybookmark->product_image }}" width="100%"></div>
+  <div class="card-img-top"><img src="{{ $mybookmark->product_image }}"  class="card-image" width="100%"></div>
   <div class="card-body">
     <div>
       <a href="{{ route('article.detail',$mybookmark) }}" class="card-link stretched-link"></a>

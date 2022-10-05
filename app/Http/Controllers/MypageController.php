@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+// バリデーション
+use App\Http\Requests\EditUser;
+
 class MypageController extends Controller
 {
     public function showUser()
@@ -69,7 +72,7 @@ class MypageController extends Controller
 
 
     // ユーザープロフィールの編集
-    public function editUser(Request $request)
+    public function editUser(EditUser $request)
     {
 
         $user = Auth::user();

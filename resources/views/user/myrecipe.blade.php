@@ -5,9 +5,9 @@
 <div class="mt-5"></div>
 
 @foreach($myrecipes->sortByDesc('created_at') as $myrecipe)
-<div class="card shadow rounded-3 article-main" style="width: 30rem;">
+<div class="card shadow rounded-5 article-main">
 
-  <div class="card-img-top"><img src="{{ $myrecipe->product_image }}" width="100%"></div>
+  <div class="card-img-top"><img src="{{ $myrecipe->product_image }}" class="card-image" width="100%"></div>
   <div class="card-body">
     <div>
       <a href="{{ route('article.detail',$myrecipe) }}" class="card-link stretched-link"></a>

@@ -13,10 +13,10 @@
 
 <div class="container">
   <div class="row gx-5">
-    <div class="col mt-5">
+    <div class="col-md mt-5">
       <img src="{{ $recipes->product_image }}" class="img-fluid px-2">
     </div>
-    <div class="col pt-5 text-area">
+    <div class="col-md pt-5 text-area">
       <div>
         <h2 class="py-1">{{ $recipes->title }}</h2>
       </div>

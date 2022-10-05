@@ -4,7 +4,7 @@
 
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-6">
+    <div class="col-md-6">
       <p class="text-align-center">こどもの「たべない！」を「たべた！」に変える、お料理の工夫を共有するレシピ投稿サイトです。</p>
       <nav class="card">
         <div class="card-header">ログイン</div>

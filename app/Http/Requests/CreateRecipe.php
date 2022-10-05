@@ -6,9 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 use Illuminate\Http\Request;
 
-// カスタムバリデーションのインスタンス化
-use App\Rules\DynamicFormsRule;
-// DynamicFormseRule
 
 class CreateRecipe extends FormRequest
 {
@@ -30,11 +27,13 @@ class CreateRecipe extends FormRequest
     public function rules(Request $request)
     {
 
+        // dd($this->input('upload_image'));
+
         // dd($request->product_image);
         // dd($request->upload_image);
         // dd($request->foodstuff['food']);
         // dd($request->file('upload_image'));
-        // dd($request->upload_image['cooking_image']);
+        // dd($request->upload_image['cooking_image');
 
         // 食材・調味料フォーム欄バリデーション（最低一つ入力）
         $validation_food = 'required';
@@ -62,23 +61,21 @@ class CreateRecipe extends FormRequest
             'title' => 'required|max:100',
             'subtitle' => 'required|max:100',
             'howmany' => 'required|max:10|integer',
+            // 'upload_image.cooking_image.*' => 'required|image|mimes:jpeg,png,jpg',
 
             // 動的フォーム入力欄のバリデーション
             'foodstuff.food.*' => $validation_food,
             'foodstuff.amount.*' =>  $validation_amount,
-            'content.text.*' => 'required_without_all|max:100',
+            'content.*' => 'required|max:100',
 
             // 画像バリデーション
             'product_image' => 'required|image|mimes:jpeg,png,jpg',
-            // 'upload_image.*' => 'required|image|mimes:jpeg,png,jpg',
 
-            'upload_image' => 'nullable|array',
-            'upload_image.cooking_image.*' => 'required|image|mimes:jpeg,png,jpg',
+            'upload_image.*' => 'image|mimes:jpeg,png,jpg|min:1',
+            'upload_image' => ['required', 'array', 'min:'. count($this->input('content'))],
         ];
     }
 
-    // 動的フォーム欄のカスタムバリデーション
-    // public function foodValidation()
 
     public function attributes()
     {
@@ -88,13 +85,10 @@ class CreateRecipe extends FormRequest
             'howmany' => '人数',
             'foodstuff.food.*' => '材料・調味料',
             'foodstuff.amount.*' => '分量',
-            'content.text.*' => '作り方',
+            'content.*' => '作り方',
 
             'product_image' => 'レシピ画像',
             'upload_image' => '手順画像',
-
-
-            'foodstuff.food.*.required' => "食材・調味料を一つ以上記入してください。",
         ];
     }
 }

@@ -4,9 +4,9 @@
 
 
 
-<div class="container mt-4">
+<div class="container mt-5 pt-5">
   <div class="search-box row justify-content-center">
-    <div class="col-6">
+    <div class="col-lg-6">
       <form>
         <div class="input-group">
           <input type="text" class="form-control search-input" placeholder="記事のタイトルを入力" value="{{request('search')}}" name="keyword">
@@ -17,9 +17,9 @@
 </div>
 
 @foreach($recipes->sortByDesc('created_at') as $recipe)
-<div class="card shadow rounded-5 article-main" style="width: 30rem;">
+<div class="card shadow rounded-5 article-main">
 
-  <div class="card-img-top"><img src="{{ $recipe->product_image }}" width="100%"></div>
+  <div class="card-img-top"><img src="{{ $recipe->product_image }}" class="card-image" width="100%"></div>
   <div class="card-body">
     <div>
       <a href="{{ route('article.detail',$recipe) }}" class="card-link stretched-link"></a>

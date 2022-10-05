@@ -47,6 +47,7 @@ class EditRecipe extends FormRequest
         }
 
 
+
         return [
             'title' => 'required|max:100',
             'subtitle' => 'required|max:100',
@@ -55,12 +56,13 @@ class EditRecipe extends FormRequest
             // 動的フォーム入力欄のバリデーション
             'foodstuff.food.*' => $validation_food,
             'foodstuff.amount.*' =>  $validation_amount,
-            'content.text.*' => 'required_without_all|max:100',
+            'content.*' => 'required_without_all|max:100',
 
             // 画像バリデーション
-            // 'product_image' => 'required|image|mimes:jpeg,png,jpg',
-            'upload_image.cooking_image.*' => 'required|image|mimes:jpeg,png,jpg',
-            // 画像パスバリデーション
+            // 'upload_image.*' => 'image|mimes:jpeg,png,jpg|min:1',
+            // 'upload_image' => ['required', 'array', 'min:'. count($this->input('content'))],
+
+
         ];
     }
 
@@ -72,10 +74,10 @@ class EditRecipe extends FormRequest
             'howmany' => '人数',
             'foodstuff.food.*' => '材料・調味料',
             'foodstuff.amount.*' => '分量',
-            'content.text.*' => '作り方',
+            'content.*' => '作り方',
 
             'product_image' => 'レシピ画像',
-            'upload_image.cooking_image.*' => '手順画像',
+            'upload_image' => '手順画像',
         ];
     }
 }

@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row pt-5">
 
-            <div class="col-6 mt-4 imagearea">
+            <div class="col-md-6 mt-4 imagearea">
                 <label for="image-upload">
                     <div class="d-flex">
                         <i class="fa-solid fa-camera add-camera pb-1 px-3"></i>
@@ -32,8 +32,8 @@
                     <input type="file" name="product_image" id="image-upload" class="invisible" value="{{ $recipe_edit->product_image }}">
                 </label>
             </div>
-            <div class="col-6 mt-5">
-                <div class="col mb-2">
+            <div class="col-md-6 mt-5">
+                <div class="col md-2">
                     <label for="title" class="form-label">レシピ名</label>
 
                     <input type="text" class="form-control" name="title" id="title" value="{{ $recipe_edit->title }}" />
@@ -82,10 +82,10 @@
                 <!-- 食材入力部分 -->
                 @foreach($recipe_edit->foodstuffs as $foodstuff)
                 <div class="row mt-2" id="input-area">
-                    <div class="col-3">
+                    <div class="col-md-3">
                         <input type="text" class="form-control check-food" name="foodstuff[food][]" placeholder="材料・調味料" value="{{ $foodstuff->food }}">
                     </div>
-                    <div class="col-3">
+                    <div class="col-md-3">
                         <input type="text" class="form-control check-amount" name="foodstuff[amount][]" placeholder="分量" value="{{ $foodstuff->amount }}">
                     </div>
                     <!-- フォーム欄1段目は削除アイコン非表示 -->
@@ -114,23 +114,23 @@
             <div id="current-content">
                 @foreach($recipe_edit->contents as $key=>$content)
                 <div class="row mt-4 align-items-center d-flex" id="procedure-area">
-                    <div class="col-6 me-3 howto">
+                    <div class="col-md-6 me-3 howto">
                         <div class="align-self-start">
                             <span class="howto-number[0] num-increment">{{ $key+1 }}</span>
                         </div>
-                        <input type="text" class="form-control check_text recipe-input" name="content[text][]" id="contents" value="{{ $content->content }}">
+                        <input type="text" class="form-control check_text recipe-input" name="content[]" id="contents" value="{{ $content->content }}">
                     </div>
-                    <div class="col-2 mb-4 pb-5">
+                    <div class="col-md-2 mb-md-4 pb-md-5">
                         <label class="howto">
-                            <div class="howto-put image-hover">
+                            <div class="howto-put image-hover rounded-3">
                                 <img id="img_preview" class="img-fluid rounded-3 shadow" src="{{ $content->recipe_image }}">
                             </div>
-                            <input type="file" name="upload_image[cooking_image][]" class="howto-image" style="display:none" accept="image/*">
+                            <input type="file" name="upload_image[]" class="howto-image" style="display:none" accept="image/*">
                             <!-- 画像パス取得用inputタグ（画像に変更がない場合に使用） -->
-                            <input type="text" name="upload_image_path[image_path][]" class="howto-image-text" value="{{ $content->recipe_image }}" style="display:none">
+                            <input type="text" name="upload_image_path[]" class="howto-image-text" value="{{ $content->recipe_image }}" style="display:none">
                         </label>
                     </div>
-                    <div class="col-1">
+                    <div class="col-md-1">
                         <button type="button" onclick="removeProcedure(this)" id="remove-procedure" class="btn btn-outline-primary count-content invisible" name="btn-remove"><img src="{{ asset('images/trashicon.svg')}}" class="trashicon"></button>
                     </div>
                 </div>
