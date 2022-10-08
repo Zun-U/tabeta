@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Routing\UrlGenerator;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,8 +25,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $url)
     {
-        //
+        // サービスプロバイダの設定
+        if(env('APP_ENV') === 'prod'){
+            $url->forceScheme('https');
+          }
     }
 }
