@@ -119,20 +119,26 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
   let inputHowtoAll = document.getElementById('clone-procedure').querySelectorAll('.row');
 
 
+  console.log(inputCheckAll);
+ 
   
   // 食材記入欄2つの空欄チェック
   inputCheckAll.forEach(function (parent) {
     var flg = 0;
-    parent.querySelectorAll('.col-3 input').forEach(function (element) {
+    parent.querySelectorAll('.col-md-3 input').forEach(function (element) {
       if (element.classList.contains('check-food')) {
         if (element.value == '') {
           flg = flg + 1;
         };
+        console.log(flg);
       } else if (element.classList.contains('check-amount')) {
         if (element.value == '') {
           flg = flg + 1;
         };
       }
+
+console.log(flg);
+
       if (flg == 2) {
         parent.remove();
       }
@@ -149,13 +155,10 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
     howto.querySelectorAll('.howto input').forEach(function (element) {
 
       if (element.classList.contains('recipe-input')) {
-        console.log(element.value);
         if (element.value == '') {
           flag = flag + 1;
         };
       } else if (element.classList.contains('howto-image')) {
-        // console.log('値が取れていない');
-        // console.log(element.files.length);
         if (element.files.length === 0) {
           flag = flag + 1;
         }
@@ -167,7 +170,7 @@ document.getElementById('create-recipe').addEventListener("click", function (eve
 
   });
 
-// event.preventDefault();
+event.preventDefault();
 
 });
 

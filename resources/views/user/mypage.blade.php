@@ -78,7 +78,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2 myarticle-group my-md-4 mt-5">
-      投稿記事{{$mypages}}
+      投稿記事
     </div>
 
     <!-- 投稿レシピが４件以上なら表示 -->
@@ -87,7 +87,6 @@
       <a href="{{ route('my.recipe',Auth::user()->id) }}">投稿レシピ一覧</a>
     </div>
     @endif
-
   </div>
 </div>
 
