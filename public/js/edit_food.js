@@ -49,73 +49,74 @@ window.addEventListener('DOMContentLoaded', function () {
 
   });
 
-
-
-
-  // 未入力欄なら要素削除
-  document.getElementById('create-recipe').addEventListener("click", function (event) {
-
-    // 現在のフォーム欄の「材料・分量」入力欄の取得(一個下の祖先要素を指定)
-    let inputCheckAll = document.getElementById('current-foodstuff').querySelectorAll('.row');
-
-    // 作り方記入欄の取得
-    let inputHowtoAll = document.getElementById('current-content').querySelectorAll('.row');
-
-
-
-    // 食材記入欄2つの空欄チェック
-    inputCheckAll.forEach(function (parent) {
-      var flg = 0;
-      parent.querySelectorAll('.col-3 input').forEach(function (element) {
-        if (element.classList.contains('check-food')) {
-          if (element.value == '') {
-            flg = flg + 1;
-          };
-        } else if (element.classList.contains('check-amount')) {
-          if (element.value == '') {
-            flg = flg + 1;
-          };
-        }
-        if (flg == 2) {
-          parent.remove();
-        }
-      });
-    });
-
-
-
-    // 作り方欄の空白空欄チェック
-    inputHowtoAll.forEach(function (howto) {
-
-      flag = 0;
-
-      howto.querySelectorAll('.howto input').forEach(function (element) {
-
-        if (element.classList.contains('recipe-input')) {
-          if (element.value == '') {
-            flag = flag + 1;
-          };
-        } else if (element.classList.contains('howto-image')) {
-          // console.log('値が取れていない');
-          if (element.files.length === 0) {
-            flag = flag + 1;
-          }
-        } else if (element.classList.contains('howto-image-text')) {
-          if (element.value == '') {
-            flag = flag + 1;
-          }
-        } 
-        if (flag >= 2) {
-          howto.remove();
-        }
-      });
-
-    });
-
-
-  });
-
-
-
-
 });
+
+
+
+
+// 未入力欄なら要素削除
+// document.getElementById('create-recipe').addEventListener("click", function (event) {
+
+//   // 現在のフォーム欄の「材料・分量」入力欄の取得(一個下の祖先要素を指定)
+//   let inputCheckAll = document.getElementById('current-foodstuff').querySelectorAll('.row');
+
+//   // 作り方記入欄の取得
+//   let inputHowtoAll = document.getElementById('current-content').querySelectorAll('.row');
+
+
+
+//   // 食材記入欄2つの空欄チェック
+//   inputCheckAll.forEach(function (parent) {
+//     var flg = 0;
+//     parent.querySelectorAll('.col-3 input').forEach(function (element) {
+//       if (element.classList.contains('check-food')) {
+//         if (element.value == '') {
+//           flg = flg + 1;
+//         };
+//       } else if (element.classList.contains('check-amount')) {
+//         if (element.value == '') {
+//           flg = flg + 1;
+//         };
+//       }
+//       if (flg == 2) {
+//         parent.remove();
+//       }
+//     });
+//   });
+
+
+
+//   // 作り方欄の空白空欄チェック
+//   inputHowtoAll.forEach(function (howto) {
+
+//     flag = 0;
+
+//     howto.querySelectorAll('.howto input').forEach(function (element) {
+
+//       if (element.classList.contains('recipe-input')) {
+//         if (element.value == '') {
+//           flag = flag + 1;
+//         };
+//       } else if (element.classList.contains('howto-image')) {
+//         // console.log('値が取れていない');
+//         if (element.files.length === 0) {
+//           flag = flag + 1;
+//         }
+//       } else if (element.classList.contains('howto-image-text')) {
+//         if (element.value == '') {
+//           flag = flag + 1;
+//         }
+//       }
+//       if (flag >= 2) {
+//         howto.remove();
+//       }
+//     });
+
+//   });
+
+
+// });
+
+
+
+
