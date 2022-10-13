@@ -66,8 +66,8 @@ password:asdasdasd
 
 ## 苦労した点
 
-動的に追加されたフォーム欄の扱いに関して全般です。（登録・編集・バリデーション）  
-QiitaやTeratail、stackoverflow（英語版含む）で記事を検索、また質問致しました。  
+動的に追加されたフォーム欄の扱いに関して全般になります。（登録・編集・バリデーション）  
+自分でコードを書いて実装したい機能が実現できなかった場合、QiitaやTeratail、stackoverflow（英語版含む）で記事を検索、また質問致しました。  
 その中で、日本語・英語ともに求めている情報が無かった場合、Laracastsにて英語で質問いたしました。  
 <https://laracasts.com/discuss/channels/laravel/laravel6-multi-dimensional-array-validation>  
 (上記URLは、動的に追加されたフォーム欄のFormRequestを用いたバリデーションについてLaracastsで質問したものです。)  
