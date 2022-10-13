@@ -3,19 +3,19 @@
 
 ## TABETA
 
-ご飯を食べない子供と親の為のレシピ投稿アプリケーションです。
-自分の子供がなかなかご飯を食べてくれない悩みがきっかけで作成いたしました。
-料理の写真が投稿でき、レシピとその作り方を共有できます。
-レスポンシブ対応しているので、スマホからでもご確認いただけます。
+ご飯を食べない子供と親の為のレシピ投稿アプリケーションです。  
+自分の子供がなかなかご飯を食べてくれない悩みがきっかけで作成いたしました。  
+料理の写真が投稿でき、レシピとその作り方を共有できます。  
+レスポンシブ対応しているので、スマホからでもご確認いただけます。  
 
 ![レシピ一覧](https://user-images.githubusercontent.com/107093636/195508167-6dc8b54e-cbd1-40a8-9283-fbc3db0dfd96.png)
 
 ## URL
 
-<http://3.115.9.12>
-テストユーザーアカウントを用意しております。
-email:test@test.com
-password:asdasdasd
+<http://3.115.9.12>  
+テストユーザーアカウントを用意しております。  
+email:test@test.com  
+password:asdasdasd  
 
 ## 使用技術
 
@@ -46,15 +46,17 @@ password:asdasdasd
 
 
  - 材料・分量フォーム欄のバリデーション
+
 ![バリデーションa](https://user-images.githubusercontent.com/107093636/195652406-da5c473d-ae7e-4345-8df7-d42a1469f4d2.gif)
 
  - 作り方・手順画像フォーム欄のバリデーション
+
 ![バリデーションb](https://user-images.githubusercontent.com/107093636/195652409-24ff2dc8-3b9c-4e40-9d1b-7b7e51c9c4ec.gif)
 
 ## 苦労した点
 
-動的に追加されたフォーム欄の扱いに関して全般です。（登録・編集・バリデーション）
-QiitaやTeratail、stackoverflow（英語版含む）で記事を検索、また質問致しました。
-その中で、日本語・英語ともに求めている情報が無かった場合、Laracastsにて英語で質問いたしました。
-<https://laracasts.com/discuss/channels/laravel/laravel6-multi-dimensional-array-validation>
-(上記URLは、動的に追加されたフォーム欄のFormRequestを用いたバリデーションについてLaracastsで質問したものです。)
+動的に追加されたフォーム欄の扱いに関して全般です。（登録・編集・バリデーション）  
+QiitaやTeratail、stackoverflow（英語版含む）で記事を検索、また質問致しました。  
+その中で、日本語・英語ともに求めている情報が無かった場合、Laracastsにて英語で質問いたしました。  
+<https://laracasts.com/discuss/channels/laravel/laravel6-multi-dimensional-array-validation>  
+(上記URLは、動的に追加されたフォーム欄のFormRequestを用いたバリデーションについてLaracastsで質問したものです。)  
