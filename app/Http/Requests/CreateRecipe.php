@@ -27,14 +27,6 @@ class CreateRecipe extends FormRequest
     public function rules(Request $request)
     {
 
-        // dd($this->input('upload_image'));
-
-        // dd($request->product_image);
-        // dd($request->upload_image);
-        // dd($request->foodstuff['food']);
-        // dd($request->file('upload_image'));
-        // dd($request->upload_image['cooking_image');
-
         // 食材・調味料フォーム欄バリデーション（最低一つ入力）
         $validation_food = 'required';
         $required_food = [];

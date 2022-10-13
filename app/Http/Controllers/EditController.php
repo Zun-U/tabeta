@@ -44,10 +44,7 @@ class EditController extends Controller
             $imagePath = "/storage/" . $image_path;
             $recipe->product_image = $imagePath;
         }
-        // // 画像ファイルがなければ
-        // else {
-        //     $image_path = null;
-        // }
+
 
         // recipesテーブルに各値を登録
         $recipe->title = $request->title;
@@ -124,17 +121,6 @@ class EditController extends Controller
             ]
         );
     }
-
-
-    // public function showPreview(Recipe $recipe)
-    // {
-
-    //     $recipes = Recipe::with(['foodstuffs', 'contents'])->find($recipe->id);
-
-    //     session()->flash('success_message', 'レシピを編集しました！');
-
-    //     return view('recipes/preview', compact('recipes'));
-    // }
 
 
 

@@ -58,11 +58,6 @@ class EditRecipe extends FormRequest
             'foodstuff.amount.*' =>  $validation_amount,
             'content.*' => 'required_without_all|max:100',
 
-            // 画像バリデーション
-            // 'upload_image.*' => 'image|mimes:jpeg,png,jpg|min:1',
-            // 'upload_image' => ['required', 'array', 'min:'. count($this->input('content'))],
-
-
         ];
     }
 
