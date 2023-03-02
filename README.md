@@ -9,11 +9,11 @@
 ![レシピ一覧](https://user-images.githubusercontent.com/107093636/195508167-6dc8b54e-cbd1-40a8-9283-fbc3db0dfd96.png)
 
 ## URL
-
-<http://3.115.9.12>  
-テストユーザーアカウントを用意しております。  
-email:test@test.com  
-password:asdasdasd  
+  
+~~テストユーザーアカウントを用意しております。~~  
+~~email:test@test.com~~
+~~password:asdasdasd~~  
+※諸事情により停止しております。
 
 ## 使用技術
 
